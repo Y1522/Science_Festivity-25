@@ -5,6 +5,23 @@ canvas.height = window.innerHeight;
 const pauseBtn = document.getElementById("pauseBtn");
 const restartBtn = document.getElementById("restartBtn");
 let isPaused = false;
+const targetScore = 10;
+const resultModal = document.getElementById('resultModal');
+const resultText = document.getElementById('resultText');
+
+function openResult(text){
+    if(!resultModal) return;
+    resultText.textContent = text;
+    resultModal.classList.add('open');
+    resultModal.setAttribute('aria-hidden','false');
+}
+//test
+function closeResult(){
+    if(!resultModal) return;
+    resultModal.classList.remove('open');
+    resultModal.setAttribute('aria-hidden','true');
+}
+resultModal?.addEventListener('click', closeResult);
 
 const paddleWidth = 18,
     paddleHeight = 120,
@@ -202,6 +219,18 @@ function update() {
     } else if (ball.x + ball.radius > canvas.width) {
         user.score++;
         resetBall();
+    }
+
+    // End conditions at 10 points
+    if (user.score >= targetScore) {
+        isPaused = true;
+        openResult('You Win! / فزت!');
+        return;
+    }
+    if (com.score >= targetScore) {
+        isPaused = true;
+        openResult('You Lose! / خسرت');
+        return;
     }
 
     // Update ball position

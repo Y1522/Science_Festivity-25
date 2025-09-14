@@ -12,8 +12,31 @@ html, body, #game {
 
 #game {
     display: block;
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
     background: black;
 }
+
+/* Modal used for result message */
+#resultModal.modal{position:fixed;inset:0;background:rgba(0,0,0,.55);display:none;align-items:center;justify-content:center;z-index:2000}
+#resultModal.modal.open{display:flex}
+#resultModal .modal-card{position:relative}
+#resultModal .modal-card img{max-width:420px;width:90%;height:auto}
+#resultModal .modal-card .modal-content{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:24px;color:#3b2b16;font-weight:800;font-size:28px}
+
+/* Compact header to match other pages */
+#site-header .header-bar{padding:4px 8px}
+#site-header .brand img{height:28px}
+#site-header .brand .title{font-size:.8rem}
+#site-header{position:sticky;top:0;left:0;right:0;z-index:1000}
+#site-header .header-bar{display:flex;align-items:center;justify-content:space-between;gap:8px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.18);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-radius:10px;margin:6px 6px;box-shadow:0 2px 12px rgba(0,0,0,.25)}
+#site-header .brand .title{color:#fff}
+#site-header .header-actions .btn{background:rgba(255,255,255,.12);color:#fff;border:none;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);padding:8px 10px;border-radius:8px}
+#site-header .header-actions .btn:active{transform:scale(.98)}
+/* Hide language switch on game page */
+#site-header .lang-switch{display:none}
 
 #pauseBtn{
     position: fixed;
@@ -47,6 +70,15 @@ html, body, #game {
     position: fixed;
     top: 12px;
     right: 112px;
+/* When buttons are moved into the header, make them behave like header buttons */
+#site-header .header-actions #pauseBtn,
+#site-header .header-actions #restartBtn{
+    position: static;
+    top: auto; right: auto;
+    background: rgba(255,255,255,0.12);
+    border: none;
+    padding: 8px 10px;
+}
     z-index: 10;
     padding: 10px 14px;
     font-size: 16px;

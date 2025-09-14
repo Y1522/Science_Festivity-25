@@ -10,11 +10,32 @@
 </head>
 
 <body>
-
+    <header id="site-header"></header>
     <canvas id="game"></canvas>
     <button id="pauseBtn" aria-pressed="false" title="Pause/Resume">Pause</button>
     <button id="restartBtn" title="Restart (R)">Restart</button>
 
+    <div id="resultModal" class="modal" aria-hidden="true">
+      <div class="modal-card">
+        <img src="../assets/book2.png" alt="Result">
+        <div class="modal-content" id="resultText">Congrats!</div>
+      </div>
+    </div>
+
+    <script src="../js/i18n.js"></script>
+    <script src="../js/header.js"></script>
+    <script>
+      // Move pause/restart into the glass header on this page only
+      document.addEventListener('DOMContentLoaded', function(){
+        var actions = document.querySelector('#site-header .header-actions');
+        var pauseBtn = document.getElementById('pauseBtn');
+        var restartBtn = document.getElementById('restartBtn');
+        if(actions && pauseBtn && restartBtn){
+          actions.appendChild(pauseBtn);
+          actions.appendChild(restartBtn);
+        }
+      });
+    </script>
     <script src="main.js"></script>
 </body>
 
