@@ -15,7 +15,7 @@
         <button class="btn header-btn" id="go-back" aria-label="Back" data-i18n="back.btn">رجوع</button>
         <label class="lang-switch" title="Language">
           <input id="lang-toggle" type="checkbox" aria-label="Switch language">
-          <span class="slider"><span class="label-ar">AR</span><span class="label-en">EN</span></span>
+          <span class="slider"><span class="label-ar">AR</span><span class="label-en">ENG</span></span>
         </label>
       </div>
     </div>`;

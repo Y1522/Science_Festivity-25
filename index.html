@@ -13,7 +13,11 @@
         .image-container{position:relative;display:inline-block;width:100%}
         .map-image{width:100%;height:auto}
         .icon-button{position:absolute;background:transparent;border:none;cursor:pointer;padding:0;transform:translate(-50%,-50%)}
-        .icon-button img{width:46px;height:auto;filter:drop-shadow(0 4px 8px rgba(0,0,0,.35));animation:bob 2.4s ease-in-out infinite}
+        .icon-button img{width:36px;height:auto;filter:drop-shadow(0 4px 8px rgba(0,0,0,.35));animation:bob 2.4s ease-in-out infinite}
+        
+        @media (max-width: 768px) {
+            .icon-button img{width:28px;}
+        }
         .icon-button:active img{transform:scale(.95)}
         @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
         
