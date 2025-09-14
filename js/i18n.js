@@ -6,32 +6,44 @@ const STRINGS = {
     'home.title': 'احتفالية العلوم 2025\nالعلماء العرب في العصر الذهبي للإسلام',
     'home.subtitle': 'اكتشف خريطة الفاعليات والأجنحة والألعاب التعليمية',
     'nav.map': 'الخريطة الرئيسية',
-    'nav.tent1': 'الخيمة 1',
-    'nav.tent2': 'الخيمة 2',
-    'nav.tent3': 'الخيمة 3',
+    'nav.tent1': 'خيمة ابن الهيثم',
+    'nav.tent2': 'خيمة ابن سينا',
+    'nav.tent3': 'خيمة الإدريسي',
+    'nav.tent4': 'خيمة ورش القبة',
     'nav.psc': 'خيمة مركز القبة السماوية',
     'nav.conference': 'مركز المؤتمرات',
     'nav.outdoor': 'المسرح الخارجي',
     'nav.games': 'الألعاب',
     'map.welcome': 'مرحبا بكم',
     'map.prompt': 'اضغط على الكتاب و اكتشف',
-    'map.bookLoading': 'جارٍ التحميل...'
+    'map.bookLoading': 'جارٍ التحميل...',
+    'games.title': 'الألعاب التعليمية',
+    'games.matching': 'لعبة المطابقة',
+    'games.quiz': 'لعبة الأسئلة',
+    'home.btn': 'الرئيسية',
+    'back.btn': 'رجوع'
   },
   en: {
     brand: 'Science Festivity 2025',
     'home.title': 'Science Festivity 2025\nArab Scientists of the Golden Age of Islam',
     'home.subtitle': 'Explore the map, tents, and educational games',
     'nav.map': 'Main Map',
-    'nav.tent1': 'Tent 1',
-    'nav.tent2': 'Tent 2',
-    'nav.tent3': 'Tent 3',
+    'nav.tent1': 'Ibn al-Haytham Tent',
+    'nav.tent2': 'Ibn Sina Tent',
+    'nav.tent3': 'Al-Idrisi Tent',
+    'nav.tent4': 'Planetarium Workshop Tent',
     'nav.psc': 'PSC Tent',
     'nav.conference': 'Conference Center',
     'nav.outdoor': 'Outdoor Stage',
     'nav.games': 'Games',
     'map.welcome': 'Welcome to',
     'map.prompt': 'Press the book and explore',
-    'map.bookLoading': 'Loading...'
+    'map.bookLoading': 'Loading...',
+    'games.title': 'Educational Games',
+    'games.matching': 'Matching Game',
+    'games.quiz': 'Quiz Game',
+    'home.btn': 'Home',
+    'back.btn': 'Back'
   }
 };
 
@@ -55,6 +67,13 @@ function applyI18n(){
 window.toggleLanguage = function(state){
   if (typeof state === 'string') window.currentLang = state;
   else window.currentLang = window.currentLang === 'ar' ? 'en' : 'ar';
+  
+  // Update checkbox state
+  const checkbox = document.getElementById('lang-toggle');
+  if (checkbox) {
+    checkbox.checked = window.currentLang === 'en';
+  }
+  
   applyI18n();
 }
 

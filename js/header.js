@@ -6,11 +6,13 @@
     <div class="header-bar">
       <div class="brand">
         <img id="brand-logo" alt="PSC">
-        <p class="title" data-i18n="brand">احتفالية العلوم 2025</p>
+      </div>
+      <div class="header-center">
+        <h1 class="main-title" data-i18n="brand">احتفالية العلوم 2025</h1>
       </div>
       <div class="header-actions">
-        <button class="btn header-btn" id="go-home" aria-label="Home">الرئيسية</button>
-        <button class="btn header-btn" id="go-back" aria-label="Back">رجوع</button>
+        <button class="btn header-btn" id="go-home" aria-label="Home" data-i18n="home.btn">الرئيسية</button>
+        <button class="btn header-btn" id="go-back" aria-label="Back" data-i18n="back.btn">رجوع</button>
         <label class="lang-switch" title="Language">
           <input id="lang-toggle" type="checkbox" aria-label="Switch language">
           <span class="slider"><span class="label-ar">AR</span><span class="label-en">EN</span></span>
