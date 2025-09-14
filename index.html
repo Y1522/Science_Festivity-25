@@ -9,45 +9,114 @@
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-SnC8tq8mXQq7kQH7m8G5qkG0RrM3y8o1zLw0Z8oHqQm1GJp8q2fS1y2Gx1nQhQmQ3mTz6w7vFQv1o8G0LrX1EA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="css/theme.css">
+    <style>
+        .image-container{position:relative;display:inline-block;width:100%}
+        .map-image{width:100%;height:auto}
+        .icon-button{position:absolute;background:transparent;border:none;cursor:pointer;padding:0;transform:translate(-50%,-50%)}
+        .icon-button img{width:46px;height:auto;filter:drop-shadow(0 4px 8px rgba(0,0,0,.35));animation:bob 2.4s ease-in-out infinite}
+        .icon-button:active img{transform:scale(.95)}
+        @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+        
+        /* Games Button Styles */
+        .games-button-container {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            z-index: 1000;
+        }
+        
+        .games-button {
+            background: linear-gradient(135deg, #4CAF50, #45a049);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 12px 20px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+            transition: all 0.3s ease;
+            font-family: 'Cairo', sans-serif;
+        }
+        
+        .games-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(76, 175, 80, 0.4);
+            background: linear-gradient(135deg, #45a049, #4CAF50);
+        }
+        
+        .games-button:active {
+            transform: translateY(0);
+        }
+        
+        .games-button i {
+            font-size: 18px;
+        }
+        
+        @media (max-width: 768px) {
+            .games-button-container {
+                bottom: 15px;
+                left: 15px;
+            }
+            .games-button {
+                padding: 10px 16px;
+                font-size: 14px;
+            }
+        }
+    </style>
 </head>
 <body>
     <header id="site-header"></header>
 
-    <main class="container home">
-        <section class="hero">
-            <h1 data-i18n="home.title">احتفالية العلوم 2025<br>العلماء العرب في العصر الذهبي للإسلام</h1>
-            <p class="subtitle" data-i18n="map.welcome">مرحبا بكم</p>
-            <img class="hero-logo" alt="welcome" src="assets/1.png">
-            <p class="subtitle" data-i18n="home.subtitle">اكتشف خريطة الفاعليات والأجنحة والألعاب التعليمية</p>
-            </div>
+    <main class="container">
+        <section class="map-hero">
+            <h2 data-i18n="map.welcome">مرحبا بكم</h2>
+            <img src="assets/1.png" alt="Welcome image" style="max-width:360px;width:100%;height:auto">
+            <p data-i18n="map.prompt">اضغط على الكتاب و اكتشف</p>
         </section>
 
-        <nav class="tiles">
-            <a class="tile" href="pages/map/index.html">
-                <span class="tile-title" data-i18n="nav.map">الخريطة الرئيسية</span>
-            </a>
-            <a class="tile" href="pages/tent1/index.html">
-                <span class="tile-title" data-i18n="nav.tent1">الخيمة 1</span>
-            </a>
-            <a class="tile" href="pages/tent2/index.html">
-                <span class="tile-title" data-i18n="nav.tent2">الخيمة 2</span>
-            </a>
-            <a class="tile" href="pages/tent3/index.html">
-                <span class="tile-title" data-i18n="nav.tent3">الخيمة 3</span>
-            </a>
-            <a class="tile" href="pages/psc/index.html">
-                <span class="tile-title" data-i18n="nav.psc">خيمة مركز القبة السماوية</span>
-            </a>
-            <a class="tile" href="pages/conference/index.html">
-                <span class="tile-title" data-i18n="nav.conference">مركز المؤتمرات</span>
-            </a>
-            <a class="tile" href="pages/outdoor/index.html">
-                <span class="tile-title" data-i18n="nav.outdoor">المسرح الخارجي</span>
-            </a>
-            <a class="tile" href="pages/games/index.html">
-                <span class="tile-title" data-i18n="nav.games">الألعاب</span>
-            </a>
-        </nav>
+        <div class="image-container">
+            <img src="assets/layout 2 .RGB_color.jpg" alt="Map" class="map-image">
+            <!-- Tents positions -->
+            <button class="icon-button" style="top:20%;left:16%" data-target="pages/tent4/index.html">
+                <img src="assets/book1.png" alt="Tent 4">
+            </button>
+            <button class="icon-button" style="top:16%;left:34%" data-target="pages/tent3/index.html">
+                <img src="assets/book1.png" alt="Tent 3">
+            </button>
+            <button class="icon-button" style="top:16%;left:50%" data-target="pages/tent2/index.html">
+                <img src="assets/book1.png" alt="Tent 2">
+            </button>
+            <button class="icon-button" style="top:70%;left:40%" data-target="pages/tent1/index.html">
+                <img src="assets/book1.png" alt="Tent 1">
+            </button>
+        </div>
+
+        <div class="image-container" style="display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between;margin-top:14px">
+            <div style="position:relative;flex:1 1 48%">
+                <img src="assets/Conference hall.svg" alt="Conference Hall" class="map-image">
+                <button class="icon-button" style="top:50%;left:50%" data-target="pages/conference/index.html">
+                    <img src="assets/book1.png" alt="Conference">
+                </button>
+            </div>
+            <div style="position:relative;flex:1 1 48%">
+                <img src="assets/outStage2.jpg" alt="Outdoor Stage" class="map-image">
+                <button class="icon-button" style="top:50%;left:50%" data-target="pages/outdoor/index.html">
+                    <img src="assets/book1.png" alt="Outdoor Stage">
+                </button>
+            </div>
+        </div>
+
+        <!-- Games Button - Bottom Left -->
+        <div class="games-button-container">
+            <button class="games-button" onclick="window.location.href='pages/games/index.html'">
+                <i class="fas fa-gamepad"></i>
+                <span data-i18n="nav.games">الألعاب</span>
+            </button>
+        </div>
     </main>
 
     <footer class="site-footer">
@@ -67,6 +136,19 @@
     <script src="js/header.js"></script>
     <script src="js/chatbot.js"></script>
     <script src="js/app.js"></script>
+    <script>
+        document.addEventListener('click', function(e){
+            var btn = e.target.closest('.icon-button');
+            if(!btn) return;
+            var img = btn.querySelector('img');
+            if(img){ 
+                img.src='assets/book2.png'; 
+                setTimeout(function(){ 
+                    window.location.href = btn.dataset.target; 
+                }, 120); 
+            }
+        });
+    </script>
 </body>
 </html>
 
