@@ -7,16 +7,152 @@
   <link rel="stylesheet" href="../../css/theme.css">
 </head>
 <body>
+  <!-- Stunning Animated Background -->
+  <div id="magic-background"></div>
+  
   <header id="site-header"></header>
+  
+  <!-- Tent Video Section -->
+  <section class="tent-video-section" style="padding:20px 0;margin-bottom:20px;">
+    <div class="container">
+      <video 
+        autoplay 
+        muted 
+        loop 
+        playsinline 
+        style="width:100%;max-width:800px;height:auto;border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,0.4);display:block;margin:0 auto;"
+        poster="../../assets/Tent 3.jpg">
+        <source src="../../assets/tent 3 video.mp4" type="video/mp4">
+        <img src="../../assets/Tent 3.jpg" alt="خيمة الإدريسي" style="width:100%;height:auto;border-radius:16px;">
+      </video>
+      <div style="text-align:center;margin-top:15px;color:#eef6ff;">
+        <h2 data-i18n="nav.tent3" style="margin:0;font-size:2rem;text-shadow:0 2px 4px rgba(0,0,0,0.5);">خيمة الإدريسي</h2>
+      </div>
+    </div>
+  </section>
+  
   <main class="container">
     <h2 data-i18n="nav.tent3">خيمة الإدريسي</h2>
-    <img src="../../assets/Tent 3.jpg" alt="خيمة الإدريسي" style="width:100%;height:auto;border-radius:12px">
+    <div style="position:relative">
+      <img src="../../assets/Tent 3.jpg" alt="خيمة الإدريسي" style="width:100%;height:auto;border-radius:12px">
+
+      <!-- Workshop book markers for Tent 3 (25 - 34) -->
+      <style>
+        .marker-btn{position:absolute;background:transparent;border:none;cursor:pointer;padding:0}
+        .marker-btn img{width:42px;height:auto;filter:drop-shadow(0 6px 14px rgba(0,0,0,.35)) brightness(1.05);transition:transform .18s ease, filter .18s ease}
+        .marker-btn:hover img{transform:scale(1.08);filter:drop-shadow(0 8px 20px rgba(0,0,0,.45)) brightness(1.12)}
+        @media (max-width:768px){.marker-btn img{width:32px}}
+      </style>
+      <button class="marker-btn" style="bottom:12%;right:13%" data-workshop="workshop25" title="ورشة 25">
+        <img src="../../assets/book1.png" alt="workshop 25">
+      </button>
+      <button class="marker-btn" style="bottom:12%;right:28%" data-workshop="workshop26" title="ورشة 26">
+        <img src="../../assets/book1.png" alt="workshop 26">
+      </button>
+      <button class="marker-btn" style="bottom:12%;right:43%" data-workshop="workshop27" title="ورشة 27">
+        <img src="../../assets/book1.png" alt="workshop 27">
+      </button>
+      <button class="marker-btn" style="bottom:12%;right:58%" data-workshop="workshop28" title="ورشة 28">
+        <img src="../../assets/book1.png" alt="workshop 28">
+      </button>
+      <button class="marker-btn" style="bottom:12%;left:29%" data-workshop="workshop29" title="ورشة 29">
+        <img src="../../assets/book1.png" alt="workshop 29">
+      </button>
+      <button class="marker-btn" style="bottom:12%;left:16%" data-workshop="workshop30" title="ورشة 30">
+        <img src="../../assets/book1.png" alt="workshop 30">
+      </button>
+      <button class="marker-btn" style="top:42%;left:17%" data-workshop="workshop31" title="ورشة 31">
+        <img src="../../assets/book1.png" alt="workshop 31">
+      </button>
+      <button class="marker-btn" style="top:42%;left:32%" data-workshop="workshop32" title="ورشة 32">
+        <img src="../../assets/book1.png" alt="workshop 32">
+      </button>
+      <button class="marker-btn" style="top:42%;left:47%" data-workshop="workshop33" title="ورشة 33">
+        <img src="../../assets/book1.png" alt="workshop 33">
+      </button>
+      <button class="marker-btn" style="top:42%;right:36%" data-workshop="workshop34" title="ورشة 34">
+        <img src="../../assets/book1.png" alt="workshop 34">
+      </button>
+    </div>
   </main>
   <footer class="site-footer">
     <img src="../../assets/psc logo.svg" alt="PSC logo" class="psc-logo">
   </footer>
   <script src="../../js/i18n.js"></script>
   <script src="../../js/header.js"></script>
+  <script src="../../js/chatbot.js"></script>
+  <script src="../../js/animated-background.js"></script>
+  
+  <!-- Fullscreen Book Viewer Overlay (Tent 3) -->
+  <style>
+    .book-overlay{position:fixed;inset:0;background:rgba(0,0,0,.85);display:none;align-items:center;justify-content:center;z-index:2000}
+    .book-overlay.open{display:flex}
+    .book-overlay img{max-width:98vw;max-height:98vh;border-radius:14px;box-shadow:0 20px 60px rgba(0,0,0,.5);animation:bookZoom .25s ease}
+    .book-close{position:absolute;top:18px;right:22px;width:42px;height:42px;border-radius:50%;background:rgba(255,255,255,.12);border:2px solid rgba(255,255,255,.6);color:#fff;font-size:22px;display:flex;align-items:center;justify-content:center;cursor:pointer;backdrop-filter:blur(2px)}
+    .book-close:hover{background:rgba(255,255,255,.2)}
+    @keyframes bookZoom{from{transform:scale(.92);opacity:.6}to{transform:scale(1);opacity:1}}
+  </style>
+  <div id="bookOverlay" class="book-overlay" role="dialog" aria-modal="true" aria-label="Open book view">
+    <button class="book-close" aria-label="Close" title="إغلاق" onclick="hideBookOverlay()">×</button>
+    <img id="bookOverlayImg" src="../../assets/book2.png" alt="Open book">
+  </div>
+  
+  <script>
+    document.addEventListener('click', function(e){
+      var mk = e.target.closest('.marker-btn');
+      if(!mk) return;
+      var img = mk.querySelector('img');
+      if(img){
+        var original = img.getAttribute('src');
+        img.src = '../../assets/book2.png';
+        setTimeout(function(){ img.src = original; }, 160);
+      }
+      showBookOverlay();
+    });
+    function showBookOverlay(){
+      var ov = document.getElementById('bookOverlay');
+      if(ov){ ov.classList.add('open'); }
+    }
+    function hideBookOverlay(){
+      var ov = document.getElementById('bookOverlay');
+      if(ov){ ov.classList.remove('open'); }
+    }
+    document.getElementById('bookOverlay').addEventListener('click', function(e){
+      if(e.target === this){ hideBookOverlay(); }
+    });
+    document.addEventListener('keydown', function(e){
+      if(e.key === 'Escape') hideBookOverlay();
+    });
+  </script>
+  <script>
+    // Immediate background test
+    document.addEventListener('DOMContentLoaded', function() {
+        console.log('DOM loaded, checking for animated background...');
+        setTimeout(function() {
+            const bg = document.querySelector('.animated-background');
+            if (bg) {
+                console.log('Animated background found!', bg);
+            } else {
+                console.log('Animated background NOT found, creating manually...');
+                // Create a simple test background
+                const testBg = document.createElement('div');
+                testBg.style.cssText = `
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    z-index: -1;
+                    background: linear-gradient(45deg, rgba(82, 138, 199, 0.1) 0%, rgba(43, 106, 161, 0.1) 100%);
+                    pointer-events: none;
+                `;
+                testBg.className = 'test-animated-background';
+                document.body.insertBefore(testBg, document.body.firstChild);
+                console.log('Test background created!');
+            }
+        }, 100);
+    });
+</script>
 </body>
 </html>
 

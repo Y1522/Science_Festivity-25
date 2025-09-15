@@ -75,6 +75,11 @@ window.toggleLanguage = function(state){
   }
   
   applyI18n();
+  
+  // Trigger language change event for other components
+  document.dispatchEvent(new CustomEvent('languageChanged', { 
+    detail: { language: window.currentLang } 
+  }));
 }
 
 document.addEventListener('DOMContentLoaded', applyI18n);

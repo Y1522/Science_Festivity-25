@@ -7,16 +7,73 @@
   <link rel="stylesheet" href="../../css/theme.css">
 </head>
 <body>
+  <!-- Stunning Animated Background -->
+  <div id="magic-background"></div>
+  
   <header id="site-header"></header>
   <main class="container">
     <h2 data-i18n="nav.psc">خيمة مركز القبة السماوية</h2>
-    <img src="../../assets/layout 2 .RGB_color.jpg" alt="PSC Area" style="width:100%;height:auto;border-radius:12px">
+    <div style="position:relative">
+      <img src="../../assets/layout 2 .RGB_color.jpg" alt="PSC Area" style="width:100%;height:auto;border-radius:12px">
+      <style>
+        .marker-btn{position:absolute;background:transparent;border:none;cursor:pointer;padding:0}
+        .marker-btn img{width:42px;height:auto;filter:drop-shadow(0 6px 14px rgba(0,0,0,.35)) brightness(1.05);transition:transform .18s ease, filter .18s ease}
+        .marker-btn:hover img{transform:scale(1.08);filter:drop-shadow(0 8px 20px rgba(0,0,0,.45)) brightness(1.12)}
+        @media (max-width:768px){.marker-btn img{width:32px}}
+      </style>
+      <button class="marker-btn" style="top:52%;left:50%" data-workshop="psc-1" title="PSC Workshop">
+        <img src="../../assets/book1.png" alt="PSC workshop marker">
+      </button>
+    </div>
   </main>
   <footer class="site-footer">
     <img src="../../assets/psc logo.svg" alt="PSC logo" class="psc-logo">
   </footer>
   <script src="../../js/i18n.js"></script>
   <script src="../../js/header.js"></script>
+  <script src="../../js/chatbot.js"></script>
+  <script src="../../js/animated-background.js"></script>
+  
+  <!-- Fullscreen Book Viewer Overlay (PSC) -->
+  <style>
+    .book-overlay{position:fixed;inset:0;background:rgba(0,0,0,.85);display:none;align-items:center;justify-content:center;z-index:2000}
+    .book-overlay.open{display:flex}
+    .book-overlay img{max-width:98vw;max-height:98vh;border-radius:14px;box-shadow:0 20px 60px rgba(0,0,0,.5);animation:bookZoom .25s ease}
+    .book-close{position:absolute;top:18px;right:22px;width:42px;height:42px;border-radius:50%;background:rgba(255,255,255,.12);border:2px solid rgba(255,255,255,.6);color:#fff;font-size:22px;display:flex;align-items:center;justify-content:center;cursor:pointer;backdrop-filter:blur(2px)}
+    .book-close:hover{background:rgba(255,255,255,.2)}
+    @keyframes bookZoom{from{transform:scale(.92);opacity:.6}to{transform:scale(1);opacity:1}}
+  </style>
+  <div id="bookOverlay" class="book-overlay" role="dialog" aria-modal="true" aria-label="Open book view">
+    <button class="book-close" aria-label="Close" title="إغلاق" onclick="hideBookOverlay()">×</button>
+    <img id="bookOverlayImg" src="../../assets/book2.png" alt="Open book">
+  </div>
+  <script>
+    document.addEventListener('click', function(e){
+      var mk = e.target.closest('.marker-btn');
+      if(!mk) return;
+      var img = mk.querySelector('img');
+      if(img){
+        var original = img.getAttribute('src');
+        img.src = '../../assets/book2.png';
+        setTimeout(function(){ img.src = original; }, 160);
+      }
+      showBookOverlay();
+    });
+    function showBookOverlay(){
+      var ov = document.getElementById('bookOverlay');
+      if(ov){ ov.classList.add('open'); }
+    }
+    function hideBookOverlay(){
+      var ov = document.getElementById('bookOverlay');
+      if(ov){ ov.classList.remove('open'); }
+    }
+    document.getElementById('bookOverlay').addEventListener('click', function(e){
+      if(e.target === this){ hideBookOverlay(); }
+    });
+    document.addEventListener('keydown', function(e){
+      if(e.key === 'Escape') hideBookOverlay();
+    });
+  </script>
 </body>
 </html>
 

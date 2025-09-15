@@ -7,24 +7,36 @@
   <link rel="stylesheet" href="../../css/theme.css">
 </head>
 <body>
+  <!-- Stunning Animated Background -->
+  <div id="magic-background"></div>
+  
   <header id="site-header"></header>
   <main class="container">
     <h2 data-i18n="games.title">الألعاب التعليمية</h2>
     <div class="tiles" style="--card-bg:rgba(255,255,255,.1)">
       <a class="tile" href="../../GAME 1/index.html" style="background:var(--card-bg)">
-        <i class="fas fa-table-tennis-paddle-ball" style="font-size:3rem;margin-bottom:12px;color:#4CAF50;"></i>
-        <span class="tile-title">لعبة 1: تنس سريع</span>
-        <p style="font-size:0.9rem;opacity:0.8;margin:4px 0 0 0;">لعبة تنس الطاولة السريعة</p>
+        <div style="position:relative;margin-bottom:12px;">
+          <i class="fas fa-table-tennis-paddle-ball" style="font-size:3rem;color:#4CAF50;"></i>
+          <i class="fas fa-bolt" style="position:absolute;top:-5px;right:-5px;font-size:1rem;color:#FFD700;"></i>
+        </div>
+        <span class="tile-title">🏓 لعبة تنس سريع</span>
+        <p style="font-size:0.9rem;opacity:0.8;margin:4px 0 0 0;">⚡ لعبة تنس الطاولة السريعة والمثيرة</p>
       </a>
       <a class="tile" href="../../game2/index.html" style="background:var(--card-bg)">
-        <i class="fas fa-user-graduate" style="font-size:3rem;margin-bottom:12px;color:#2196F3;"></i>
-        <span class="tile-title" data-i18n="games.matching">لعبة المطابقة</span>
-        <p style="font-size:0.9rem;opacity:0.8;margin:4px 0 0 0;">طابق العلماء مع إنجازاتهم</p>
+        <div style="position:relative;margin-bottom:12px;">
+          <i class="fas fa-map-marked-alt" style="font-size:3rem;color:#2196F3;"></i>
+          <i class="fas fa-star" style="position:absolute;top:-5px;right:-5px;font-size:1rem;color:#FFD700;"></i>
+        </div>
+        <span class="tile-title" data-i18n="games.matching">🗺️ لعبة الخريطة التفاعلية</span>
+        <p style="font-size:0.9rem;opacity:0.8;margin:4px 0 0 0;">🌍 اكتشف العلماء على خريطة العالم الإسلامي</p>
       </a>
       <a class="tile" href="game-quiz.html" style="background:var(--card-bg)">
-        <i class="fas fa-brain" style="font-size:3rem;margin-bottom:12px;color:#FF9800;"></i>
-        <span class="tile-title" data-i18n="games.quiz">لعبة الأسئلة</span>
-        <p style="font-size:0.9rem;opacity:0.8;margin:4px 0 0 0;">اختبر معلوماتك العلمية</p>
+        <div style="position:relative;margin-bottom:12px;">
+          <i class="fas fa-brain" style="font-size:3rem;color:#FF9800;"></i>
+          <i class="fas fa-question-circle" style="position:absolute;top:-5px;right:-5px;font-size:1rem;color:#FFD700;"></i>
+        </div>
+        <span class="tile-title" data-i18n="games.quiz">🧠 لعبة الأسئلة الذكية</span>
+        <p style="font-size:0.9rem;opacity:0.8;margin:4px 0 0 0;">❓ 10 أسئلة شيقة عن العلماء العرب</p>
       </a>
     </div>
   </main>
@@ -35,6 +47,37 @@
 
   <script src="../../js/i18n.js"></script>
   <script src="../../js/header.js"></script>
+  <script src="../../js/chatbot.js"></script>
+  <script src="../../js/animated-background.js"></script>
+  <script>
+    // Immediate background test
+    document.addEventListener('DOMContentLoaded', function() {
+        console.log('DOM loaded, checking for animated background...');
+        setTimeout(function() {
+            const bg = document.querySelector('.animated-background');
+            if (bg) {
+                console.log('Animated background found!', bg);
+            } else {
+                console.log('Animated background NOT found, creating manually...');
+                // Create a simple test background
+                const testBg = document.createElement('div');
+                testBg.style.cssText = `
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    z-index: -1;
+                    background: linear-gradient(45deg, rgba(82, 138, 199, 0.1) 0%, rgba(43, 106, 161, 0.1) 100%);
+                    pointer-events: none;
+                `;
+                testBg.className = 'test-animated-background';
+                document.body.insertBefore(testBg, document.body.firstChild);
+                console.log('Test background created!');
+            }
+        }, 100);
+    });
+</script>
 </body>
 </html>
 

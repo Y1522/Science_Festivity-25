@@ -402,14 +402,103 @@
   </style>
 </head>
 <body>
+  <!-- Stunning Animated Background -->
+  <div id="magic-background"></div>
+  
+  <!-- Navigation Buttons -->
+  <div style="position: fixed; top: 20px; left: 20px; z-index: 1000; display: flex; gap: 10px; align-items: center;">
+    <button onclick="history.back()" style="
+      background: linear-gradient(135deg, #528AC7, #2b6aa1);
+      color: white;
+      border: none;
+      border-radius: 25px;
+      padding: 10px 20px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(82, 138, 199, 0.4);
+      transition: all 0.3s ease;
+      font-family: 'Cairo', sans-serif;
+    " onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(82, 138, 199, 0.6)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(82, 138, 199, 0.4)'">
+      <span data-i18n="back.btn">← الرجوع</span>
+    </button>
+    
+    <button onclick="window.location.href='../index.html'" style="
+      background: linear-gradient(135deg, #4CAF50, #45a049);
+      color: white;
+      border: none;
+      border-radius: 25px;
+      padding: 10px 20px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(76, 175, 80, 0.4);
+      transition: all 0.3s ease;
+      font-family: 'Cairo', sans-serif;
+    " onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(76, 175, 80, 0.6)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(76, 175, 80, 0.4)'">
+      <span data-i18n="home.btn">🏠 الرئيسية</span>
+    </button>
+    
+    <!-- Language Switch -->
+    <label class="lang-switch" title="Language" style="
+      position: relative;
+      display: inline-block;
+      width: 70px;
+      height: 30px;
+      margin-left: 10px;
+    ">
+      <input id="lang-toggle-game2" type="checkbox" aria-label="Switch language" style="display: none;">
+      <span style="
+        position: absolute;
+        inset: 0;
+        background: rgba(0,0,0,.3);
+        border-radius: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 6px;
+        color: #fff;
+        font-weight: 700;
+        font-size: 10px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      ">
+        <span class="label-ar" style="opacity: 1; z-index: 1;">AR</span>
+        <span class="label-en" style="opacity: 0.6; z-index: 1;">ENG</span>
+        <span style="
+          content: '';
+          position: absolute;
+          height: 24px;
+          width: 30px;
+          left: 3px;
+          top: 3px;
+          background: #fff;
+          border-radius: 16px;
+          transition: transform 0.2s ease;
+        " class="slider-thumb"></span>
+      </span>
+    </label>
+  </div>
+  
+  <!-- Top Center Brand Title -->
+  <div id="game2Brand" style="position: fixed; top: 14px; left: 50%; transform: translateX(-50%); z-index: 1000; background: rgba(0,0,0,0.35); color: #FFD700; padding: 8px 16px; border-radius: 999px; border: 1px solid rgba(255,215,0,0.6); font-weight: 700; font-size: 14px; letter-spacing: .3px; box-shadow: 0 6px 18px rgba(0,0,0,.25); backdrop-filter: blur(3px); font-family: 'Cairo', sans-serif;">
+    <span>احتفالية العلوم 2025</span>
+  </div>
+  
+  <!-- PSC Logo -->
+  <div style="position: fixed; top: 20px; right: 20px; z-index: 1000;">
+    <img src="../assets/psc logo.svg" alt="PSC Logo" style="
+      height: 50px;
+      width: auto;
+      filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
+      transition: all 0.3s ease;
+      cursor: pointer;
+    " onmouseover="this.style.transform='scale(1.1)'; this.style.filter='drop-shadow(0 6px 12px rgba(0,0,0,0.4))'" onmouseout="this.style.transform='scale(1)'; this.style.filter='drop-shadow(0 4px 8px rgba(0,0,0,0.3))'" onclick="window.location.href='../index.html'">
+  </div>
+  
   <div class="container">
-    <header>
-      <h1 class="header-title">لعبة العلماء في العصر الإسلامي الذهبي</h1>
-      <p class="header-subtitle">اكتشف عظماء العلماء المسلمين وإنجازاتهم الخالدة</p>
-    </header>
-
     <div class="intro-section">
-      <h2>مرحباً بك في رحلة عبر التاريخ</h2>
+      <h2>لعبة العلماء في العصر الإسلامي الذهبي</h2>
       <p>استكشف خريطة العالم الإسلامي في العصر الذهبي واكتشف العلماء العظام الذين أثروا الحضارة الإنسانية بعلمهم ومعرفتهم. انقر على النقاط الذهبية لتتعرف على هؤلاء الرواد.</p>
       <p><strong>تعليمات:</strong> انقر على الدوائر الذهبية على الخريطة للتعرف على العلماء المشاهير من كل منطقة</p>
     </div>
@@ -418,15 +507,15 @@
       <!-- صورة الخريطة المحلية -->
       <img src="download-removebg-preview (19).png" alt="خريطة العالم الإسلامي" onerror="this.src='https://i.imgur.com/VuYwP6s.jpg'">
 
-      <!-- دوائر الدول -->
-      <div class="country" style="top: 25%; left: 10%;" onclick="showScholar('المغرب')" title="انقر للتعرف على علماء المغرب">المغرب</div>
-      <div class="country" style="top: 28%; left: 57%;" onclick="showScholar('مصر')" title="انقر للتعرف على علماء مصر">مصر</div>
-      <div class="country" style="top: 15%; left: 72%;" onclick="showScholar('العراق')" title="انقر للتعرف على علماء العراق">العراق</div>
-      <div class="country" style="top: 20%; left: 65%;" onclick="showScholar('الشام')" title="انقر للتعرف على علماء الشام">الشام</div>
-        <div class="country" style="top: 15%; left: 33%;" onclick="showScholar('تونس')" title="انقر للتعرف على علماء تونس">تونس</div>
-        <div class="country" style="top: 25%; left: 25%;" onclick="showScholar('الجزائر')" title="انقر للتعرف على علماء الجزائر">الجزائر</div>
-        <div class="country" style="top: 25%; left: 45%;" onclick="showScholar('ليبيا')" title="انقر للتعرف على علماء ليبيا">ليبيا</div>
-        <div class="country" style="top: 35%; left: 70%;" onclick="showScholar('الحجاز')" title="انقر للتعرف على علماء الحجاز">الحجاز</div>
+      <!-- دوائر الدول (مفاتيح ثابتة للغات) -->
+      <div class="country" data-country="morocco" style="top: 25%; left: 10%;" onclick="showScholar('morocco')" title="">&nbsp;</div>
+      <div class="country" data-country="egypt" style="top: 28%; left: 57%;" onclick="showScholar('egypt')" title="">&nbsp;</div>
+      <div class="country" data-country="iraq" style="top: 15%; left: 72%;" onclick="showScholar('iraq')" title="">&nbsp;</div>
+      <div class="country" data-country="levant" style="top: 20%; left: 65%;" onclick="showScholar('levant')" title="">&nbsp;</div>
+      <div class="country" data-country="tunisia" style="top: 15%; left: 33%;" onclick="showScholar('tunisia')" title="">&nbsp;</div>
+      <div class="country" data-country="algeria" style="top: 25%; left: 25%;" onclick="showScholar('algeria')" title="">&nbsp;</div>
+      <div class="country" data-country="libya" style="top: 25%; left: 45%;" onclick="showScholar('libya')" title="">&nbsp;</div>
+      <div class="country" data-country="hejaz" style="top: 35%; left: 70%;" onclick="showScholar('hejaz')" title="">&nbsp;</div>
     </div>
   </div>
 
@@ -439,8 +528,8 @@
     </p>
     
     <div class="game-controls" style="margin-bottom: 30px;">
-      <button onclick="startMemoryGame()" style="background: #FFD700; color: #182746; border: none; padding: 15px 30px; border-radius: 10px; font-size: 1.1rem; cursor: pointer; margin: 10px;">ابدأ اللعبة</button>
-      <button onclick="resetMemoryGame()" style="background: #22395f; color: #FFD700; border: 2px solid #FFD700; padding: 15px 30px; border-radius: 10px; font-size: 1.1rem; cursor: pointer; margin: 10px;">إعادة تشغيل</button>
+      <button id="btnStart" onclick="startMemoryGame()" style="background: #FFD700; color: #182746; border: none; padding: 15px 30px; border-radius: 10px; font-size: 1.1rem; cursor: pointer; margin: 10px;">ابدأ اللعبة</button>
+      <button id="btnReset" onclick="resetMemoryGame()" style="background: #22395f; color: #FFD700; border: 2px solid #FFD700; padding: 15px 30px; border-radius: 10px; font-size: 1.1rem; cursor: pointer; margin: 10px;">إعادة تشغيل</button>
     </div>
     
     <div class="game-stats" style="margin-bottom: 20px; color: #FFD700;">
@@ -469,8 +558,10 @@
 
 
   <script>
-    const scholars = {
-      "المغرب": {
+    // Arabic dataset
+    const scholarsAr = {
+      morocco: {
+        country: "المغرب",
         name: "ابن بطوطة",
         fullName: "أبو عبد الله محمد بن عبد الله اللواتي الطنجي",
         birth: "1304م",
@@ -485,7 +576,8 @@
         field: "الرحلات والجغرافيا",
         img: "ابن بطوطه.jpeg"
       },
-      "مصر": {
+      egypt: {
+        country: "مصر",
         name: "ابن الهيثم",
         fullName: "أبو علي الحسن بن الحسن بن الهيثم",
         birth: "965م",
@@ -500,14 +592,15 @@
         field: "البصريات والرياضيات",
         img: "ابن الهيثم.jpeg"
       },
-      "العراق": {
+      iraq: {
+        country: "العراق",
         name: "الخوارزمي",
         fullName: "أبو عبد الله محمد بن موسى الخوارزمي",
         birth: "780م",
         death: "850م",
         info: "عالم رياضيات وفلك وجغرافيا من خوارزم. أسس علم الجبر وساهم في تطوير الفلك والجغرافيا في بيت الحكمة ببغداد.",
         achievements: [
-          "أسس علم الجبر (Algebra)",
+          "أسس علم الجبر",
           "طور نظام الأرقام العشرية",
           "ألف كتاب 'الجبر والمقابلة'",
           "رسم خرائط دقيقة للعالم المعروف آنذاك"
@@ -515,7 +608,8 @@
         field: "الرياضيات والجبر",
         img: "الخوارزمى.jpeg"
       },
-      "الشام": {
+      levant: {
+        country: "الشام",
         name: "ابن النفيس",
         fullName: "علاء الدين أبو الحسن علي بن أبي الحزم القرشي الدمشقي",
         birth: "1213م",
@@ -530,7 +624,8 @@
         field: "الطب والتشريح",
         img: "ابن النفيس.jpeg"
       },
-      "تونس": {
+      tunisia: {
+        country: "تونس",
         name: "ابن خلدون",
         fullName: "ولي الدين عبد الرحمن بن محمد بن خلدون",
         birth: "1332م",
@@ -545,7 +640,8 @@
         field: "التاريخ وعلم الاجتماع",
         img: "ابن خلدون.jpeg"
       },
-      "الجزائر": {
+      algeria: {
+        country: "الجزائر",
         name: "عبد الرحمن الثعالبي",
         fullName: "أبو زيد عبد الرحمن بن محمد بن مخلوف الثعالبي",
         birth: "1384م",
@@ -560,7 +656,8 @@
         field: "التفسير والفقه",
         img: "عبد الرحم الثعالبى.jpeg"
       },
-      "ليبيا": {
+      libya: {
+        country: "ليبيا",
         name: "القرافي",
         fullName: "أبو العباس شهاب الدين أحمد بن إدريس القرافي",
         birth: "1228م",
@@ -575,7 +672,8 @@
         field: "الفقه وأصول الفقه",
         img: "القرافى.jpeg"
       },
-      "الحجاز": {
+      hejaz: {
+        country: "الحجاز",
         name: "ابن حجر العسقلاني",
         fullName: "أبو الفضل أحمد بن علي بن محمد بن أحمد بن حجر العسقلاني",
         birth: "1372م",
@@ -592,8 +690,144 @@
       }
     };
 
-    function showScholar(country) {
-      const scholar = scholars[country];
+    // English dataset
+    const scholarsEn = {
+      morocco: {
+        country: "Morocco",
+        name: "Ibn Battuta",
+        fullName: "Abu Abdullah Muhammad ibn Abdullah al-Lawati al-Tanji",
+        birth: "1304 CE",
+        death: "1377 CE",
+        info: "A famed traveler and historian from Tangier, renowned for his extensive journeys across the Islamic world and beyond.",
+        achievements: [
+          "Traveled over 120,000 kilometers",
+          "Visited more than 40 modern countries",
+          "Wrote a seminal travel chronicle",
+          "Documented diverse cultures and civilizations"
+        ],
+        field: "Travel and Geography",
+        img: "ابن بطوطه.jpeg"
+      },
+      egypt: {
+        country: "Egypt",
+        name: "Ibn al-Haytham",
+        fullName: "Abu Ali al-Hasan ibn al-Hasan ibn al-Haytham",
+        birth: "965 CE",
+        death: "1040 CE",
+        info: "Mathematician, optician, and astronomer. Pioneer of optics and the experimental scientific method.",
+        achievements: [
+          "Founded principles of modern optics",
+          "Developed the experimental method",
+          "Explained vision and the eye",
+          "Authored 200+ works across sciences"
+        ],
+        field: "Optics and Mathematics",
+        img: "ابن الهيثم.jpeg"
+      },
+      iraq: {
+        country: "Iraq",
+        name: "Al-Khwarizmi",
+        fullName: "Muhammad ibn Musa al-Khwarizmi",
+        birth: "780 CE",
+        death: "850 CE",
+        info: "Mathematician, astronomer, and geographer. Founder of algebra and contributor at Baghdad's House of Wisdom.",
+        achievements: [
+          "Founded algebra",
+          "Advanced the decimal numeral system",
+          "Authored 'al-Jabr wa al-Muqabala'",
+          "Produced accurate world maps"
+        ],
+        field: "Mathematics and Algebra",
+        img: "الخوارزمى.jpeg"
+      },
+      levant: {
+        country: "Levant",
+        name: "Ibn al-Nafis",
+        fullName: "Ala' al-Din Abu al-Hasan Ali ibn Abi al-Hazm al-Qurashi al-Dimashqi",
+        birth: "1213 CE",
+        death: "1288 CE",
+        info: "Physician and anatomist from Damascus; discovered pulmonary circulation centuries before Harvey.",
+        achievements: [
+          "Discovered pulmonary circulation",
+          "Authored 'Sharh Tashrih al-Qanun'",
+          "Described heart and lung functions",
+          "Advanced anatomical science"
+        ],
+        field: "Medicine and Anatomy",
+        img: "ابن النفيس.jpeg"
+      },
+      tunisia: {
+        country: "Tunisia",
+        name: "Ibn Khaldun",
+        fullName: "Wali al-Din Abd al-Rahman ibn Muhammad ibn Khaldun",
+        birth: "1332 CE",
+        death: "1406 CE",
+        info: "Historian and social scientist; founder of sociology and author of the landmark 'Muqaddima'.",
+        achievements: [
+          "Founded modern sociology",
+          "Authored the famous 'Muqaddima'",
+          "Developed the theory of social cohesion",
+          "Established critical historiography"
+        ],
+        field: "History and Sociology",
+        img: "ابن خلدون.jpeg"
+      },
+      algeria: {
+        country: "Algeria",
+        name: "Abd al-Rahman al-Tha'alibi",
+        fullName: "Abu Zayd Abd al-Rahman ibn Muhammad ibn Makhluf al-Tha'alibi",
+        birth: "1384 CE",
+        death: "1468 CE",
+        info: "Scholar, exegete and jurist; authored the exegesis 'al-Jawahir al-Hisan'.",
+        achievements: [
+          "Authored 'al-Jawahir al-Hisan'",
+          "Wrote on jurisprudence and principles",
+          "Spread Islamic sciences in North Africa",
+          "Influenced Maghreb and Andalus scholars"
+        ],
+        field: "Exegesis and Jurisprudence",
+        img: "عبد الرحم الثعالبى.jpeg"
+      },
+      libya: {
+        country: "Libya",
+        name: "Al-Qarafi",
+        fullName: "Shihab al-Din Ahmad ibn Idris al-Qarafi",
+        birth: "1228 CE",
+        death: "1285 CE",
+        info: "Jurist and usuli scholar; authored 'al-Furuq' and 'Sharh Tanqih al-Fusul'.",
+        achievements: [
+          "Authored 'al-Furuq' in Maliki fiqh",
+          "Wrote 'Sharh Tanqih al-Fusul'",
+          "Developed legal maxims",
+          "Influenced the Maliki school"
+        ],
+        field: "Fiqh and Usul",
+        img: "القرافى.jpeg"
+      },
+      hejaz: {
+        country: "Hejaz",
+        name: "Ibn Hajar al-Asqalani",
+        fullName: "Ahmad ibn Ali ibn Muhammad ibn Hajar al-Asqalani",
+        birth: "1372 CE",
+        death: "1449 CE",
+        info: "Hadith scholar and jurist; authored 'Fath al-Bari', the foremost commentary on Sahih al-Bukhari.",
+        achievements: [
+          "Authored 'Fath al-Bari'",
+          "Wrote 'al-Isabah fi Tamyiz al-Sahabah'",
+          "Compiled and classified hadiths",
+          "Reference in hadith sciences"
+        ],
+        field: "Hadith and Fiqh",
+        img: "ابن حجر العسقلانى.jpeg"
+      }
+    };
+
+    function getScholars(){
+      return window.currentLang === 'en' ? scholarsEn : scholarsAr;
+    }
+
+    function showScholar(countryKey) {
+      const scholar = getScholars()[countryKey];
       document.getElementById("scholarName").innerHTML = `${scholar.name}<br><small style="font-size: 0.8em; opacity: 0.8;">${scholar.fullName}</small>`;
       document.getElementById("scholarInfo").innerText = scholar.info;
       
@@ -601,20 +835,21 @@
       const imgElement = document.getElementById("scholarImg");
       imgElement.src = scholar.img;
       imgElement.style.display = "block";
-      imgElement.alt = `صورة ${scholar.name}`;
+      imgElement.alt = (window.currentLang === 'en') ? `Photo of ${scholar.name}` : `صورة ${scholar.name}`;
       imgElement.onerror = function() {
         this.style.display = 'none';
-        document.getElementById("scholarDetails").innerHTML = `<p style="color: #FFD700; text-align: center;">الصورة غير متوفرة</p>` + document.getElementById("scholarDetails").innerHTML;
+        document.getElementById("scholarDetails").innerHTML = `<p style=\"color: #FFD700; text-align: center;\">${window.currentLang === 'en' ? 'Image not available' : 'الصورة غير متوفرة'}</p>` + document.getElementById("scholarDetails").innerHTML;
       };
       
       // إنشاء تفاصيل إضافية
+      const isEn = window.currentLang === 'en';
       const detailsHTML = `
-        <div style="margin-top: 20px; text-align: right; color: #FFD700;">
-          <p><strong>تاريخ الميلاد:</strong> ${scholar.birth}</p>
-          <p><strong>تاريخ الوفاة:</strong> ${scholar.death}</p>
-          <p><strong>مجال التخصص:</strong> ${scholar.field}</p>
-          <h4 style="color: #FFD700; margin-top: 20px;">أهم الإنجازات:</h4>
-          <ul style="text-align: right; padding-right: 20px; color: #FFD700;">
+        <div style="margin-top: 20px; text-align: ${isEn ? 'left' : 'right'}; color: #FFD700;">
+          <p><strong>${isEn ? 'Born:' : 'تاريخ الميلاد:'}</strong> ${scholar.birth}</p>
+          <p><strong>${isEn ? 'Died:' : 'تاريخ الوفاة:'}</strong> ${scholar.death}</p>
+          <p><strong>${isEn ? 'Field:' : 'مجال التخصص:'}</strong> ${scholar.field}</p>
+          <h4 style="color: #FFD700; margin-top: 20px;">${isEn ? 'Key Achievements:' : 'أهم الإنجازات:'}</h4>
+          <ul style="text-align: ${isEn ? 'left' : 'right'}; padding-${isEn ? 'left' : 'right'}: 20px; color: #FFD700;">
             ${scholar.achievements.map(achievement => `<li>${achievement}</li>`).join('')}
           </ul>
         </div>
@@ -681,14 +916,14 @@
     // إنشاء بيانات لعبة الذاكرة
     function createMemoryGameData() {
       const gameCards = [];
-      const scholarNames = Object.keys(scholars);
+      const scholarNames = Object.keys(getScholars());
       
       // اختيار 6 علماء للعبة (لتجنب الازدحام)
       const selectedScholars = scholarNames.slice(0, 6);
       
       // إنشاء ثلاثة أنواع من البطاقات: الاسم، المجال، والصورة
       selectedScholars.forEach(country => {
-        const scholar = scholars[country];
+        const scholar = getScholars()[country];
         
         // بطاقة الاسم
         gameCards.push({
@@ -886,9 +1121,10 @@
 
     // تحديث إحصائيات اللعبة
     function updateGameStats() {
-      document.getElementById('gameScore').textContent = `النقاط: ${gameScore}`;
-      document.getElementById('gameTime').textContent = `الوقت: ${gameTime} ثانية`;
-      document.getElementById('gameAttempts').textContent = `المحاولات: ${gameAttempts}`;
+      const isEn = window.currentLang === 'en';
+      document.getElementById('gameScore').textContent = isEn ? `Score: ${gameScore}` : `النقاط: ${gameScore}`;
+      document.getElementById('gameTime').textContent = isEn ? `Time: ${gameTime} s` : `الوقت: ${gameTime} ثانية`;
+      document.getElementById('gameAttempts').textContent = isEn ? `Attempts: ${gameAttempts}` : `المحاولات: ${gameAttempts}`;
     }
 
     // إنهاء اللعبة
@@ -933,6 +1169,138 @@
     }
   </script>
 
+  <!-- Add site scripts -->
+  <script src="../js/i18n.js"></script>
+  <script src="../js/chatbot.js"></script>
+  <script src="../js/animated-background.js"></script>
+  
+  <!-- Language Switch Functionality -->
+  <script>
+    // Initialize language switch for game2
+    document.addEventListener('DOMContentLoaded', function() {
+      // تحديث أسماء الدول وعناوين التلميح حسب اللغة
+      function updateMapLabels(){
+        const dict = getScholars();
+        document.querySelectorAll('.country').forEach(function(el){
+          const key = el.getAttribute('data-country');
+          if (!key || !dict[key]) return;
+          el.textContent = dict[key].country;
+          el.setAttribute('title', (window.currentLang === 'en') ? `Click to learn about scholars of ${dict[key].country}` : `انقر للتعرف على علماء ${dict[key].country}`);
+        });
+      }
+      updateMapLabels();
+      const langToggle = document.getElementById('lang-toggle-game2');
+      const sliderThumb = document.querySelector('.slider-thumb');
+      const labelAr = document.querySelector('.label-ar');
+      const labelEn = document.querySelector('.label-en');
+      
+      // Set initial state
+      if (window.currentLang === 'en') {
+        langToggle.checked = true;
+        sliderThumb.style.transform = 'translateX(37px)';
+        labelAr.style.opacity = '0.6';
+        labelEn.style.opacity = '1';
+      }
+      
+      // Language switch functionality
+      langToggle.addEventListener('change', function() {
+        const isEnglish = this.checked;
+        window.currentLang = isEnglish ? 'en' : 'ar';
+        
+        // Update slider position and labels
+        if (isEnglish) {
+          sliderThumb.style.transform = 'translateX(37px)';
+          labelAr.style.opacity = '0.6';
+          labelEn.style.opacity = '1';
+          document.documentElement.dir = 'ltr';
+        } else {
+          sliderThumb.style.transform = 'translateX(0px)';
+          labelAr.style.opacity = '1';
+          labelEn.style.opacity = '0.6';
+          document.documentElement.dir = 'rtl';
+        }
+        
+        // Update page content
+        updatePageLanguage();
+        // Update brand title text
+        const brandEl = document.querySelector('#game2Brand span');
+        if (brandEl) brandEl.textContent = isEnglish ? 'Science Festivity 2025' : 'احتفالية العلوم 2025';
+        // Update country labels/titles
+        if (typeof updateMapLabels === 'function') updateMapLabels();
+        
+        // Trigger global language change event
+        document.dispatchEvent(new CustomEvent('languageChanged', { 
+          detail: { language: window.currentLang } 
+        }));
+      });
+      
+      // Update page content based on language
+      function updatePageLanguage() {
+        const lang = window.currentLang || 'ar';
+        
+        // Update page title and content
+        if (lang === 'en') {
+          document.title = 'Islamic Golden Age Scientists Game';
+          document.querySelector('.intro-section h2').textContent = 'Islamic Golden Age Scientists Game';
+          document.querySelector('.intro-section p:first-of-type').textContent = 'Explore the map of the Islamic world during the Golden Age and discover the great scientists who enriched human civilization with their knowledge. Click on the golden points to learn about these pioneers.';
+          document.querySelector('.intro-section p:last-of-type').innerHTML = '<strong>Instructions:</strong> Click on the golden circles on the map to learn about famous scientists from each region';
+          
+          // Update memory game section
+          const memoryTitle = document.querySelector('.memory-game-section h2');
+          if (memoryTitle) {
+            memoryTitle.innerHTML = '🎮 Memory Game - Match the scientist with their name, field and photo';
+          }
+          
+          const memoryInstructions = document.querySelector('.memory-game-section p');
+          if (memoryInstructions) {
+            memoryInstructions.innerHTML = '📝 <strong>How to play:</strong> Match each scientist with their name, field of expertise and photo. Each scientist has 3 cards:<br>👤 <strong>Name</strong> | 📚 <strong>Field</strong> | 📸 <strong>Photo</strong>';
+          }
+          // Update buttons
+          const btnStart = document.getElementById('btnStart');
+          const btnReset = document.getElementById('btnReset');
+          if (btnStart) btnStart.textContent = 'Start Game';
+          if (btnReset) btnReset.textContent = 'Reset';
+          
+        } else {
+          document.title = 'لعبة العلماء في العصر الإسلامي الذهبي';
+          document.querySelector('.intro-section h2').textContent = 'لعبة العلماء في العصر الإسلامي الذهبي';
+          document.querySelector('.intro-section p:first-of-type').textContent = 'استكشف خريطة العالم الإسلامي في العصر الذهبي واكتشف العلماء العظام الذين أثروا الحضارة الإنسانية بعلمهم ومعرفتهم. انقر على النقاط الذهبية لتتعرف على هؤلاء الرواد.';
+          document.querySelector('.intro-section p:last-of-type').innerHTML = '<strong>تعليمات:</strong> انقر على الدوائر الذهبية على الخريطة للتعرف على العلماء المشاهير من كل منطقة';
+          
+          // Update memory game section
+          const memoryTitle = document.querySelector('.memory-game-section h2');
+          if (memoryTitle) {
+            memoryTitle.innerHTML = '🎮 لعبة الذاكرة - اربط العالم باسمه ومجاله وصورته';
+          }
+          
+          const memoryInstructions = document.querySelector('.memory-game-section p');
+          if (memoryInstructions) {
+            memoryInstructions.innerHTML = '📝 <strong>طريقة اللعب:</strong> اربط كل عالم باسمه ومجال تخصصه وصورته. كل عالم له 3 بطاقات:<br>👤 <strong>الاسم</strong> | 📚 <strong>المجال</strong> | 📸 <strong>الصورة الشخصية</strong>';
+          }
+          // Update buttons
+          const btnStart = document.getElementById('btnStart');
+          const btnReset = document.getElementById('btnReset');
+          if (btnStart) btnStart.textContent = 'ابدأ اللعبة';
+          if (btnReset) btnReset.textContent = 'إعادة تشغيل';
+        }
+      }
+      
+      // Initialize language
+      updatePageLanguage();
+      if (typeof updateMapLabels === 'function') updateMapLabels();
+      const brandInit = document.querySelector('#game2Brand span');
+      if (brandInit) brandInit.textContent = (window.currentLang === 'en') ? 'Science Festivity 2025' : 'احتفالية العلوم 2025';
+    });
+
+    // Also listen for global language changes (triggered by other components)
+    document.addEventListener('languageChanged', function(){
+      if (typeof updateMapLabels === 'function') updateMapLabels();
+      // Restart memory game to reflect new language if currently active
+      if (typeof isGameActive !== 'undefined' && isGameActive) {
+        startMemoryGame();
+      }
+    });
+  </script>
 </body>
 </html>
 

@@ -7,6 +7,9 @@
   <link rel="stylesheet" href="../../css/theme.css">
 </head>
 <body>
+  <!-- Stunning Animated Background -->
+  <div id="magic-background"></div>
+  
   <header id="site-header"></header>
   <main class="container">
     <h2>أسئلة سريعة عن علماء العصر الذهبي</h2>
@@ -17,22 +20,82 @@
   </footer>
   <script src="../../js/i18n.js"></script>
   <script src="../../js/header.js"></script>
+  <script src="../../js/chatbot.js"></script>
+  <script src="../../js/animated-background.js"></script>
   <script>
   (function(){
-    const QUESTIONS = [
-      {q:'من هو مؤلف القانون في الطب؟', a:'ابن سينا', choices:['ابن سينا','الرازي','ابن الهيثم','الخوارزمي']},
-      {q:'العالم الذي أسس علم البصريات الحديثة؟', a:'ابن الهيثم', choices:['جابر بن حيان','ابن الهيثم','الزهراوي','الفارابي']},
-      {q:'واضع علم الجبر؟', a:'الخوارزمي', choices:['الخوارزمي','الكندي','ابن رشد','البتاني']}
-    ];
-    let i=0, score=0; const root=document.getElementById('quiz');
-    function render(){
-      if(i>=QUESTIONS.length){
-        root.innerHTML = `<div class=tile><div class=tile-title>النتيجة: ${score}/${QUESTIONS.length}</div></div>`;return;
+    const QUESTIONS = {
+      ar: [
+        {q:'من هو مؤلف القانون في الطب؟', a:'ابن سينا', choices:['ابن سينا','الرازي','ابن الهيثم','الخوارزمي']},
+        {q:'العالم الذي أسس علم البصريات الحديثة؟', a:'ابن الهيثم', choices:['جابر بن حيان','ابن الهيثم','الزهراوي','الفارابي']},
+        {q:'واضع علم الجبر؟', a:'الخوارزمي', choices:['الخوارزمي','الكندي','ابن رشد','البتاني']},
+        {q:'من اخترع الكاميرا المظلمة (Camera Obscura)؟', a:'ابن الهيثم', choices:['ابن الهيثم','ابن سينا','الرازي','الكندي']},
+        {q:'أعظم رحالة في التاريخ الإسلامي؟', a:'ابن بطوطة', choices:['ابن بطوطة','الإدريسي','المسعودي','ابن جبير']},
+        {q:'من أسس علم الاجتماع؟', a:'ابن خلدون', choices:['ابن خلدون','ابن رشد','الغزالي','الفارابي']},
+        {q:'العالم الذي رسم أدق خريطة للعالم في عصره؟', a:'الإدريسي', choices:['الإدريسي','ابن بطوطة','الخوارزمي','البيروني']},
+        {q:'من اكتشف الدورة الدموية الصغرى؟', a:'ابن النفيس', choices:['ابن النفيس','ابن سينا','الرازي','الزهراوي']},
+        {q:'أبو الكيمياء الحديثة؟', a:'جابر بن حيان', choices:['جابر بن حيان','الرازي','الكندي','ابن الهيثم']},
+        {q:'كلمة "Algorithm" مشتقة من اسم أي عالم؟', a:'الخوارزمي', choices:['الخوارزمي','ابن الهيثم','الكندي','البيروني']}
+      ],
+      en: [
+        {q:'Who authored "The Canon of Medicine"?', a:'Ibn Sina', choices:['Ibn Sina','Al-Razi','Ibn al-Haytham','Al-Khwarizmi']},
+        {q:'The scientist who founded modern optics?', a:'Ibn al-Haytham', choices:['Jabir ibn Hayyan','Ibn al-Haytham','Al-Zahrawi','Al-Farabi']},
+        {q:'Founder of algebra?', a:'Al-Khwarizmi', choices:['Al-Khwarizmi','Al-Kindi','Ibn Rushd','Al-Battani']},
+        {q:'Who invented the Camera Obscura?', a:'Ibn al-Haytham', choices:['Ibn al-Haytham','Ibn Sina','Al-Razi','Al-Kindi']},
+        {q:'Greatest traveler in Islamic history?', a:'Ibn Battuta', choices:['Ibn Battuta','Al-Idrisi','Al-Masudi','Ibn Jubayr']},
+        {q:'Who founded sociology?', a:'Ibn Khaldun', choices:['Ibn Khaldun','Ibn Rushd','Al-Ghazali','Al-Farabi']},
+        {q:'The scientist who drew the most accurate world map of his era?', a:'Al-Idrisi', choices:['Al-Idrisi','Ibn Battuta','Al-Khwarizmi','Al-Biruni']},
+        {q:'Who discovered pulmonary circulation?', a:'Ibn al-Nafis', choices:['Ibn al-Nafis','Ibn Sina','Al-Razi','Al-Zahrawi']},
+        {q:'Father of modern chemistry?', a:'Jabir ibn Hayyan', choices:['Jabir ibn Hayyan','Al-Razi','Al-Kindi','Ibn al-Haytham']},
+        {q:'The word "Algorithm" derives from which scientist\'s name?', a:'Al-Khwarizmi', choices:['Al-Khwarizmi','Ibn al-Haytham','Al-Kindi','Al-Biruni']}
+      ]
+    };
+    
+    let currentQuestions = QUESTIONS.ar;
+    let i=0, score=0; 
+    const root=document.getElementById('quiz');
+    
+    // Listen for language changes
+    function updateLanguage() {
+      const lang = window.currentLang || 'ar';
+      currentQuestions = QUESTIONS[lang] || QUESTIONS.ar;
+      
+      // Reset quiz if language changed mid-game
+      if (i > 0) {
+        i = 0;
+        score = 0;
+        render();
       }
-      const {q,choices,a} = QUESTIONS[i];
-      root.innerHTML = `<div class=tile style="display:grid;gap:10px;justify-items:center;padding:18px;background:rgba(255,255,255,.1)"><div class=tile-title>${q}</div><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:8px;width:100%">${choices.map(c=>`<button class=btn data-c='${c}' style='background:#528AC7'>${c}</button>`).join('')}</div></div>`;
-      root.querySelectorAll('button').forEach(b=>b.onclick=()=>{ const correct=b.dataset.c===a; if(correct) score++; b.style.background=correct?'#2fb170':'#c23b3b'; setTimeout(()=>{ i++; render(); }, 400); });
     }
+    
+    // Listen for language toggle events
+    document.addEventListener('languageChanged', updateLanguage);
+    
+    function render(){
+      const lang = window.currentLang || 'ar';
+      const resultText = lang === 'ar' ? 'النتيجة:' : 'Score:';
+      
+      if(i>=currentQuestions.length){
+        const percentage = Math.round((score/currentQuestions.length) * 100);
+        const message = lang === 'ar' ? 
+          `🎉 مبروك! النتيجة: ${score}/${currentQuestions.length} (${percentage}%)` :
+          `🎉 Congratulations! Score: ${score}/${currentQuestions.length} (${percentage}%)`;
+        root.innerHTML = `<div class=tile><div class=tile-title>${message}</div></div>`;
+        return;
+      }
+      
+      const {q,choices,a} = currentQuestions[i];
+      root.innerHTML = `<div class=tile style="display:grid;gap:10px;justify-items:center;padding:18px;background:rgba(255,255,255,.1)"><div class=tile-title>${q}</div><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:8px;width:100%">${choices.map(c=>`<button class=btn data-c='${c}' style='background:#528AC7'>${c}</button>`).join('')}</div></div>`;
+      root.querySelectorAll('button').forEach(b=>b.onclick=()=>{ 
+        const correct=b.dataset.c===a; 
+        if(correct) score++; 
+        b.style.background=correct?'#2fb170':'#c23b3b'; 
+        setTimeout(()=>{ i++; render(); }, 400); 
+      });
+    }
+    
+    // Initialize
+    updateLanguage();
     render();
   })();
   </script>
