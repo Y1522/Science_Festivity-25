@@ -243,9 +243,77 @@
     return null;
   }
 
-  function answer(question){
-    const q = question.toLowerCase();
-    
+  // Normalize common Egyptian Arabic to MSA to improve matching
+  function normalizeEgyptian(text){
+    const map = [
+      ['فين','أين'], ['دلوقتي','الآن'], ['دلوقتى','الآن'], ['عايز','أريد'], ['عاوزه','أريد'],
+      ['إيه','ما'], ['ايه','ما'], ['ازاي','كيف'], ['إزاي','كيف'], ['هروح','سأذهب'], ['اروح','أذهب'],
+      ['أروح','أذهب'], ['أحسن','أفضل'], ['احسن','أفضل'], ['فين اروح','أين أذهب']
+    ];
+    let out = text;
+    for(const [src,dst] of map){ out = out.replace(new RegExp(src,'gi'), dst); }
+    return out;
+  }
+
+  // Simple random jokes in AR/EN
+  function randomJoke(q){
+    const ar = [
+      'مرة عالم قال للصفر: من غيرك المعادلة ناقصة! 😂',
+      'الخوارزمي لما اخترع الصفر، الناس قالتله: القيمة فين؟ قالهم: استنوا لحد ما تشوفوا الكمبيوتر! 🤣',
+      'ابن بطوطة لما رجع البيت قالوله كنت فين؟ قالهم: GPS لسه مااخترعوهش! 😅'
+    ];
+    const en = [
+      'Why did the scientist cross the road? To peer-review the other side! 😄',
+      'Al-Khwarizmi invented zero so our jokes can have 0 sense but 1 big laugh! 😂'
+    ];
+    const pool = /[\u0600-\u06FF]/.test(q) ? ar : en;
+    return pool[Math.floor(Math.random()*pool.length)];
+  }
+
+  // Online search fallback (client-side friendly endpoints)
+  async function onlineSearch(query){
+    try{
+      // DuckDuckGo Instant Answer API
+      const url = 'https://api.duckduckgo.com/?q=' + encodeURIComponent(query) + '&format=json&no_html=1&skip_disambig=1';
+      const res = await fetch(url, {headers:{'Accept':'application/json'}});
+      const data = await res.json();
+      if(data && (data.Abstract || (data.RelatedTopics && data.RelatedTopics.length))){
+        const text = data.Abstract || (data.RelatedTopics[0] && (data.RelatedTopics[0].Text || (data.RelatedTopics[0].Topics && data.RelatedTopics[0].Topics[0] && data.RelatedTopics[0].Topics[0].Text))) || '';
+        const src = data.AbstractURL || (data.RelatedTopics[0] && (data.RelatedTopics[0].FirstURL || (data.RelatedTopics[0].Topics && data.RelatedTopics[0].Topics[0] && data.RelatedTopics[0].Topics[0].FirstURL)));
+        if(text){
+          return (isArabic(query)?'بحث سريع على الإنترنت:\n':'Quick web search:\n') + text + (src ? ('\n' + (isArabic(query)?'المصدر: ':'Source: ') + src) : '');
+        }
+      }
+    }catch(err){ /* ignore */ }
+    return isArabic(query)? 'ملقتش نتيجة مؤكدة على الإنترنت دلوقتي، جرّب تصيغ السؤال بطريقة تانية 🙏' : 'I could not find a confident result right now, please try rephrasing 🙏';
+  }
+
+  // Rich recommendations for tents/maps when user asks where to go
+  function recommendNow(){
+    return 'لو عايز اقتراحات سريعة دلوقتي: \n' +
+      '• خريطة الاحتفالية: هتلاقي كل الأماكن مرتّبة → افتح "الخريطة" من القائمة.\n' +
+      '• خيمة ابن الهيثم (البصريات): تجارب ضوئية ممتعة 🔬\n' +
+      '• خيمة ابن سينا (الطب): معلومات مدهشة عن جسم الإنسان ⚕️\n' +
+      '• خيمة الإدريسي (الخرائط): رحلة حول العالم 🗺️\n' +
+      '• الألعاب التعليمية: اختبر نفسك في الكويز والميموري 🎮\n' +
+      'تحب أفتح لك صفحة الخريطة؟ اكتب: الخريطة أو map.';
+  }
+
+  async function answer(question){
+    const qRaw = question.toLowerCase();
+    const q = normalizeEgyptian(qRaw);
+
+    // Special intents: jokes handled dynamically
+    const jokeWords = ['joke','نكتة','اضحكني','فكاهة'];
+    if(jokeWords.some(w=>qRaw.includes(w))){
+      return randomJoke(qRaw);
+    }
+    // Special intents: where to go now
+    const whereNow = ['اروح فين','أروح فين','ايه احسن مكان اروحه دلوقتى','ايه احسن مكان اروحه دلوقتي','فين اروح','أروح فين دلوقتي'];
+    if(whereNow.some(w=>qRaw.includes(w))){
+      return recommendNow();
+    }
+
     // Check for navigation commands
     let best = KB.find(x => Array.isArray(x.q) ? x.q.some(k => q.includes(k)) : q.includes(x.q));
     if (!best){
@@ -275,12 +343,11 @@
       return 'سؤال حلو! 🤔 أنا متخصص في العلماء العرب والعصر الذهبي الإسلامي. جرب تسأل عن:\n🔬 ابن الهيثم (البصريات)\n⚕️ ابن سينا (الطب)\n🧮 الخوارزمي (الرياضيات)\n🗺️ الإدريسي (الجغرافيا)\n✈️ ابن بطوطة (الرحلات)\nأو اسأل عن مواعيد ومكان الاحتفالية!';
     }
     
-    return isArabic(q) ? 
-      'معلش، مش فاهم السؤال ده بالضبط 😅 بس أنا هنا عشان أساعدك! جرب تسأل عن العلماء العرب أو احتفالية العلوم. أو قولي "مرحبا" عشان أعرّفك بنفسي أكتر!' :
-      'Sorry, I didn\'t quite understand that 😅 But I\'m here to help! Try asking about:\n🔬 Ibn al-Haytham (Optics)\n⚕️ Ibn Sina (Medicine)\n🧮 Al-Khwarizmi (Mathematics)\n🗺️ Al-Idrisi (Geography)\n✈️ Ibn Battuta (Travel)\nOr ask about event times and location!';
+    // Final fallback: try online search
+    return await onlineSearch(qRaw);
   }
 
-  chatForm.addEventListener('submit', function(e){
+  chatForm.addEventListener('submit', async function(e){
     e.preventDefault();
     const text = chatInput.value.trim();
     if(!text) return;
@@ -293,9 +360,9 @@
     showTyping();
     
     // Simulate thinking time and respond
-    setTimeout(() => {
+    setTimeout(async () => {
+      const response = await answer(text);
       hideTyping();
-      const response = answer(text);
       append('AI', response);
     }, 800 + Math.random() * 1200); // Random delay between 0.8-2s for realism
   });
