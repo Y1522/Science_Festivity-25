@@ -25,12 +25,12 @@
     window.toggleLanguage?.(checked ? 'en' : 'ar');
   });
 
-  // Floating نيشو AI button
+  // Floating إيشو AI button
   const fab = document.createElement('button');
   fab.className = 'btn ai-fab';
-  fab.innerHTML = '🧠 نيشو';
-  fab.setAttribute('aria-label','نيشو - مساعدك الذكي');
-  fab.setAttribute('title','اسأل نيشو عن العلماء العرب!');
+  fab.innerHTML = '🧠 إيشو';
+  fab.setAttribute('aria-label','إيشو - مساعدك الذكي');
+  fab.setAttribute('title','اسأل إيشو عن العلماء العرب!');
   fab.style.position='fixed';
   fab.style.right='16px';
   fab.style.bottom='16px';

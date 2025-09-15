@@ -22,7 +22,7 @@
       <div style="display:flex;align-items:center;gap:8px;">
         <div style="width:32px;height:32px;background:linear-gradient(45deg,#fff,#e3f2fd);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px;">🧠</div>
         <div>
-          <strong style="font-size:16px;">نيشو</strong>
+          <strong style="font-size:16px;">إيشو</strong>
           <div style="font-size:11px;opacity:0.9;">مساعد ذكي للعلماء العرب</div>
         </div>
       </div>
@@ -37,7 +37,7 @@
         </button>
       </form>
       <div id="typing-indicator" style="display:none;padding:8px 0;color:#666;font-size:12px;">
-        <span>نيشو يكتب</span>
+        <span>إيشو يكتب</span>
         <span class="dots">...</span>
       </div>
     </div>`;
@@ -132,7 +132,7 @@
       avatar.style.background = 'linear-gradient(45deg, #fff, #e3f2fd)';
       avatar.style.border = '2px solid #667eea';
       avatar.textContent = '🧠';
-      bubble.innerHTML = `<strong style="color:#667eea;font-size:12px;display:block;margin-bottom:4px;">نيشو</strong>${text}`;
+      bubble.innerHTML = `<strong style="color:#667eea;font-size:12px;display:block;margin-bottom:4px;">إيشو</strong>${text}`;
     }
     
     div.appendChild(avatar);
@@ -141,15 +141,15 @@
     chatLog.scrollTop = chatLog.scrollHeight;
   }
 
-  // Advanced Bilingual AI Knowledge Base for نيشو
+  // Advanced Bilingual AI Knowledge Base for إيشو
   const KB = [
     // Greetings & Personal Questions (Arabic & English)
-    {q:['hello','hi','hey'], a:'Hello there! 😊 I\'m Nesho, your smart assistant for discovering the great Arab scientists! How are you today? What would you like to learn about the Science Festivity?'},
-    {q:['أهلا','مرحبا','هاي','سلام','السلام عليكم'], a:'أهلاً وسهلاً! 😊 أنا نيشو، مساعدك الذكي في رحلة اكتشاف العلماء العرب العظام! إزيك النهاردة؟ عايز تعرف إيه عن احتفالية العلوم؟'},
+    {q:['hello','hi','hey'], a:'Hello there! 😊 I\'m Eisho, your smart assistant for discovering the great Arab scientists! How are you today? What would you like to learn about the Science Festivity?'},
+    {q:['أهلا','مرحبا','هاي','سلام','السلام عليكم'], a:'أهلاً وسهلاً! 😊 أنا إيشو، مساعدك الذكي في رحلة اكتشاف العلماء العرب العظام! إزيك النهاردة؟ عايز تعرف إيه عن احتفالية العلوم؟'},
     {q:['how are you'], a:'I\'m doing great, thank you! 🤗 I\'m ready to help you with anything about the Science Festivity or the great Arab scientists. What would you like to know today?'},
     {q:['إزيك','كيف حالك','عامل إيه','أخبارك إيه'], a:'الحمد لله، أنا كويس جداً! 🤗 مستعد أساعدك في أي حاجة تخص احتفالية العلوم أو العلماء العرب العظام. إنت عايز تعرف إيه النهاردة؟'},
-    {q:['what is your name','who are you'], a:'I\'m Nesho! 🧠 Nice name, isn\'t it? I\'m a smart assistant specialized in Arab scientists and the Islamic Golden Age. I\'m called Nesho because I love being your companion in the journey of science and knowledge! 😄'},
-    {q:['اسمك إيه','مين إنت'], a:'أنا نيشو! 🧠 اسم حلو مش كده؟ أنا مساعد ذكي متخصص في العلماء العرب والعصر الذهبي الإسلامي. اتسميت نيشو عشان أحب أكون صاحبك في رحلة العلم والمعرفة! 😄'},
+    {q:['what is your name','who are you'], a:'I\'m Eisho! 🧠 Nice name, isn\'t it? I\'m a smart assistant specialized in Arab scientists and the Islamic Golden Age. I\'m called Eisho because I love being your companion in the journey of science and knowledge! 😄'},
+    {q:['اسمك إيه','مين إنت'], a:'أنا إيشو! 🧠 اسم حلو مش كده؟ أنا مساعد ذكي متخصص في العلماء العرب والعصر الذهبي الإسلامي. اتسميت إيشو عشان أحب أكون صاحبك في رحلة العلم والمعرفة! 😄'},
     {q:['good morning','صباح الخير','good evening','مساء الخير'], a:'صباح النور! ☀️ يوم جميل للتعلم عن العلماء العظام اللي غيروا العالم. إيه رأيك نبدأ رحلتنا معاهم؟'},
     {q:['thank you','شكرا','thanks','متشكر'], a:'العفو! 😊 دي حاجة بسيطة. أنا هنا عشان أساعدك دايماً. لو عندك أي سؤال تاني، ماتترددش تسأل!'},
     {q:['bye','goodbye','وداعا','مع السلامة','باي'], a:'مع السلامة! 👋 كان نورتني بجد. استنى زيارتك تاني قريب عشان نكمل رحلة العلم سوا. ربنا معاك! 🌟'},
@@ -336,7 +336,7 @@
     const hasQuestion = questions.some(qw => q.includes(qw));
     
     if (hasGreeting) {
-      return 'أهلاً بيك! 😊 أنا نيشو، صاحبك في رحلة اكتشاف العلماء العرب. إزاي أقدر أساعدك النهاردة؟';
+      return 'أهلاً بيك! 😊 أنا إيشو، صاحبك في رحلة اكتشاف العلماء العرب. إزاي أقدر أساعدك النهاردة؟';
     }
     
     if (hasQuestion) {
