@@ -3,8 +3,8 @@
   if(!header) return;
 
   header.innerHTML = `
-    <div class="header-bar" style="background-image: url('${getHeaderBackgroundPath()}'); background-size: contain; background-position: center center; background-repeat: no-repeat; background-color:#0a0f1a; min-height:140px;">
-      <div class="header-actions" style="position: absolute; top: 20px; left: 20px; display: flex; gap: 10px; z-index: 10;">
+    <div class="header-bar">
+      <div class="header-actions" style="position: fixed; top: 20px; left: 20px; display: flex; gap: 10px; z-index: 1100;">
         <button class="btn header-btn" id="go-home" aria-label="Home" data-i18n="home.btn">الرئيسية</button>
         <button class="btn header-btn" id="go-back" aria-label="Back" data-i18n="back.btn">رجوع</button>
         <label class="lang-switch" title="Language" data-no-i18n="true">
@@ -76,46 +76,6 @@
   fab.addEventListener('click', function(){ window.toggleChat?.(); });
 
   // Map helper removed per request
-
-  // Smart header background path resolution
-  function getHeaderBackgroundPath() {
-    const path = location.pathname;
-    
-    // Check if we're in a subdirectory
-    if (path.includes('/pages/')) {
-      return '../../assets/200x600.jpg'; // Two levels up from pages/subfolder/
-    } else if (path.includes('/GAME') || path.includes('/game')) {
-      return '../assets/200x600.jpg'; // One level up from game folders
-    } else {
-      return 'assets/200x600.jpg'; // Root level
-    }
-  }
-  
-  // Header background image loading with fallback
-  const headerBar = document.querySelector('.header-bar');
-  if (headerBar) {
-    const bgPath = getHeaderBackgroundPath();
-    console.log('🖼️ Header background path resolved to:', bgPath);
-    
-    // Test if image loads, if not try fallback paths
-    const testImg = new Image();
-    testImg.onload = function() {
-      headerBar.style.backgroundImage = `url('${bgPath}')`;
-    };
-    testImg.onerror = function() {
-      console.log('❌ Header background failed to load, trying fallback...');
-      let fallbackPath;
-      if (bgPath.startsWith('../../')) {
-        fallbackPath = '../assets/200x600.jpg';
-      } else if (bgPath.startsWith('../')) {
-        fallbackPath = 'assets/200x600.jpg';
-      } else {
-        fallbackPath = './assets/200x600.jpg';
-      }
-      headerBar.style.backgroundImage = `url('${fallbackPath}')`;
-    };
-    testImg.src = bgPath;
-  }
   
   // Updated navigation functions
   function rootPath(rel){
