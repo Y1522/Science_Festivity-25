@@ -3,14 +3,8 @@
   if(!header) return;
 
   header.innerHTML = `
-    <div class="header-bar">
-      <div class="brand">
-        <img id="brand-logo" alt="PSC">
-      </div>
-      <div class="header-center">
-        <h1 class="main-title" data-i18n="brand">احتفالية العلوم 2025</h1>
-      </div>
-      <div class="header-actions">
+    <div class="header-bar" style="background-image: url('${getHeaderBackgroundPath()}'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+      <div class="header-actions" style="position: absolute; top: 20px; left: 20px; display: flex; gap: 10px; z-index: 10;">
         <button class="btn header-btn" id="go-home" aria-label="Home" data-i18n="home.btn">الرئيسية</button>
         <button class="btn header-btn" id="go-back" aria-label="Back" data-i18n="back.btn">رجوع</button>
         <label class="lang-switch" title="Language">
@@ -62,37 +56,44 @@
 
   // Map helper removed per request
 
-  // Smart logo path resolution
-  function getLogoPath() {
+  // Smart header background path resolution
+  function getHeaderBackgroundPath() {
     const path = location.pathname;
     
     // Check if we're in a subdirectory
     if (path.includes('/pages/')) {
-      return '../../assets/psc logo.svg'; // Two levels up from pages/subfolder/
+      return '../../assets/200x600.jpg'; // Two levels up from pages/subfolder/
     } else if (path.includes('/GAME') || path.includes('/game')) {
-      return '../assets/psc logo.svg'; // One level up from game folders
+      return '../assets/200x600.jpg'; // One level up from game folders
     } else {
-      return 'assets/psc logo.svg'; // Root level
+      return 'assets/200x600.jpg'; // Root level
     }
   }
   
-  const brandLogo = document.getElementById('brand-logo');
-  if (brandLogo){ 
-    const logoPath = getLogoPath();
-    brandLogo.src = logoPath;
-    console.log('🖼️ PSC Logo path resolved to:', logoPath);
+  // Header background image loading with fallback
+  const headerBar = document.querySelector('.header-bar');
+  if (headerBar) {
+    const bgPath = getHeaderBackgroundPath();
+    console.log('🖼️ Header background path resolved to:', bgPath);
     
-    // Fallback: if image fails to load, try alternative paths
-    brandLogo.onerror = function() {
-      console.log('❌ Logo failed to load, trying fallback...');
-      if (logoPath.startsWith('../../')) {
-        brandLogo.src = '../assets/psc logo.svg';
-      } else if (logoPath.startsWith('../')) {
-        brandLogo.src = 'assets/psc logo.svg';
-      } else {
-        brandLogo.src = './assets/psc logo.svg';
-      }
+    // Test if image loads, if not try fallback paths
+    const testImg = new Image();
+    testImg.onload = function() {
+      headerBar.style.backgroundImage = `url('${bgPath}')`;
     };
+    testImg.onerror = function() {
+      console.log('❌ Header background failed to load, trying fallback...');
+      let fallbackPath;
+      if (bgPath.startsWith('../../')) {
+        fallbackPath = '../assets/200x600.jpg';
+      } else if (bgPath.startsWith('../')) {
+        fallbackPath = 'assets/200x600.jpg';
+      } else {
+        fallbackPath = './assets/200x600.jpg';
+      }
+      headerBar.style.backgroundImage = `url('${fallbackPath}')`;
+    };
+    testImg.src = bgPath;
   }
   
   // Updated navigation functions

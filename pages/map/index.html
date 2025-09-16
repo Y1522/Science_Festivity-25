@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <title>الخريطة الرئيسية</title>
   <link rel="stylesheet" href="../../css/theme.css">
+  <!-- Three.js for 3D Arabesque Background -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <style>
     .image-container{position:relative;display:inline-block;width:100%}
     .map-image{width:100%;height:auto}
@@ -15,8 +17,8 @@
   </style>
 </head>
 <body>
-  <!-- Stunning Animated Background -->
-  <div id="magic-background"></div>
+  <!-- 3D Arabesque Background -->
+  <div id="animated-background"></div>
   
   <header id="site-header"></header>
 
@@ -67,7 +69,7 @@
   <script src="../../js/i18n.js"></script>
   <script src="../../js/header.js"></script>
   <script src="../../js/chatbot.js"></script>
-  <script src="../../js/animated-background.js"></script>
+  <script src="../../js/3d-arabesque-background.js"></script>
   <script>
     document.addEventListener('click', function(e){
       var btn = e.target.closest('.icon-button');
