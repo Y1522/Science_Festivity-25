@@ -4,7 +4,7 @@
 
   header.innerHTML = `
     <div class="header-bar" style="background-image: url('${getHeaderBackgroundPath()}'); background-size: contain; background-position: center center; background-repeat: no-repeat; background-color:#0a0f1a; min-height:140px;">
-      <div class="header-actions" style="position: absolute; top: 20px; left: 20px; display: flex; gap: 10px; z-index: 10;">
+      <div class="header-actions" style="position: fixed; top: 20px; left: 20px; right: auto; display: flex; gap: 10px; z-index: 1100; direction: ltr;">
         <button class="btn header-btn" id="go-home" aria-label="Home" data-i18n="home.btn">الرئيسية</button>
         <button class="btn header-btn" id="go-back" aria-label="Back" data-i18n="back.btn">رجوع</button>
         <label class="lang-switch" title="Language" data-no-i18n="true">
@@ -21,20 +21,18 @@
 
   // Ensure language switch labels remain correct and directional
   function enforceLangSwitchLabels(){
-    const lAr = document.querySelector('.label-ar');
-    const lEn = document.querySelector('.label-en');
-    if (lAr) {
+    document.querySelectorAll('.label-ar').forEach(function(lAr){
       lAr.textContent = 'عربي';
       lAr.setAttribute('dir','rtl');
       lAr.style.direction = 'rtl';
       lAr.style.unicodeBidi = 'plaintext';
-    }
-    if (lEn) {
+    });
+    document.querySelectorAll('.label-en').forEach(function(lEn){
       lEn.textContent = 'ENG';
       lEn.setAttribute('dir','ltr');
       lEn.style.direction = 'ltr';
       lEn.style.unicodeBidi = 'plaintext';
-    }
+    });
   }
   enforceLangSwitchLabels();
   document.addEventListener('languageChanged', enforceLangSwitchLabels);
