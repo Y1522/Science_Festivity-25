@@ -40,11 +40,7 @@
   document.addEventListener('languageChanged', enforceLangSwitchLabels);
 
   // Guard against any script overriding the labels
-  const sliderEl = document.querySelector('.lang-switch .slider');
-  if (sliderEl && window.MutationObserver){
-    const mo = new MutationObserver(() => enforceLangSwitchLabels());
-    mo.observe(sliderEl, { childList: true, subtree: true, characterData: true });
-  }
+  // Remove heavy MutationObserver for performance
 
   // Floating إيشو AI button
   const fab = document.createElement('button');
