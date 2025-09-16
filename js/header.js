@@ -3,7 +3,7 @@
   if(!header) return;
 
   header.innerHTML = `
-    <div class="header-bar">
+    <div class="header-bar" style="background-image:url('${getHeaderImagePath()}');background-size:contain;background-position:center center;background-repeat:no-repeat;">
       <div class="header-actions" style="position: fixed; top: 20px; left: 20px; display: flex; gap: 10px; z-index: 1100;">
         <button class="btn header-btn" id="go-home" aria-label="Home" data-i18n="home.btn">الرئيسية</button>
         <button class="btn header-btn" id="go-back" aria-label="Back" data-i18n="back.btn">رجوع</button>
@@ -76,6 +76,25 @@
   fab.addEventListener('click', function(){ window.toggleChat?.(); });
 
   // Map helper removed per request
+  
+  // Resolve header image path for all pages
+  function getHeaderImagePath(){
+    const path = location.pathname;
+    if (path.includes('/pages/')) return '../../assets/newbk.jpg';
+    if (path.includes('/GAME') || path.includes('/game')) return '../assets/newbk.jpg';
+    return 'assets/newbk.jpg';
+  }
+  
+  // Validate header image exists; fallback to solid color if not
+  (function ensureHeaderImage(){
+    const el = document.querySelector('.header-bar');
+    if (!el) return;
+    const img = new Image();
+    const src = getHeaderImagePath();
+    img.onload = function(){ el.style.backgroundImage = `url('${src}')`; };
+    img.onerror = function(){ el.style.backgroundImage = 'none'; };
+    img.src = src;
+  })();
   
   // Updated navigation functions
   function rootPath(rel){
