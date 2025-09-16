@@ -4,13 +4,15 @@
 
   header.innerHTML = `
     <div class="header-bar" style="background-image:url('${getHeaderImagePath()}');background-size:contain;background-position:center center;background-repeat:no-repeat;">
-      <div class="header-actions" style="position: fixed; top: 20px; left: 20px; display: flex; gap: 10px; z-index: 1100;">
-        <button class="btn header-btn" id="go-home" aria-label="Home" data-i18n="home.btn">الرئيسية</button>
-        <button class="btn header-btn" id="go-back" aria-label="Back" data-i18n="back.btn">رجوع</button>
-        <label class="lang-switch" title="Language" data-no-i18n="true">
+      <div class="header-actions-left" style="position:fixed; top:20px; left:20px; z-index:1100;">
+        <label class="lang-switch" title="Language" data-no-i18n="true" style="width:86px;height:36px;display:inline-block;direction:ltr;">
           <input id="lang-toggle" type="checkbox" aria-label="Switch language">
           <span class="slider"><span class="label-ar" data-no-i18n="true">عربي</span><span class="label-en" data-no-i18n="true">ENG</span></span>
         </label>
+      </div>
+      <div class="header-actions-right" style="position:fixed; top:20px; right:20px; display:flex; gap:10px; z-index:1100; direction:ltr;">
+        <button class="btn header-btn" id="go-home" aria-label="Home" data-i18n="home.btn">الرئيسية</button>
+        <button class="btn header-btn" id="go-back" aria-label="Back" data-i18n="back.btn">رجوع</button>
       </div>
     </div>`;
 
