@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>صيانة الموقع | Maintenance</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    html,body{height:100%;margin:0}
+    body{font-family:'Cairo',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#0a1630;color:#eef6ff;display:flex;align-items:center;justify-content:center}
+    .card{max-width:720px;width:92%;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);border-radius:16px;box-shadow:0 8px 30px rgba(0,0,0,.35);overflow:hidden}
+    .hero{background:#528AC7 url('assets/newbk.jpg') center/cover no-repeat;min-height:160px}
+    .content{padding:22px}
+    h1{margin:0 0 8px;font-size:1.8rem}
+    p{margin:6px 0;color:#cfe2ff}
+    .row{display:flex;gap:12px;flex-wrap:wrap;margin-top:12px}
+    .btn{background:linear-gradient(135deg,#528AC7,#2b6aa1);color:#fff;border:none;border-radius:10px;padding:10px 14px;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:8px}
+    .muted{opacity:.8;font-size:.95rem}
+    .footer{padding:14px;text-align:center;color:#bcd1f5;font-size:.9rem}
+    .logo{height:70px;width:auto;filter:drop-shadow(0 2px 6px rgba(0,0,0,.35))}
+    @media (max-width:600px){h1{font-size:1.4rem}.hero{min-height:120px}.logo{height:54px}}
+  </style>
+</head>
+<body>
+  <main class="card" role="main" aria-label="Maintenance notice">
+    <div class="hero"></div>
+    <div class="content">
+      <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap">
+        <img src="assets/psc logo.svg" alt="PSC" class="logo" onerror="this.style.display='none'">
+        <h1>نقوم ببعض أعمال الصيانة الآن</h1>
+      </div>
+      <p class="muted">نحن نعمل لتحسين تجربة الموقع. من فضلك عُد لاحقًا. شكراً لصبرك.</p>
+      <p class="muted" dir="ltr">We are performing scheduled maintenance. Please check back soon.</p>
+      <div class="row">
+        <a class="btn" href="index.html" aria-label="العودة للصفحة الرئيسية">العودة للرئيسية</a>
+        <a class="btn" href="pages/games/index.html" aria-label="الذهاب إلى صفحة الألعاب">الألعاب</a>
+      </div>
+    </div>
+    <div class="footer">Planetarium Science Center – Science Festivity 2025</div>
+  </main>
+</body>
+</html>
+
+
