@@ -52,6 +52,9 @@ function applyI18n(){
   document.documentElement.lang = window.currentLang;
   document.documentElement.dir = window.currentLang === 'ar' ? 'rtl' : 'ltr';
   document.querySelectorAll('[data-i18n]').forEach(function(el){
+    if (el.closest('[data-no-i18n="true"]') || el.getAttribute('data-no-i18n') === 'true') {
+      return; // skip elements opted-out from i18n
+    }
     const key = el.getAttribute('data-i18n');
     const val = dict[key];
     if (val){

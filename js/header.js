@@ -7,9 +7,9 @@
       <div class="header-actions" style="position: absolute; top: 20px; left: 20px; display: flex; gap: 10px; z-index: 10;">
         <button class="btn header-btn" id="go-home" aria-label="Home" data-i18n="home.btn">الرئيسية</button>
         <button class="btn header-btn" id="go-back" aria-label="Back" data-i18n="back.btn">رجوع</button>
-        <label class="lang-switch" title="Language">
+        <label class="lang-switch" title="Language" data-no-i18n="true">
           <input id="lang-toggle" type="checkbox" aria-label="Switch language">
-          <span class="slider"><span class="label-ar">عربي</span><span class="label-en">ENG</span></span>
+          <span class="slider"><span class="label-ar" data-no-i18n="true">عربي</span><span class="label-en" data-no-i18n="true">ENG</span></span>
         </label>
       </div>
     </div>`;
