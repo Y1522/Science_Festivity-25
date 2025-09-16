@@ -18,6 +18,14 @@
   overflow: hidden;
 }
 
+/* Ensure new 3D background container is visible */
+#animated-background{
+  position: fixed;
+  inset: 0;
+  z-index: -2; /* behind content and header */
+  pointer-events: none;
+}
+
 .geometric-pattern {
   position: absolute;
   width: 100%;
@@ -139,6 +147,7 @@ html,body{
   position: relative;
   padding:10px 14px; /* smaller header */
   box-shadow:0 2px 10px rgba(0,0,0,.25);
+  z-index: 1000; /* keep header above background */
 }
 
 .header-center{

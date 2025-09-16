@@ -3,7 +3,7 @@
   if(!header) return;
 
   header.innerHTML = `
-    <div class="header-bar" style="background-image: url('${getHeaderBackgroundPath()}'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+    <div class="header-bar" style="background-image: url('${getHeaderBackgroundPath()}'); background-size: cover; background-position: center; background-repeat: no-repeat; min-height:90px;">
       <div class="header-actions" style="position: absolute; top: 20px; left: 20px; display: flex; gap: 10px; z-index: 10;">
         <button class="btn header-btn" id="go-home" aria-label="Home" data-i18n="home.btn">الرئيسية</button>
         <button class="btn header-btn" id="go-back" aria-label="Back" data-i18n="back.btn">رجوع</button>

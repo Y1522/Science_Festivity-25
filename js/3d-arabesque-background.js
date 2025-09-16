@@ -31,11 +31,14 @@ class ArabesqueBackground {
     this.renderer.shadowMap.enabled = true;
     this.renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 
-    // Add to DOM
-    const container = document.getElementById('animated-background');
-    if (container) {
-      container.appendChild(this.renderer.domElement);
+    // Add to DOM (create container if missing)
+    let container = document.getElementById('animated-background');
+    if (!container) {
+      container = document.createElement('div');
+      container.id = 'animated-background';
+      document.body.insertBefore(container, document.body.firstChild);
     }
+    container.appendChild(this.renderer.domElement);
 
     this.createArabesquePatterns();
     this.createMosqueLamp();
