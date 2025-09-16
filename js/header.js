@@ -1,7 +1,7 @@
 (function(){
-  // Global Maintenance Mode: redirect any page to maintenance.html except the page itself
+  // Maintenance Mode removed; site always starts normally at index.html
   try {
-    var MAINTENANCE_MODE = true;
+    var MAINTENANCE_MODE = false;
     if (MAINTENANCE_MODE) {
       var isMaintenance = /maintenance\.html(\?|$)/.test(location.pathname);
       if (!isMaintenance) {
