@@ -3,13 +3,13 @@
   if(!header) return;
 
   header.innerHTML = `
-    <div class="header-bar" style="background-image: url('${getHeaderBackgroundPath()}'); background-size: cover; background-position: center; background-repeat: no-repeat; min-height:90px;">
+    <div class="header-bar" style="background-image: url('${getHeaderBackgroundPath()}'); background-size: contain; background-position: center center; background-repeat: no-repeat; background-color:#0a0f1a; min-height:140px;">
       <div class="header-actions" style="position: absolute; top: 20px; left: 20px; display: flex; gap: 10px; z-index: 10;">
         <button class="btn header-btn" id="go-home" aria-label="Home" data-i18n="home.btn">الرئيسية</button>
         <button class="btn header-btn" id="go-back" aria-label="Back" data-i18n="back.btn">رجوع</button>
         <label class="lang-switch" title="Language">
           <input id="lang-toggle" type="checkbox" aria-label="Switch language">
-          <span class="slider"><span class="label-ar">ENG</span><span class="label-en">ENG</span></span>
+          <span class="slider"><span class="label-ar">ENG</span><span class="label-en">AR</span></span>
         </label>
       </div>
     </div>`;
