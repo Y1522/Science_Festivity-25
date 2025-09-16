@@ -26,14 +26,25 @@
     if (lAr) {
       lAr.textContent = 'عربي';
       lAr.setAttribute('dir','rtl');
+      lAr.style.direction = 'rtl';
+      lAr.style.unicodeBidi = 'plaintext';
     }
     if (lEn) {
       lEn.textContent = 'ENG';
       lEn.setAttribute('dir','ltr');
+      lEn.style.direction = 'ltr';
+      lEn.style.unicodeBidi = 'plaintext';
     }
   }
   enforceLangSwitchLabels();
   document.addEventListener('languageChanged', enforceLangSwitchLabels);
+
+  // Guard against any script overriding the labels
+  const sliderEl = document.querySelector('.lang-switch .slider');
+  if (sliderEl && window.MutationObserver){
+    const mo = new MutationObserver(() => enforceLangSwitchLabels());
+    mo.observe(sliderEl, { childList: true, subtree: true, characterData: true });
+  }
 
   // Floating إيشو AI button
   const fab = document.createElement('button');
