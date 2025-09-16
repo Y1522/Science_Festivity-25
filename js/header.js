@@ -1,19 +1,4 @@
 (function(){
-  // Maintenance Mode removed; site always starts normally at index.html
-  try {
-    var MAINTENANCE_MODE = false;
-    if (MAINTENANCE_MODE) {
-      var isMaintenance = /maintenance\.html(\?|$)/.test(location.pathname);
-      if (!isMaintenance) {
-        var to;
-        if (location.pathname.includes('/pages/')) to = '../../maintenance.html';
-        else if (location.pathname.includes('/GAME') || location.pathname.includes('/game')) to = '../maintenance.html';
-        else to = 'maintenance.html';
-        location.replace(to);
-        return;
-      }
-    }
-  } catch (e) {}
   const header = document.getElementById('site-header');
   if(!header) return;
 
