@@ -3,7 +3,7 @@
   if(!header) return;
 
   header.innerHTML = `
-    <div class="header-bar" style="background-image:url('${getHeaderImagePath()}');background-size:contain;background-position:center center;background-repeat:no-repeat;">
+    <div class="header-bar" style="background-image:url('${getHeaderImagePath()}');background-size:cover;background-position:center center;background-repeat:no-repeat;">
       <div class="header-actions-left" style="position:fixed; top:20px; left:20px; z-index:1100;">
         <label class="lang-switch" title="Language" data-no-i18n="true" style="width:86px;height:36px;display:inline-block;direction:ltr;">
           <input id="lang-toggle" type="checkbox" aria-label="Switch language">
