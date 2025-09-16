@@ -19,6 +19,22 @@
     window.toggleLanguage?.(checked ? 'en' : 'ar');
   });
 
+  // Ensure language switch labels remain correct and directional
+  function enforceLangSwitchLabels(){
+    const lAr = document.querySelector('.label-ar');
+    const lEn = document.querySelector('.label-en');
+    if (lAr) {
+      lAr.textContent = 'عربي';
+      lAr.setAttribute('dir','rtl');
+    }
+    if (lEn) {
+      lEn.textContent = 'ENG';
+      lEn.setAttribute('dir','ltr');
+    }
+  }
+  enforceLangSwitchLabels();
+  document.addEventListener('languageChanged', enforceLangSwitchLabels);
+
   // Floating إيشو AI button
   const fab = document.createElement('button');
   fab.className = 'btn ai-fab';
