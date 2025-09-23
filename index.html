@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <title>Science Festivity – Intro</title>
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/theme.css">
+    <link rel="stylesheet" href="css/theme.css">
     <style>
     * {
       margin: 0;
@@ -279,9 +279,97 @@
     }
     
     /* Additional English font size adjustments for detail items (Age/Timer icons text) */
-    .lang-en .detail-item span {
-      font-size: 0.72rem; /* 0.9rem * 0.8 = 0.72rem (25% smaller) */
-    }
+        .lang-en .detail-item span {
+          font-size: 0.72rem; /* 0.9rem * 0.8 = 0.72rem (25% smaller) */
+        }
+        
+        /* Games Button Styles - Left Side */
+        .games-button-container {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            z-index: 1000;
+        }
+        
+        .games-button {
+            background: linear-gradient(135deg, #4CAF50, #45a049);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 6px 10px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            box-shadow: 0 2px 8px rgba(76, 175, 80, 0.3);
+            transition: all 0.3s ease;
+            font-family: 'Cairo', sans-serif;
+        }
+        
+        .games-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(76, 175, 80, 0.4);
+            background: linear-gradient(135deg, #45a049, #4CAF50);
+        }
+        
+        .games-button:active {
+            transform: translateY(0);
+        }
+        
+        .games-button i {
+            font-size: 18px;
+        }
+        
+        /* Issue Button Styles - Right Side */
+        .issue-button {
+            position: fixed;
+            right: 16px;
+            bottom: 16px;
+            z-index: 1200;
+            background: linear-gradient(135deg, #528AC7, #2b6aa1);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 6px 10px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(82, 138, 199, 0.4);
+            transition: all 0.3s ease;
+            font-family: 'Cairo', sans-serif;
+        }
+        
+        .issue-button:hover {
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: 0 6px 20px rgba(82, 138, 199, 0.6);
+        }
+        
+        .issue-button:active {
+            transform: translateY(0) scale(1);
+        }
+        
+        .issue-button i {
+            font-size: 18px;
+        }
+        
+        @media (max-width: 768px) {
+            .games-button-container {
+                bottom: 15px;
+                left: 15px;
+            }
+            .games-button {
+                padding: 10px 16px;
+                font-size: 14px;
+            }
+            .issue-button {
+                right: 15px;
+                bottom: 15px;
+                padding: 10px 16px;
+                font-size: 14px;
+            }
+        }
     .intro-details {
       display: flex;
       flex-direction: column;
@@ -462,16 +550,30 @@
    <section class="welcome-hero" style="position: fixed; top: 100px; left: 50%; transform: translateX(-50%); z-index: 1000; text-align: center; color: #eef6ff;">
      <h2 data-i18n="map.welcome" class="welcome-animated" style="margin: 0 0 10px 0; font-size: 2rem; text-shadow: 0 2px 4px rgba(0,0,0,0.5); font-family: 'Cairo', sans-serif;">مرحبا بكم</h2>
      <img src="assets/1.png" alt="Welcome image" style="max-width: 400px; width: 100%; height: auto; margin-bottom: 10px; transform: scale(1.2);">
-   </section>
-   
+        </section>
+
    <div class="container">
      <div class="intro-content">
        <img src="assets/37.png" alt="Science Festivity" class="intro-image">
        <img src="assets/WhatsApp_Image_2025-09-18_at_12.48.42_97bf26d4-removebg-preview.png" alt="Science Festivity Additional" class="intro-image-secondary">
        <img src="assets/WhatsApp_Image_2025-09-18_at_12.48.42_97bf26d4-removebg-preview.png" alt="Science Festivity Additional Left" class="intro-image-secondary-left">
        <a href="/pages/main.html" class="enter-button" id="enter-btn" data-i18n="enter.btn">دخول</a>
-     </div>
+            </div>
         </div>
+
+        <!-- Games Button - Bottom Left -->
+        <div class="games-button-container">
+            <button class="games-button" onclick="window.location.href='/pages/games/index.html'" title="الألعاب التعليمية">
+                <i class="fas fa-gamepad"></i>
+                <span>الالعاب</span>
+            </button>
+        </div>
+
+        <!-- Issue Button - Bottom Right -->
+        <button class="issue-button" onclick="window.toggleChat?.()" title="إيشو - مساعدك الذكي">
+            <i class="fas fa-brain"></i>
+            <span>ايشو</span>
+        </button>
 
   <!-- Text Overlay System (similar to tent1 structure) -->
   <div id="textOverlay" class="text-overlay" style="display: none;">
@@ -677,7 +779,10 @@
     // Close on ESC
     document.addEventListener('keydown', function(e){
       if(e.key === 'Escape') hideTextOverlay();
-      });
+        });
     </script>
+    
+    <!-- Load chatbot functionality -->
+    <script src="js/chatbot.js"></script>
 </body>
 </html>
