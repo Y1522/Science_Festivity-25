@@ -3,6 +3,8 @@ body{
     padding: 0;
     text-align: center;
     overflow: hidden;
+    background: black !important;
+    background-color: black !important;
 }                                         
 html, body, #game {
     width: 100%;
@@ -16,15 +18,25 @@ html, body, #game {
     inset: 0;
     width: 100vw;
     height: 100vh;
-    background: black;
+    background: black !important;
+    background-color: black !important;
+    background-image: none !important;
+    z-index: 1;
 }
 
 /* Modal used for result message */
-#resultModal.modal{position:fixed;inset:0;background:rgba(0,0,0,.55);display:none;align-items:center;justify-content:center;z-index:2000}
-#resultModal.modal.open{display:flex}
+#resultModal.modal{position:fixed;inset:0;background:rgba(0,0,0,.55);display:none !important;align-items:center;justify-content:center;z-index:2000}
+#resultModal.modal.open{display:flex !important}
 #resultModal .modal-card{position:relative}
 #resultModal .modal-card img{max-width:420px;width:90%;height:auto}
 #resultModal .modal-card .modal-content{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:24px;color:#3b2b16;font-weight:800;font-size:28px}
+
+/* Ensure canvas is always visible */
+#game {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
 
 /* Extra-compact header for Game 1 */
 #site-header .header-bar{padding:2px 6px}
@@ -38,69 +50,5 @@ html, body, #game {
 /* Hide language switch on game page */
 #site-header .lang-switch{display:none}
 
-#pauseBtn{
-    position: fixed;
-    top: 12px;
-    right: 12px;
-    z-index: 10;
-    padding: 10px 14px;
-    font-size: 16px;
-    border-radius: 8px;
-    border: none;
-    background: rgba(255,255,255,0.12);
-    color: #ffffff;
-    backdrop-filter: blur(6px);
-    cursor: pointer;
-    user-select: none;
-    touch-action: manipulation;
-}
-
-#pauseBtn:active{
-    transform: scale(0.98);
-}
-
-@media (max-width: 600px){
-    #pauseBtn{
-        font-size: 18px;
-        padding: 12px 18px;
-    }
-}
-
-#restartBtn{
-    position: fixed;
-    top: 12px;
-    right: 112px;
-/* When buttons are moved into the header, make them behave like header buttons */
-#site-header .header-actions #pauseBtn,
-#site-header .header-actions #restartBtn{
-    position: static;
-    top: auto; right: auto;
-    background: rgba(255,255,255,0.12);
-    border: none;
-    padding: 8px 10px;
-}
-    z-index: 10;
-    padding: 10px 14px;
-    font-size: 16px;
-    border-radius: 8px;
-    border: none;
-    background: rgba(255,255,255,0.12);
-    color: #ffffff;
-    backdrop-filter: blur(6px);
-    cursor: pointer;
-    user-select: none;
-    touch-action: manipulation;
-}
-
-#restartBtn:active{
-    transform: scale(0.98);
-}
-
-@media (max-width: 600px){
-    #restartBtn{
-        font-size: 18px;
-        padding: 12px 18px;
-        right: 108px;
-    }
-}
+/* Game controls are now integrated into the header via game-header.js */
             

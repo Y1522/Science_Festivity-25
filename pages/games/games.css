@@ -1,0 +1,226 @@
+/* Games Page - Animated Background Enhancement Only */
+
+/* Override theme.css background to ensure animated background is visible */
+html {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+}
+
+body {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+}
+
+/* Override theme.css root background */
+:root {
+  background-image: none !important;
+}
+
+/* Ensure magic-background container is properly positioned */
+#magic-background {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  z-index: -1 !important;
+  overflow: hidden !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+}
+
+/* Ensure animated-background container is visible */
+#animated-background {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  z-index: -2 !important;
+  pointer-events: none !important;
+}
+
+/* Enhanced animated background styles */
+.animated-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -2;
+  overflow: hidden;
+}
+
+/* Floating geometry animations */
+.floating-geometry {
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* Particle effects */
+.nebula-particle {
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* Energy waves */
+.energy-wave {
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* Glowing orbs */
+.glowing-orb {
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* Enhanced gradient animations */
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes floatGeometry {
+  0% { 
+    transform: translateY(100vh) rotate(0deg) scale(0.5);
+    opacity: 0;
+  }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { 
+    transform: translateY(-100px) rotate(360deg) scale(1.2);
+    opacity: 0;
+  }
+}
+
+@keyframes particleFloat {
+  0% { 
+    transform: translate(0, 100vh) scale(0);
+    opacity: 0;
+  }
+  10% { 
+    opacity: 1;
+    transform: scale(1);
+  }
+  90% { opacity: 1; }
+  100% { 
+    transform: translate(100px, -100px) scale(0);
+    opacity: 0;
+  }
+}
+
+@keyframes energyPulse {
+  0% { 
+    transform: scale(0) rotate(0deg);
+    opacity: 1;
+  }
+  50% { 
+    transform: scale(1) rotate(180deg);
+    opacity: 0.3;
+  }
+  100% { 
+    transform: scale(1.5) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+@keyframes orbFloat {
+  0%, 100% { 
+    transform: translateY(0px) translateX(0px) scale(1);
+  }
+  25% { 
+    transform: translateY(-30px) translateX(20px) scale(1.1);
+  }
+  50% { 
+    transform: translateY(-10px) translateX(-15px) scale(0.9);
+  }
+  75% { 
+    transform: translateY(-40px) translateX(10px) scale(1.05);
+  }
+}
+
+/* Interactive effects */
+#magic-background:hover .floating-geometry {
+  animation-duration: 8s !important;
+}
+
+#magic-background:hover .glowing-orb {
+  filter: blur(0px) !important;
+  transform: scale(1.2) !important;
+}
+
+/* Ripple effect for clicks */
+@keyframes rippleEffect {
+  0% {
+    width: 0px;
+    height: 0px;
+    opacity: 1;
+  }
+  100% {
+    width: 200px;
+    height: 200px;
+    opacity: 0;
+  }
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+  .floating-geometry {
+    width: 30px !important;
+    height: 30px !important;
+  }
+  .glowing-orb {
+    width: 20px !important;
+    height: 20px !important;
+  }
+  .nebula-particle {
+    display: none;
+  }
+}
+
+/* Accessibility - reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  #magic-background * {
+    animation: none !important;
+  }
+  #magic-background {
+    background: linear-gradient(135deg, #0c1445 0%, #2d5a87 100%) !important;
+  }
+}
+
+/* Enhanced tile styles for games page */
+.tile {
+  background: rgba(255, 255, 255, 0.15) !important;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+}
+
+.tile:hover {
+  background: rgba(255, 255, 255, 0.25) !important;
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Enhanced header styling */
+#site-header {
+  background: rgba(34, 57, 95, 0.9) !important;
+  backdrop-filter: blur(15px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Enhanced footer styling */
+.site-footer {
+  background: rgba(34, 57, 95, 0.9) !important;
+  backdrop-filter: blur(15px);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}

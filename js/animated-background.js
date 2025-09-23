@@ -333,9 +333,18 @@
     document.head.appendChild(style);
   }
   
-  // Initialize the stunning background
+  // Initialize the stunning background only on games page
   function init() {
-    console.log('✨ Creating magical background...');
+    // Check if we're on the games page
+    const currentPath = window.location.pathname;
+    const isGamesPage = currentPath.includes('/pages/games/') || currentPath.includes('games/index.html');
+    
+    if (!isGamesPage) {
+      console.log('🚫 Not on games page, skipping animated background');
+      return;
+    }
+    
+    console.log('✨ Creating magical background for games page...');
     addStunningCSS();
     const magicBg = createStunningBackground();
     if (magicBg) {

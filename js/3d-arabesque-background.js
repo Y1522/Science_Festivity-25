@@ -36,8 +36,25 @@ class ArabesqueBackground {
     if (!container) {
       container = document.createElement('div');
       container.id = 'animated-background';
+      container.style.cssText = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -2;
+        pointer-events: none;
+      `;
       document.body.insertBefore(container, document.body.firstChild);
     }
+    this.renderer.domElement.style.cssText = `
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    `;
     container.appendChild(this.renderer.domElement);
 
     this.createArabesquePatterns();
@@ -295,14 +312,32 @@ class ArabesqueBackground {
 
 // Initialize when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
-  // Check if Three.js is loaded
-  if (typeof THREE !== 'undefined') {
-    new ArabesqueBackground();
-  } else {
-    console.warn('Three.js not loaded. Loading from CDN...');
-    const script = document.createElement('script');
-    script.src = 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js';
-    script.onload = () => new ArabesqueBackground();
-    document.head.appendChild(script);
-  }
+  // Wait a bit to ensure other scripts have loaded
+  setTimeout(() => {
+    // Check if Three.js is loaded
+    if (typeof THREE !== 'undefined') {
+      try {
+        new ArabesqueBackground();
+        console.log('3D Arabesque Background initialized successfully');
+      } catch (error) {
+        console.error('Error initializing 3D background:', error);
+      }
+    } else {
+      console.warn('Three.js not loaded. Loading from CDN...');
+      const script = document.createElement('script');
+      script.src = 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js';
+      script.onload = () => {
+        try {
+          new ArabesqueBackground();
+          console.log('3D Arabesque Background initialized successfully after loading Three.js');
+        } catch (error) {
+          console.error('Error initializing 3D background after loading Three.js:', error);
+        }
+      };
+      script.onerror = () => {
+        console.error('Failed to load Three.js from CDN');
+      };
+      document.head.appendChild(script);
+    }
+  }, 1000); // Wait 1 second to ensure other scripts have loaded
 });

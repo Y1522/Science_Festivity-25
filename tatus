@@ -1,0 +1,3 @@
+[33m43e17fa[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m Move X close button to 80px from top on conference page
+[33mfe589ab[m Move X close button much lower for better UI separation
+[33mba9f55b[m Adjust button positioning: move language switch higher and X close button lower

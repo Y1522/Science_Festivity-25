@@ -6,6 +6,11 @@
   <title>خيمة ورش القبة</title>
   <link rel="stylesheet" href="../../css/theme.css">
   
+  <style>
+    body {
+      background: url('../../assets/WhatsApp Image 2025-09-17 at 01.13.28_46471fab.jpg') center center/cover no-repeat fixed !important;
+    }
+  </style>
 </head>
 <body>
   <!-- Background placeholder (can be styled by CSS) -->
@@ -13,88 +18,250 @@
   
   <header id="site-header"></header>
   
-  <!-- Tent Video Section -->
-  <section class="tent-video-section" style="padding:20px 0;margin-bottom:20px;">
-    <div class="container">
-      <video 
-        autoplay 
-        muted 
-        loop 
-        playsinline 
-        style="width:100%;max-width:800px;height:auto;border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,0.4);display:block;margin:0 auto;"
-        poster="../../assets/tent 4 03.jpg">
-        <source src="../../assets/tent 4 video.mp4" type="video/mp4">
-        <img src="../../assets/tent 4 03.jpg" alt="خيمة ورش القبة" style="width:100%;height:auto;border-radius:16px;">
-      </video>
-      <div style="text-align:center;margin-top:15px;color:#eef6ff;">
-        <h2 data-i18n="nav.tent4" style="margin:0;font-size:2rem;text-shadow:0 2px 4px rgba(0,0,0,0.5);">خيم ورش القبة</h2>
-        <p style="margin:8px 0 0;font-size:1.1rem;opacity:.95">اضغط على الكتاب و اكتشف</p>
-      </div>
-    </div>
-  </section>
-  
   <main class="container">
-    <h2 data-i18n="nav.tent4">خيمة ورش القبة</h2>
+    <!-- Tent Title and Prompt Section -->
+    <div style="text-align:center;margin:60px 0;color:#eef6ff;">
+      <h2 data-i18n="nav.tent4" style="margin:0 0 10px 0;font-size:2.5rem;text-shadow:0 2px 4px rgba(0,0,0,0.5);font-family:'Cairo',sans-serif;">خيمة ورش القبة</h2>
+      <p data-i18n="map.prompt" style="margin:0;font-size:1.3rem;opacity:.95;font-family:'Cairo',sans-serif;">اضغط على اللفيفة و اكتشف</p>
+    </div>
+    
     <div style="position:relative">
-      <img src="../../assets/tent 4 03.jpg" alt="خيمة ورش القبة" style="width:100%;height:auto;border-radius:12px">
+      <img src="../../assets/tent4copy.jpg" alt="خيمة ورش القبة" style="width:100%;max-width:800px;height:auto;border-radius:12px;display:block;margin:0 auto">
       <style>
         .marker-btn{position:absolute;background:transparent;border:none;cursor:pointer;padding:0}
-        .marker-btn img{width:42px;height:auto;filter:drop-shadow(0 6px 14px rgba(0,0,0,.35)) brightness(1.05);transition:transform .18s ease, filter .18s ease}
+        .marker-btn img{width:60px;height:auto;filter:drop-shadow(0 6px 14px rgba(0,0,0,.35)) brightness(1.05);transition:transform .18s ease, filter .18s ease}
         .marker-btn:hover img{transform:scale(1.08);filter:drop-shadow(0 8px 20px rgba(0,0,0,.45)) brightness(1.12)}
-        @media (max-width:768px){.marker-btn img{width:32px}}
+        @media (max-width:768px){.marker-btn img{width:52px}}
       </style>
-      <button class="marker-btn" style="top:52%;left:50%" data-workshop="tent4-1" title="Tent 4 Workshop">
-        <img src="../../assets/book1.png" alt="Tent 4 workshop marker">
+      <button class="marker-btn" style="top:47%;left:70%" data-workshop="workshop35" title="ورشة 35">
+        <img src="../../assets/35.png" alt="ورشة 35">
+      </button>
+      <button class="marker-btn" style="top:47%;left:23%" data-workshop="workshop36" title="ورشة 36">
+        <img src="../../assets/35.png" alt="ورشة 36">
       </button>
     </div>
   </main>
+  
+  
   <footer class="site-footer">
     <img src="../../assets/psc logo.svg" alt="PSC logo" class="psc-logo">
   </footer>
   <script src="../../js/i18n.js"></script>
   <script src="../../js/header.js"></script>
   <script src="../../js/chatbot.js"></script>
+  <script src="../../js/dynamic-background.js"></script>
   
   
   <!-- Fullscreen Book Viewer Overlay (Tent 4) -->
   <style>
     .book-overlay{position:fixed;inset:0;background:rgba(0,0,0,.85);display:none;align-items:center;justify-content:center;z-index:2000}
     .book-overlay.open{display:flex}
-    .book-overlay img{max-width:98vw;max-height:98vh;border-radius:14px;box-shadow:0 20px 60px rgba(0,0,0,.5);animation:bookZoom .25s ease}
-    .book-close{position:absolute;top:18px;right:22px;width:42px;height:42px;border-radius:50%;background:rgba(255,255,255,.12);border:2px solid rgba(255,255,255,.6);color:#fff;font-size:22px;display:flex;align-items:center;justify-content:center;cursor:pointer;backdrop-filter:blur(2px)}
+    .book-container{position:relative;display:flex;align-items:center;justify-content:center;width:100%;height:100%}
+    .book-overlay img{max-width:50vw;max-height:50vh;width:auto;height:auto;border-radius:14px;box-shadow:0 20px 60px rgba(0,0,0,.5);animation:bookZoom .25s ease;transform:scale(1.4) translateX(-2%);object-fit:contain}
+    .book-close{position:absolute;top:150px;right:20px;width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.12);border:2px solid rgba(255,255,255,.6);color:#fff;font-size:18px;display:flex;align-items:center;justify-content:center;cursor:pointer;backdrop-filter:blur(2px);z-index:2001}
     .book-close:hover{background:rgba(255,255,255,.2)}
     @keyframes bookZoom{from{transform:scale(.92);opacity:.6}to{transform:scale(1);opacity:1}}
+    .workshop-text{position:absolute;top:37%;left:50%;transform:translate(-50%,-10%);width:60%;max-width:700px;text-align:center;color:#8B4513;z-index:10;font-family:'Cairo', sans-serif;}
+    .workshop-text h5{font-size:0.99rem;margin:0 0 8px 0;color:#8B4513;text-shadow:1px 1px 2px rgba(255,255,255,0.8);font-weight:normal;line-height:1.35;text-align:center}
+    .workshop-text p{font-size:1.35rem;margin:0 0 14px 0;color:#654321;line-height:1.5;text-shadow:1px 1px 2px rgba(255,255,255,0.6);font-weight:bold}
+    
+    /* English language font size adjustments for 36.png text overlay */
+    .lang-en .workshop-text h5{font-size:0.79rem}
+    .lang-en .workshop-text p{font-size:1.08rem}
+    
+    /* Additional English font size adjustments for detail items (Age/Timer icons text) */
+    .lang-en .detail-item span{font-size:0.79rem}
+    
+    /* Enhanced Navigation Button Hover Effects */
+    #workshopNav button:hover {
+      transform: translateY(-2px) scale(1.05);
+      box-shadow: 0 8px 25px rgba(139,69,19,0.5);
+      background: linear-gradient(135deg, rgba(160,82,45,1), rgba(139,69,19,1));
+    }
+    
+    #workshopNav button:active {
+      transform: translateY(0) scale(0.98);
+    }
+    .workshop-details{display:flex;flex-direction:column;gap:8px;flex-wrap:nowrap;justify-content:flex-start;margin-left:-150px}
+    .detail-item{display:flex;align-items:center;gap:10px;color:#8B4513;font-weight:bold}
+    .detail-item .icon{width:8px;height:8px;filter:hue-rotate(25deg) saturate(1.5)}
+    .detail-item span{font-size:0.6rem;font-weight:bold;text-shadow:1px 1px 2px rgba(255,255,255,0.8)}
   </style>
   <div id="bookOverlay" class="book-overlay" role="dialog" aria-modal="true" aria-label="Open book view">
-    <button class="book-close" aria-label="Close" title="إغلاق" onclick="hideBookOverlay()">×</button>
-    <img id="bookOverlayImg" src="../../assets/book2.png" alt="Open book">
+    <div class="book-container">
+      <button class="book-close" aria-label="Close" title="إغلاق" onclick="hideBookOverlay()">×</button>
+      <img id="bookOverlayImg" src="../../assets/36.png" alt="Open book">
+      <div class="workshop-text" id="workshopContent">
+        <!-- Workshop content will be dynamically loaded here -->
+      </div>
+    </div>
   </div>
   <script>
+    // Workshop data with Arabic and English content for Tent 4
+    const workshops = [
+      {
+        id: 35,
+        ar: {
+          title: "ورشة عمل: تجارب ممتعة و مبسطة عن ابن الهيثم و أسرار الضوء و الرؤية ",
+          description: "مركز القبة السماوية العلمي",
+          duration: "30 دقيقة",
+          age: "المرحلة الأبتدائية والإعدادية والثانوية ",
+          ageClass: "age-high"
+        },
+        en: {
+          title: "Workshop: Fun and simple experiments about Ibn Al-Haytham and the secrets of light and vision",
+          description: "Planetarium Science Center",
+          duration: "minutes 30 ",
+          age: "Junior,Middle and High School",
+          ageClass: "age-high"
+        }
+      },
+      {
+        id: 36,
+        ar: {
+          title: "ورشة عمل: رحلة تفاعلية تجمع بين العلم و التاريخ فى عالَم أبي بكر الرازى",
+          description: "مركز القبة السماوية العلمي",
+          duration: "30 دقيقة",
+          age: "المرحلة الأبتدائية والإعدادية والثانوية ",
+          ageClass: "age-high"
+        },
+        en: {
+          title: "Workshop: Interactive journey between science and history in the world of Ibn al-Khawwaz",
+          description: "Planetarium Science Center",
+          duration: "minutes 30 ",
+          age: "Junior,Middle and High School",
+          ageClass: "age-high"
+        }
+      }
+    ];
+
+    let currentWorkshop = 0;
+    let currentLanguage = 'ar';
+
+    function updateWorkshopContent() {
+      const workshop = workshops[currentWorkshop];
+      const content = currentLanguage === 'ar' ? workshop.ar : workshop.en;
+      
+      document.getElementById('workshopContent').innerHTML = `
+        <h5>ورشة رقم ${workshop.id} | Workshop ${workshop.id}</h5>
+        <p>${content.description}</p>
+        <h5>${content.title}</h5>
+        <div class="workshop-details">
+          <div class="detail-item">
+            <img src="../../assets/Timer icon.svg" alt="Time" class="icon">
+            <span>${content.duration}</span>
+          </div>
+          <div class="detail-item">
+            <img src="../../assets/Age icon.svg" alt="Age" class="icon ${content.ageClass}">
+            <span>${content.age}</span>
+          </div>
+        </div>
+      `;
+    }
+
+    function nextWorkshop() {
+      currentWorkshop = (currentWorkshop + 1) % workshops.length;
+      updateWorkshopContent();
+    }
+
+    function prevWorkshop() {
+      currentWorkshop = currentWorkshop === 0 ? workshops.length - 1 : currentWorkshop - 1;
+      updateWorkshopContent();
+    }
+
+    function switchLanguage() {
+      currentLanguage = currentLanguage === 'ar' ? 'en' : 'ar';
+      
+      // Add/remove language class for font size adjustments
+      if (currentLanguage === 'en') {
+        document.documentElement.classList.add('lang-en');
+      } else {
+        document.documentElement.classList.remove('lang-en');
+      }
+      
+      updateWorkshopContent();
+      updateNavigationText();
+    }
+    
+    function updateNavigationText() {
+      const prevBtn = document.querySelector('#workshopNav button[onclick="prevWorkshop()"]');
+      const nextBtn = document.querySelector('#workshopNav button[onclick="nextWorkshop()"]');
+      const langBtn = document.querySelector('#workshopNav button[onclick="switchLanguage()"]');
+      
+      if (prevBtn && nextBtn && langBtn) {
+        if (currentLanguage === 'ar') {
+          prevBtn.textContent = '← السابق';
+          nextBtn.textContent = 'التالي →';
+          langBtn.textContent = 'ع/EN';
+        } else {
+          prevBtn.textContent = '← Previous';
+          nextBtn.textContent = 'Next →';
+          langBtn.textContent = 'ع/EN';
+        }
+      }
+    }
+
+    // Click feedback for tent4 markers
     document.addEventListener('click', function(e){
       var mk = e.target.closest('.marker-btn');
       if(!mk) return;
       var img = mk.querySelector('img');
       if(img){
         var original = img.getAttribute('src');
-        img.src = '../../assets/book2.png';
+        img.src = '../../assets/36.png';
         setTimeout(function(){ img.src = original; }, 160);
       }
+      // Map clicked marker to its specific workshop id
+      var key = mk.getAttribute('data-workshop') || mk.dataset.workshop || '';
+      var id = parseInt((key+'').replace(/[^0-9]/g,'') || '0', 10);
+      console.log('Marker clicked ->', key, 'parsed id:', id);
+      var idx = workshops.findIndex(function(w){ return w.id === id; });
+      if(idx >= 0){ currentWorkshop = idx; }
+      // Show fullscreen open book
       showBookOverlay();
     });
+    
     function showBookOverlay(){
+      updateWorkshopContent();
       var ov = document.getElementById('bookOverlay');
       if(ov){ ov.classList.add('open'); }
     }
+    
     function hideBookOverlay(){
       var ov = document.getElementById('bookOverlay');
       if(ov){ ov.classList.remove('open'); }
     }
+    
+    // Close on backdrop click
     document.getElementById('bookOverlay').addEventListener('click', function(e){
       if(e.target === this){ hideBookOverlay(); }
     });
+    // Close on ESC
     document.addEventListener('keydown', function(e){
       if(e.key === 'Escape') hideBookOverlay();
     });
+
+    // Add navigation controls (outside of workshopContent so they persist)
+    document.addEventListener('DOMContentLoaded', function() {
+      setTimeout(function(){
+        var container = document.querySelector('.book-container');
+        if(container && !document.getElementById('workshopNav')){
+          var navigationHTML = '\n            <div id="workshopNav" style="position:absolute; display: flex; gap: 12px; z-index: 2010;">\n              <button onclick="prevWorkshop()" style="background: linear-gradient(135deg, rgba(139,69,19,0.9), rgba(160,82,45,0.9)); color: #fff; border: none; padding: 8px 12px; border-radius: 20px; cursor: pointer; font-weight: bold; backdrop-filter: blur(10px); box-shadow: 0 4px 15px rgba(139,69,19,0.3); transition: all 0.3s ease; font-family: \'Amiri\', serif;">← السابق</button>\n              <button onclick="nextWorkshop()" style="background: linear-gradient(135deg, rgba(139,69,19,0.9), rgba(160,82,45,0.9)); color: #fff; border: none; padding: 8px 12px; border-radius: 20px; cursor: pointer; font-weight: bold; backdrop-filter: blur(10px); box-shadow: 0 4px 15px rgba(139,69,19,0.3); transition: all 0.3s ease; font-family: \'Amiri\', serif;">التالي →</button>\n              <button onclick="switchLanguage()" style="background: linear-gradient(135deg, rgba(139,69,19,0.9), rgba(160,82,45,0.9)); color: #fff; border: none; padding: 8px 12px; border-radius: 20px; cursor: pointer; font-weight: bold; backdrop-filter: blur(10px); box-shadow: 0 4px 15px rgba(139,69,19,0.3); transition: all 0.3s ease; font-family: \'Amiri\', serif;">ع/EN</button>\n            </div>\n          ';
+          container.insertAdjacentHTML('beforeend', navigationHTML);
+          updateNavigationText();
+          positionNavNearBook();
+          window.addEventListener('resize', positionNavNearBook);
+        }
+      }, 100);
+    });
+    function positionNavNearBook(){
+      var nav = document.getElementById('workshopNav');
+      var img = document.getElementById('bookOverlayImg');
+      if(!nav || !img) return;
+      var rect = img.getBoundingClientRect();
+      nav.style.top = (rect.top + 140) + 'px';
+      nav.style.left = (rect.left + 20) + 'px';
+    }
   </script>
   <script>
     // Immediate background test

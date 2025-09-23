@@ -20,17 +20,13 @@
         <img src="../../assets/Conference hall.svg" alt="Conference Hall" style="width:100%;height:auto;border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,0.3);">
         <style>
           .marker-btn{position:absolute;background:transparent;border:none;cursor:pointer;padding:0}
-          .marker-btn img{width:42px;height:auto;filter:drop-shadow(0 6px 14px rgba(0,0,0,.35)) brightness(1.05);transition:transform .18s ease, filter .18s ease}
+          .marker-btn img{width:48px;height:auto;filter:drop-shadow(0 6px 14px rgba(0,0,0,.35)) brightness(1.05);transition:transform .18s ease, filter .18s ease}
           .marker-btn:hover img{transform:scale(1.08);filter:drop-shadow(0 8px 20px rgba(0,0,0,.45)) brightness(1.12)}
-          @media (max-width:768px){.marker-btn img{width:32px}}
+          @media (max-width:768px){.marker-btn img{width:36px}}
         </style>
-        <button class="marker-btn" style="top:55%;left:50%" data-workshop="conference-1" title="Conference Workshop">
-          <img src="../../assets/book1.png" alt="Conference workshop marker">
+        <button class="marker-btn" style="top:55%;left:50%" data-booth="conference-1" title="Conference Booth">
+          <img src="../../assets/35.png" alt="Conference Booth marker">
         </button>
-      </div>
-      <div style="margin-top:20px;">
-        <h3 style="color:#eef6ff;margin-bottom:15px;"> فعاليات مركز المؤتمرات</h3>
-      </div>
     </div>
   </main>
   <footer class="site-footer">
@@ -39,20 +35,147 @@
   <script src="../../js/i18n.js"></script>
   <script src="../../js/header.js"></script>
   <script src="../../js/chatbot.js"></script>
+  <script src="../../js/dynamic-background.js"></script>
   
   
   <!-- Fullscreen Book Viewer Overlay (Conference) -->
   <style>
     .book-overlay{position:fixed;inset:0;background:rgba(0,0,0,.85);display:none;align-items:center;justify-content:center;z-index:2000}
     .book-overlay.open{display:flex}
-    .book-overlay img{max-width:98vw;max-height:98vh;border-radius:14px;box-shadow:0 20px 60px rgba(0,0,0,.5);animation:bookZoom .25s ease}
-    .book-close{position:absolute;top:18px;right:22px;width:42px;height:42px;border-radius:50%;background:rgba(255,255,255,.12);border:2px solid rgba(255,255,255,.6);color:#fff;font-size:22px;display:flex;align-items:center;justify-content:center;cursor:pointer;backdrop-filter:blur(2px)}
-    .book-close:hover{background:rgba(255,255,255,.2)}
+    .book-overlay .book-container{max-width:70vw;max-height:70vh;border-radius:14px;box-shadow:0 20px 60px rgba(0,0,0,.5);animation:bookZoom .25s ease;background:rgba(255,255,255,0.95);padding:20px}
+    .book-close{position:absolute;top:150px;right:40px;width:40px;height:40px;border-radius:50%;background:rgba(139,69,19,.8);border:2px solid rgba(139,69,19,.6);color:#fff;font-size:18px;display:flex;align-items:center;justify-content:center;cursor:pointer;backdrop-filter:blur(2px)}
+    .book-close:hover{background:rgba(139,69,19,1)}
     @keyframes bookZoom{from{transform:scale(.92);opacity:.6}to{transform:scale(1);opacity:1}}
+    
+    /* Conference Text and Table Styling */
+    .conference-text {
+      position: relative;
+      width: 100%;
+      text-align: left;
+      color: #8B4513;
+      font-family: 'Amiri', serif;
+    }
+    
+    .conference-text h5 {
+      font-size: 1.1rem;
+      margin: 0 0 8px -10px;
+      color: #8B4513;
+      text-shadow: 1px 1px 2px rgba(255,255,255,0.8);
+      font-weight: normal;
+      line-height: 1.35;
+    }
+    
+    .schedule-table {
+      margin: 15px 0;
+      width: 100%;
+    }
+    
+    .schedule-table table {
+      width: 100%;
+      border-collapse: collapse;
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+    
+    .schedule-table th {
+      background: linear-gradient(135deg, #8B4513, #A0522D);
+      color: white;
+      padding: 12px 10px;
+      text-align: center;
+      font-weight: bold;
+      font-size: 1rem;
+      border: 1px solid #654321;
+    }
+    
+    .schedule-table td {
+      padding: 10px 8px;
+      text-align: center;
+      font-size: 0.9rem;
+      border: 1px solid #ddd;
+      color: #654321;
+      font-weight: 500;
+    }
+    
+    .schedule-table tr:nth-child(even) {
+      background-color: rgba(139, 69, 19, 0.1);
+    }
+    
+    .schedule-table tr:hover {
+      background-color: rgba(139, 69, 19, 0.2);
+    }
+    
+    /* Language Switch Styling */
+    .language-switch-container {
+      position: absolute;
+      top: -25px;
+      right: 10px;
+      z-index: 20;
+    }
+    
+    .language-switch {
+      background: linear-gradient(135deg, #8B4513, #A0522D);
+      color: white;
+      border: 2px solid #654321;
+      padding: 6px 12px;
+      border-radius: 20px;
+      box-shadow: 0 3px 10px rgba(139, 69, 19, 0.4);
+      transition: all 0.3s ease;
+      font-family: 'Amiri', serif;
+      font-size: 0.8rem;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    
+    .language-switch:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(139, 69, 19, 0.6);
+      background: linear-gradient(135deg, #A0522D, #CD853F);
+    }
+    
+    .language-switch:active {
+      transform: translateY(0);
+      box-shadow: 0 2px 8px rgba(139, 69, 19, 0.4);
+    }
   </style>
   <div id="bookOverlay" class="book-overlay" role="dialog" aria-modal="true" aria-label="Open book view">
-    <button class="book-close" aria-label="Close" title="إغلاق" onclick="hideBookOverlay()">×</button>
-    <img id="bookOverlayImg" src="../../assets/book2.png" alt="Open book">
+    <div class="book-container">
+      <button class="book-close" aria-label="Close" title="إغلاق" onclick="hideBookOverlay()">×</button>
+      <div class="conference-text" id="conferenceContent">
+        <div class="language-switch-container">
+          <button class="language-switch" onclick="switchConferenceLanguage()">ع/EN</button>
+        </div>
+        <div class="schedule-table">
+          <table id="conferenceTable">
+            <thead>
+              <tr>
+                <th id="timeHeader">الوقت</th>
+                <th id="activityHeader">النشاط</th>
+                <th id="placeHeader">المكان</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>9:00 - 9:45 am</td>
+                <td id="activity1">عرض المسرح الاسود</td>
+                <td id="place1">القاعة الكبرى</td>
+              </tr>
+              <tr>
+                <td>12:00 - 12:45 pm</td>
+                <td id="activity2">عرض المسرح الاسود</td>
+                <td id="place2">القاعة الكبرى</td>
+              </tr>
+              <tr>
+                <td>1:00 - 2:00 pm </td>
+                <td id="activity3">عرض "من النيل، الى السبيل"</td>
+                <td id="place3">المسرح الصغير</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
   </div>
   <script>
     document.addEventListener('click', function(e){
@@ -61,7 +184,7 @@
       var img = mk.querySelector('img');
       if(img){
         var original = img.getAttribute('src');
-        img.src = '../../assets/book2.png';
+        img.src = '../../assets/36.png';
         setTimeout(function(){ img.src = original; }, 160);
       }
       showBookOverlay();
@@ -80,6 +203,62 @@
     document.addEventListener('keydown', function(e){
       if(e.key === 'Escape') hideBookOverlay();
     });
+    
+    // Language switching functionality
+    let conferenceCurrentLanguage = 'ar';
+    
+    const conferenceContent = {
+      ar: {
+        timeHeader: 'الوقت',
+        activityHeader: 'النشاط',
+        placeHeader: 'المكان',
+        activities: [
+          'عرض المسرح الاسود',
+          'عرض المسرح الاسود',
+          'عرض "من النيل، الى السبيل"'
+        ],
+        places: [
+          'القاعة الكبرى',
+          'القاعة الكبرى',
+          'المسرح الصغير'
+        ]
+      },
+      en: {
+        timeHeader: 'Time',
+        activityHeader: 'Activity',
+        placeHeader: 'Place',
+        activities: [
+          'Ultra Light Show',
+          'Ultra Light Show',
+          'Show "From the Nile, to the Path"'
+        ],
+        places: [
+          'Great Hall',
+          'Great Hall',
+          'Small Theater'
+        ]
+      }
+    };
+    
+    function switchConferenceLanguage() {
+      conferenceCurrentLanguage = conferenceCurrentLanguage === 'ar' ? 'en' : 'ar';
+      updateConferenceContent();
+    }
+    
+    function updateConferenceContent() {
+      const content = conferenceContent[conferenceCurrentLanguage];
+      
+      // Update headers
+      document.getElementById('timeHeader').textContent = content.timeHeader;
+      document.getElementById('activityHeader').textContent = content.activityHeader;
+      document.getElementById('placeHeader').textContent = content.placeHeader;
+      
+      // Update activities and places
+      for (let i = 0; i < content.activities.length; i++) {
+        document.getElementById(`activity${i + 1}`).textContent = content.activities[i];
+        document.getElementById(`place${i + 1}`).textContent = content.places[i];
+      }
+    }
   </script>
   <script>
     // Immediate background test

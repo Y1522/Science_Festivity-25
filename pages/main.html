@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Science Festivity 2025 – Arab Scientists of the Golden Age of Islam</title>
+  <!-- Cache bust: Clean main page without any duplicate text -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-SnC8tq8mXQq7kQH7m8G5qkG0RrM3y8o1zLw0Z8oHqQm1GJp8q2fS1y2Gx1nQhQmQ3mTz6w7vFQv1o8G0LrX1EA==" crossorigin="anonymous" referrerpolicy="no-referrer" onerror="this.onerror=null;this.href='https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.2/css/all.min.css'" />
+    <link rel="stylesheet" href="/css/theme.css">
+    
+    <style>
+        .image-container{position:relative;display:inline-block;width:100%}
+        .map-image{width:100%;height:auto}
+        .icon-button{position:absolute;background:transparent;border:none;cursor:pointer;padding:0;transform:translate(-50%,-50%)}
+        .icon-button img{width:40px;height:auto;filter:drop-shadow(0 4px 8px rgba(0,0,0,.35));animation:bob 2.4s ease-in-out infinite}
+        
+        @media (max-width: 768px) {
+            .icon-button img{width:32px;}
+        }
+        .icon-button:active img{transform:scale(.95)}
+        @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+        
+        /* Games Button Styles */
+        .games-button-container {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            z-index: 1000;
+        }
+        .social-icons{display:flex;gap:10px}
+        .social-icons a{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);color:#fff;text-decoration:none}
+        .social-icons a i{font-size:14px}
+        
+        .games-button {
+            background: linear-gradient(135deg, #4CAF50, #45a049);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 6px 10px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            box-shadow: 0 2px 8px rgba(76, 175, 80, 0.3);
+            transition: all 0.3s ease;
+            font-family: 'Cairo', sans-serif;
+        }
+        
+        .games-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(76, 175, 80, 0.4);
+            background: linear-gradient(135deg, #45a049, #4CAF50);
+        }
+        
+        .games-button:active {
+            transform: translateY(0);
+        }
+        
+        .games-button i {
+            font-size: 18px;
+        }
+        
+        @media (max-width: 768px) {
+            .games-button-container {
+                bottom: 15px;
+                left: 15px;
+            }
+            .games-button {
+                padding: 10px 16px;
+                font-size: 14px;
+            }
+        }
+        
+        /* Animated Background Styles */
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        /* Simple Animation Styles */
+        @keyframes moveUp {
+            0% {
+                transform: translateY(0px);
+                opacity: 0;
+            }
+            20% {
+                opacity: 1;
+            }
+            80% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh);
+                opacity: 0;
+            }
+        }
+        
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+        
+        /* Ensure animations are visible */
+        #simple-bg * {
+            will-change: transform;
+        }
+        
+        /* Lantern with Chain Styles */
+        .lantern-decoration {
+            position: fixed;
+            top: 100px;
+            z-index: 1000;
+            pointer-events: none;
+        }
+        
+        .lantern-left {
+            left: 20px;
+        }
+        
+        .lantern-right {
+            right: 20px;
+        }
+        
+        .chain {
+            width: 3px;
+            height: 60px;
+            background: linear-gradient(to bottom, #FFD700, #B8860B);
+            margin: 0 auto 10px;
+            border-radius: 2px;
+            box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+            animation: chainSway 3s ease-in-out infinite;
+        }
+        
+        .lantern {
+            width: 80px;
+            height: auto;
+            filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.4));
+            animation: lanternGlow 2s ease-in-out infinite alternate;
+        }
+        
+        @keyframes chainSway {
+            0%, 100% { transform: rotate(-2deg); }
+            50% { transform: rotate(2deg); }
+        }
+        
+        @keyframes lanternGlow {
+            0% { filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.4)) brightness(1); }
+            100% { filter: drop-shadow(0 8px 16px rgba(255, 215, 0, 0.6)) brightness(1.1); }
+        }
+        
+        @media (max-width: 768px) {
+            .lantern-decoration {
+                top: 80px;
+            }
+            .lantern-left {
+                left: 10px;
+            }
+            .lantern-right {
+                right: 10px;
+            }
+            .lantern {
+                width: 60px;
+            }
+            .chain {
+                height: 45px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Background will be created by animated-background.js -->
+    <div id="animated-background"></div>
+    
+    <!-- Stunning Animated Background -->
+    <div id="magic-background"></div>
+    
+    <style>
+        /* Override any background from theme.css */
+        body {
+            background: url('/assets/WhatsApp Image 2025-09-17 at 01.13.28_46471fab.jpg') center center/cover no-repeat fixed !important;
+            background-color: transparent !important;
+        }
+        
+        @keyframes moveRight {
+            0% { 
+                left: 10px;
+                transform: translateX(0px);
+            }
+            100% { 
+                left: calc(100% - 30px);
+                transform: translateX(0px);
+            }
+        }
+        
+        @keyframes spin {
+            0% { 
+                transform: rotate(0deg);
+            }
+            100% { 
+                transform: rotate(360deg);
+            }
+        }
+
+    </style>
+
+    <header id="site-header"></header>
+
+    <!-- Lantern Decorations (without chains) -->
+    <div class="lantern-decoration lantern-left">
+        <img src="/assets/WhatsApp_Image_2025-09-18_at_12.48.42_97bf26d4-removebg-preview.png" alt="Lantern" class="lantern">
+    </div>
+    <div class="lantern-decoration lantern-right">
+        <img src="/assets/WhatsApp_Image_2025-09-18_at_12.48.42_97bf26d4-removebg-preview.png" alt="Lantern" class="lantern">
+    </div>
+
+    <main class="container home">
+        <!-- Prompt Section -->
+        <div style="text-align:center;margin:80px 0;color:#eef6ff;">
+            <p data-i18n="map.prompt" style="margin:0;font-size:1.4rem;opacity:.95;font-family:'Cairo',sans-serif;">اضغط على اللفيفة و اكتشف</p>
+        </div>
+        
+        <div class="image-container">
+            <img src="/assets/new1-removebg-preview.png" alt="Map" class="map-image" style="transform: scale(1.2);">
+            <!-- Tents positions -->
+            <button class="icon-button" style="top:10%;left:15%" data-target="/pages/tent4/index.html" title="Tent 4">
+                <img src="/assets/35.png" alt="Tent 4">
+            </button>
+            <button class="icon-button" style="top:40%;left:10%" data-target="/pages/tent4/index.html" title="Tent 4">
+                <img src="/assets/35.png" alt="Tent 4">
+            </button>
+            <button class="icon-button" style="top:25%;left:33%" data-target="/pages/tent3/index.html" title="خيمة الإدريسي">
+                <img src="/assets/35.png" alt="خيمة الإدريسي">
+            </button>
+            <button class="icon-button" style="top:25%;left:53%" data-target="/pages/tent2/index.html" title="خيمة ابن سينا">
+                <img src="/assets/35.png" alt="خيمة ابن سينا">
+            </button>
+            <button class="icon-button" style="top:75%;left:46%" data-target="/pages/tent1/index.html" title="خيمة ابن الهيثم">
+                <img src="/assets/35.png" alt="خيمة ابن الهيثم">
+            </button>
+        </div>
+
+        <div class="image-container" style="display:flex;flex-wrap:nowrap;gap:10px;justify-content:space-between;margin-top:80px;direction:ltr">
+            <div style="position:relative;flex:1 1 48%;order:1">
+                <img src="/assets/Conference_hall-removebg-preview.png" alt="Conference Hall" class="map-image" style="transform: scale(1.0);">
+                <button class="icon-button" style="top:50%;left:50%" data-target="/pages/conference/index.html">
+                    <img src="/assets/35.png" alt="Conference">
+                </button>
+            </div>
+            <div style="position:relative;flex:1 1 60%;order:2">
+                <img src="/assets/out-removebg-preview.png" alt="Outdoor Stage" class="map-image" style="transform: scale(1.0);">
+                <button class="icon-button" style="top:40%;left:50%" data-target="/pages/outdoor/index.html">
+                    <img src="/assets/35.png" alt="Outdoor Stage">
+                </button>
+
+            </div>
+        </div>
+
+        <!-- Games Button - Bottom Left -->
+        <div class="games-button-container">
+            <button class="games-button" onclick="window.location.href='/pages/games/index.html'" title="الألعاب التعليمية">
+                <span data-i18n="nav.games">الألعاب</span>
+            </button>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div style="display:flex;flex-direction:column;align-items:center;gap:12px">
+          <img src="/assets/psc logo.svg" alt="PSC logo" class="psc-logo">
+          <div class="social-icons">
+            <a href="https://www.facebook.com/share/15G7h1f7J38/" target="_blank" rel="noopener" aria-label="Facebook">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="https://www.instagram.com/planetarium.science.center" target="_blank" rel="noopener" aria-label="Instagram">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://www.tiktok.com/@bapsc.2002" target="_blank" rel="noopener" aria-label="TikTok">
+              <i class="fab fa-tiktok"></i>
+            </a>
+            <a href="https://www.bibalex.org/psc" target="_blank" rel="noopener" aria-label="Website">
+              <i class="fas fa-globe"></i>
+            </a>
+          </div>
+        </div>
+    </footer>
+
+
+    <script src="/js/i18n.js"></script>
+    <script src="/js/header.js"></script>
+    <script src="/js/chatbot.js"></script>
+    <script src="/js/dynamic-background.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="/js/3d-arabesque-background.js"></script>
+    <script src="/js/app.js"></script>
+    
+    
+    <script>
+        // Ensure Font Awesome CSS is loaded; fallback to jsDelivr if blocked
+        (function(){
+            function isFontAwesomeActive(){
+                var probe = document.createElement('i');
+                probe.className = 'fa-solid fa-check';
+                probe.style.position='absolute';
+                probe.style.opacity='0';
+                document.body.appendChild(probe);
+                var fam = window.getComputedStyle(probe).fontFamily || '';
+                document.body.removeChild(probe);
+                return /Font Awesome/i.test(fam);
+            }
+            function loadFallback(){
+                var link = document.createElement('link');
+                link.rel = 'stylesheet';
+                link.href = 'https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.2/css/all.min.css';
+                document.head.appendChild(link);
+            }
+            window.addEventListener('load', function(){
+                setTimeout(function(){
+                    if (!isFontAwesomeActive()) loadFallback();
+                }, 150);
+            });
+        })();
+    </script>
+    <script>
+        document.addEventListener('click', function(e){
+            var btn = e.target.closest('.icon-button');
+            if(!btn) return;
+            var img = btn.querySelector('img');
+            if(img){ 
+                img.src='/assets/36.png'; 
+                setTimeout(function(){ 
+                    window.location.href = btn.dataset.target; 
+                }, 120); 
+            }
+        });
+    </script>
+    
+    
+    <!-- Typewriter animation for welcome text -->
+    <script>
+        (function(){
+            function typeWriter(el, fullText, speed){
+                if(!el) return;
+                el.setAttribute('aria-label', fullText);
+                el.textContent = '';
+                var i = 0;
+                var interval = setInterval(function(){
+                    // Append next character
+                    el.textContent += fullText.charAt(i);
+                    i++;
+                    if(i >= fullText.length){
+                        clearInterval(interval);
+                    }
+                }, speed);
+            }
+
+            function startTyping(){
+                var el = document.querySelector('.map-hero h2[data-i18n="map.welcome"]');
+                if(!el) return;
+                var fullText = el.textContent || el.innerText || '';
+                typeWriter(el, fullText, 90);
+            }
+
+            // Run after i18n applies on initial load
+            document.addEventListener('DOMContentLoaded', function(){
+                // Slight delay to ensure applyI18n finished
+                setTimeout(startTyping, 50);
+            });
+
+            // Re-run on language change
+            document.addEventListener('languageChanged', function(){
+                var el = document.querySelector('.map-hero h2[data-i18n="map.welcome"]');
+                if(!el) return;
+                var fullText = el.textContent || el.innerText || '';
+                // Immediately clear then type to avoid showing full text first
+                el.textContent = '';
+                typeWriter(el, fullText, 90);
+            });
+        })();
+    </script>
+</body>
+</html>
+
+

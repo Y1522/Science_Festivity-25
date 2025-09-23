@@ -4,101 +4,641 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <title>أسئلة سريعة</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-SnC8tq8mXQq7kQH7m8G5qkG0RrM3y8o1zLw0Z8oHqQm1GJp8q2fS1y2Gx1nQhQmQ3mTz6w7vFQv1o8G0LrX1EA==" crossorigin="anonymous" referrerpolicy="no-referrer" onerror="this.onerror=null;this.href='https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.2/css/all.min.css'" />
   <link rel="stylesheet" href="../../css/theme.css">
   <!-- Three.js for 3D Arabesque Background -->
   
+  <style>
+    /* Force CSS to load properly */
+    * {
+      box-sizing: border-box;
+    }
+    
+    /* Ensure proper background setup for Game 3 */
+    body {
+      background: #182746 !important;
+      background-attachment: fixed !important;
+      font-family: 'Cairo', sans-serif !important;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+    }
+    
+    #magic-background {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -2;
+    }
+    
+    #animated-background {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
+    
+    /* Ensure header is visible */
+    #site-header {
+      position: relative;
+      z-index: 1000 !important;
+      display: block !important;
+      visibility: visible !important;
+      opacity: 1 !important;
+    }
+    
+    /* Ensure header elements are visible */
+    .header-bar {
+      display: block !important;
+      visibility: visible !important;
+    }
+    
+    /* Ensure language switch is visible */
+    .lang-switch {
+      display: inline-block !important;
+      visibility: visible !important;
+      opacity: 1 !important;
+    }
+    
+    /* Language Switch Styles */
+    .lang-switch{position:relative;display:inline-block;width:86px;height:36px}
+    .lang-switch input{display:none}
+    .lang-switch .slider{position:absolute;inset:0;background:rgba(0,0,0,.35);border-radius:20px;display:flex;align-items:center;justify-content:space-between;padding:0 8px;color:#fff;font-weight:700;font-size:12px;backdrop-filter:blur(4px);border:1px solid rgba(255,255,255,.2)}
+    .lang-switch .slider::after{content:'';position:absolute;height:30px;width:38px;left:3px;top:3px;background:#fff;border-radius:16px;transition:transform .2s ease;box-shadow:0 2px 8px rgba(0,0,0,.25)}
+    .lang-switch input:checked + .slider::after{transform:translateX(45px)}
+    .lang-switch .label-ar{opacity:1;z-index:1}
+    .lang-switch .label-en{opacity:.6;z-index:1}
+    .lang-switch input:checked + .slider .label-ar{opacity:.6}
+    .lang-switch input:checked + .slider .label-en{opacity:1}
+    
+    /* Style the main container */
+    .container {
+      background: rgba(255, 255, 255, 0.1) !important;
+      backdrop-filter: blur(10px);
+      border-radius: 15px;
+      padding: 20px;
+      margin: 20px auto;
+      max-width: 800px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    /* Style the quiz container */
+    #quiz {
+      background: rgba(255, 255, 255, 0.05) !important;
+      border-radius: 10px;
+      padding: 15px;
+      backdrop-filter: blur(5px);
+    }
+    
+    /* Ensure quiz questions are visible */
+    .quiz-question {
+      background: rgba(255, 255, 255, 0.1) !important;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 8px;
+      padding: 15px;
+      margin: 10px 0;
+    }
+    
+    .quiz-choice {
+      background: rgba(255, 255, 255, 0.1) !important;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 5px;
+      padding: 10px;
+      margin: 5px 0;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .quiz-choice:hover {
+      background: rgba(255, 255, 255, 0.2) !important;
+    }
+    
+    /* Ensure text is visible */
+    h2, p, span, div {
+      color: white !important;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+    }
+    
+    /* Modern button styles - All Blue Theme */
+    .btn {
+      background: linear-gradient(135deg, #3498db 0%, #2980b9 100%) !important;
+      border: none !important;
+      border-radius: 15px !important;
+      color: white !important;
+      font-weight: 600 !important;
+      text-shadow: none !important;
+      box-shadow: 0 8px 25px rgba(52, 152, 219, 0.3) !important;
+      transition: all 0.3s ease !important;
+      transform: translateY(0) !important;
+      backdrop-filter: blur(10px) !important;
+      border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    }
+    
+    .btn:hover {
+      transform: translateY(-3px) !important;
+      box-shadow: 0 12px 35px rgba(52, 152, 219, 0.4) !important;
+      background: linear-gradient(135deg, #2980b9 0%, #3498db 100%) !important;
+    }
+    
+    .btn:active {
+      transform: translateY(-1px) !important;
+      box-shadow: 0 6px 20px rgba(52, 152, 219, 0.3) !important;
+    }
+    
+    .level-btn {
+      background: linear-gradient(135deg, #3498db 0%, #2c3e50 100%) !important;
+      box-shadow: 0 8px 25px rgba(52, 152, 219, 0.3) !important;
+    }
+    
+    .level-btn:hover {
+      background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%) !important;
+      box-shadow: 0 12px 35px rgba(52, 152, 219, 0.4) !important;
+    }
+    
+    .answer-btn {
+      background: linear-gradient(135deg, #3498db 0%, #5dade2 100%) !important;
+      box-shadow: 0 8px 25px rgba(52, 152, 219, 0.3) !important;
+    }
+    
+    .answer-btn:hover {
+      background: linear-gradient(135deg, #5dade2 0%, #3498db 100%) !important;
+      box-shadow: 0 12px 35px rgba(52, 152, 219, 0.4) !important;
+    }
+  </style>
+  
 </head>
 <body>
-  <!-- 3D Arabesque Background -->
+  <!-- Dynamic Background -->
+  <div id="animated-background"></div>
   <div id="magic-background"></div>
   
   <header id="site-header"></header>
   <main class="container">
-    <h2>أسئلة سريعة عن علماء العصر الذهبي</h2>
-    <div id="quiz" style="display:grid;gap:14px"></div>
+    <h2 data-i18n="games.quiz">أسئلة سريعة عن علماء العصر الذهبي</h2>
+    <div id="quiz" style="display:grid;gap:14px">
+      <div style="color: white; text-align: center; padding: 20px;">
+        <p>جاري تحميل اللعبة...</p>
+        <div style="margin: 20px 0;">
+          <div style="width: 40px; height: 40px; border: 4px solid rgba(255,255,255,0.3); border-top: 4px solid white; border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto;"></div>
+        </div>
+      </div>
+    </div>
   </main>
-  <footer class="site-footer">
-    <img src="../../assets/psc logo.svg" alt="PSC logo" class="psc-logo">
-  </footer>
+  
+  <style>
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  </style>
   <script src="../../js/i18n.js"></script>
   <script src="../../js/header.js"></script>
   <script src="../../js/chatbot.js"></script>
+  <script src="./game-quiz/animated-background.js"></script>
+  <script src="../../js/dynamic-background.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="../../js/3d-arabesque-background.js"></script>
+  
+  <script>
+    // Force header and background initialization
+    document.addEventListener('DOMContentLoaded', function() {
+      console.log('DOM Content Loaded - Game 3 ready to initialize');
+      
+      // Force header initialization
+      setTimeout(() => {
+        if (window.initializeHeader) {
+          window.initializeHeader();
+        }
+        if (window.initializeBackground) {
+          window.initializeBackground();
+        }
+      }, 100);
+      
+      // Check if header exists
+      const header = document.getElementById('site-header');
+      console.log('Header element:', header);
+      if (header) {
+        console.log('Header innerHTML:', header.innerHTML);
+        console.log('Header display:', window.getComputedStyle(header).display);
+        
+        // If header is empty, force reload
+        if (!header.innerHTML.trim()) {
+          console.log('Header is empty, forcing reload...');
+          setTimeout(() => {
+            if (window.initializeHeader) {
+              window.initializeHeader();
+            }
+          }, 500);
+        }
+      }
+    });
+    
+    // Also check when window loads
+    window.addEventListener('load', function() {
+      console.log('Window Loaded - All resources ready');
+      
+      // Double-check header after everything loads
+      setTimeout(() => {
+        const header = document.getElementById('site-header');
+        if (header) {
+          console.log('Header after load:', header.innerHTML);
+          
+          // If still empty, try to force header creation
+          if (!header.innerHTML.trim()) {
+            console.log('Header still empty, creating fallback...');
+            header.innerHTML = `
+              <div class="header-bar" style="background-image: url('/assets/newbk.jpg'); background-size: cover; background-position: center; padding: 15px; display: flex; justify-content: space-between; align-items: center; position: relative;">
+                <!-- Language Switch in Top Left -->
+                <div style="position: fixed; top: 20px; left: 20px; z-index: 1100;">
+                  <label class="lang-switch" title="Language" data-no-i18n="true" style="width:86px;height:36px;display:inline-block;direction:ltr;">
+                    <input id="lang-toggle" type="checkbox" aria-label="Switch language">
+                    <span class="slider"><span class="label-ar" data-no-i18n="true">عربي</span><span class="label-en" data-no-i18n="true">ENG</span></span>
+                  </label>
+                </div>
+                
+                <!-- Navigation Buttons in Top Right -->
+                <div style="position: fixed; top: 20px; right: 20px; display: flex; gap: 10px; z-index: 1100;">
+                  <button onclick="window.history.back()" style="background: rgba(255,255,255,0.2); color: white; border: 2px solid rgba(255,255,255,0.3); padding: 8px 15px; border-radius: 20px; cursor: pointer; font-weight: bold; text-shadow: 1px 1px 2px rgba(0,0,0,0.8); transition: all 0.3s ease; backdrop-filter: blur(5px);" onmouseover="this.style.background='rgba(255,255,255,0.3)'" onmouseout="this.style.background='rgba(255,255,255,0.2)'">رجوع</button>
+                  <button onclick="window.location.href='/index.html'" style="background: rgba(255,255,255,0.2); color: white; border: 2px solid rgba(255,255,255,0.3); padding: 8px 15px; border-radius: 20px; cursor: pointer; font-weight: bold; text-shadow: 1px 1px 2px rgba(0,0,0,0.8); transition: all 0.3s ease; backdrop-filter: blur(5px);" onmouseover="this.style.background='rgba(255,255,255,0.3)'" onmouseout="this.style.background='rgba(255,255,255,0.2)'">الرئيسية</button>
+                </div>
+                
+                <!-- Center Logo -->
+                <div class="logo" style="color: white; font-weight: bold; font-size: 1.5rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.8); margin: 0 auto;">PSC</div>
+              </div>
+            `;
+            
+            // Add event listener to the language toggle
+            setTimeout(() => {
+              const langToggle = document.getElementById('lang-toggle');
+              if (langToggle) {
+                // Set initial state based on current language
+                langToggle.checked = window.currentLang === 'en';
+                
+                langToggle.addEventListener('change', function() {
+                  if (typeof toggleLanguage === 'function') {
+                    toggleLanguage();
+                  } else {
+                    // Fallback if toggleLanguage is not available
+                    window.currentLang = window.currentLang === 'ar' ? 'en' : 'ar';
+                    document.dispatchEvent(new CustomEvent('languageChanged', { 
+                      detail: { language: window.currentLang } 
+                    }));
+                    
+                    // Update the toggle state
+                    langToggle.checked = window.currentLang === 'en';
+                    
+                    // Force re-render of game content
+                    if (typeof updateLanguage === 'function') {
+                      updateLanguage();
+                    }
+                  }
+                });
+              }
+            }, 100);
+          }
+        }
+      }, 1000);
+    });
+    
+    // Add language toggle event listener
+    document.addEventListener('DOMContentLoaded', function() {
+      const langToggle = document.getElementById('lang-toggle');
+      if (langToggle) {
+        langToggle.addEventListener('change', function() {
+          toggleLanguage();
+        });
+      }
+    });
+  </script>
   
   <script>
   (function(){
     const QUESTIONS = {
-      ar: [
-        {q:'من هو مؤلف القانون في الطب؟', a:'ابن سينا', choices:['ابن سينا','الرازي','ابن الهيثم','الخوارزمي']},
-        {q:'العالم الذي أسس علم البصريات الحديثة؟', a:'ابن الهيثم', choices:['جابر بن حيان','ابن الهيثم','الزهراوي','الفارابي']},
-        {q:'واضع علم الجبر؟', a:'الخوارزمي', choices:['الخوارزمي','الكندي','ابن رشد','البتاني']},
-        {q:'من اخترع الكاميرا المظلمة (Camera Obscura)؟', a:'ابن الهيثم', choices:['ابن الهيثم','ابن سينا','الرازي','الكندي']},
-        {q:'أعظم رحالة في التاريخ الإسلامي؟', a:'ابن بطوطة', choices:['ابن بطوطة','الإدريسي','المسعودي','ابن جبير']},
-        {q:'من أسس علم الاجتماع؟', a:'ابن خلدون', choices:['ابن خلدون','ابن رشد','الغزالي','الفارابي']},
-        {q:'العالم الذي رسم أدق خريطة للعالم في عصره؟', a:'الإدريسي', choices:['الإدريسي','ابن بطوطة','الخوارزمي','البيروني']},
-        {q:'من اكتشف الدورة الدموية الصغرى؟', a:'ابن النفيس', choices:['ابن النفيس','ابن سينا','الرازي','الزهراوي']},
-        {q:'أبو الكيمياء الحديثة؟', a:'جابر بن حيان', choices:['جابر بن حيان','الرازي','الكندي','ابن الهيثم']},
-        {q:'كلمة "Algorithm" مشتقة من اسم أي عالم؟', a:'الخوارزمي', choices:['الخوارزمي','ابن الهيثم','الكندي','البيروني']}
-      ],
-      en: [
-        {q:'Who authored "The Canon of Medicine"?', a:'Ibn Sina', choices:['Ibn Sina','Al-Razi','Ibn al-Haytham','Al-Khwarizmi']},
-        {q:'The scientist who founded modern optics?', a:'Ibn al-Haytham', choices:['Jabir ibn Hayyan','Ibn al-Haytham','Al-Zahrawi','Al-Farabi']},
-        {q:'Founder of algebra?', a:'Al-Khwarizmi', choices:['Al-Khwarizmi','Al-Kindi','Ibn Rushd','Al-Battani']},
-        {q:'Who invented the Camera Obscura?', a:'Ibn al-Haytham', choices:['Ibn al-Haytham','Ibn Sina','Al-Razi','Al-Kindi']},
-        {q:'Greatest traveler in Islamic history?', a:'Ibn Battuta', choices:['Ibn Battuta','Al-Idrisi','Al-Masudi','Ibn Jubayr']},
-        {q:'Who founded sociology?', a:'Ibn Khaldun', choices:['Ibn Khaldun','Ibn Rushd','Al-Ghazali','Al-Farabi']},
-        {q:'The scientist who drew the most accurate world map of his era?', a:'Al-Idrisi', choices:['Al-Idrisi','Ibn Battuta','Al-Khwarizmi','Al-Biruni']},
-        {q:'Who discovered pulmonary circulation?', a:'Ibn al-Nafis', choices:['Ibn al-Nafis','Ibn Sina','Al-Razi','Al-Zahrawi']},
-        {q:'Father of modern chemistry?', a:'Jabir ibn Hayyan', choices:['Jabir ibn Hayyan','Al-Razi','Al-Kindi','Ibn al-Haytham']},
-        {q:'The word "Algorithm" derives from which scientist\'s name?', a:'Al-Khwarizmi', choices:['Al-Khwarizmi','Ibn al-Haytham','Al-Kindi','Al-Biruni']}
-      ]
+      ar: {
+        level1: [
+          {q:'من هو مؤلف القانون في الطب؟', a:'ابن سينا', choices:['ابن سينا','الرازي','ابن الهيثم','الخوارزمي']},
+          {q:'من اخترع الكاميرا المظلمة (Camera Obscura)؟', a:'ابن الهيثم', choices:['ابن الهيثم','ابن سينا','الرازي','الكندي']},
+          {q:'واضع علم الجبر؟', a:'الخوارزمي', choices:['الخوارزمي','الكندي','ابن رشد','البتاني']},
+          {q:'من اكتشف الدورة الدموية الصغرى؟', a:'ابن النفيس', choices:['ابن النفيس','ابن سينا','الرازي','الزهراوي']},
+          {q:'أعظم رحالة في التاريخ الإسلامي؟', a:'ابن بطوطة', choices:['ابن بطوطة','الإدريسي','المسعودي','ابن جبير']}
+        ],
+        level2: [
+          {q:'العالم الذي أسس علم البصريات الحديثة؟', a:'ابن الهيثم', choices:['جابر بن حيان','ابن الهيثم','الزهراوي','الفارابي']},
+          {q:'من أسس علم الاجتماع؟', a:'ابن خلدون', choices:['ابن خلدون','ابن رشد','الغزالي','الفارابي']},
+          {q:'العالم الذي رسم أدق خريطة للعالم في عصره؟', a:'الإدريسي', choices:['الإدريسي','ابن بطوطة','الخوارزمي','البيروني']},
+          {q:'أبو الكيمياء الحديثة؟', a:'جابر بن حيان', choices:['جابر بن حيان','الرازي','الكندي','ابن الهيثم']},
+          {q:'كلمة "Algorithm" مشتقة من اسم أي عالم؟', a:'الخوارزمي', choices:['الخوارزمي','ابن الهيثم','الكندي','البيروني']}
+        ],
+        level3: [
+          {q:'من اخترع الروبوتات الميكانيكية؟', a:'الجزري', choices:['الجزري','بنو موسى','المرادي','ابن سينا']},
+          {q:'من وضع أسس الفيزياء التجريبية؟', a:'الخازني', choices:['الخازني','ابن الهيثم','البيروني','الكندي']},
+          {q:'من أسس علم النباتات الطبية؟', a:'ابن البيطار', choices:['ابن البيطار','الرازي','ابن سينا','جابر بن حيان']},
+          {q:'من وضع نظرية الموسيقى الرياضية؟', a:'الفارابي', choices:['الفارابي','الكندي','ابن سينا','ابن رشد']},
+          {q:'من اكتشف الجيوديسيا؟', a:'البيروني', choices:['البيروني','ابن الهيثم','الخوارزمي','البتاني']}
+        ],
+        level4: [
+          {q:'من وضع أسس علم الكلام الإسلامي؟', a:'الأشعري', choices:['الأشعري','الماتريدي','الغزالي','ابن رشد']},
+          {q:'من أسس المدرسة الأشعرية؟', a:'الأشعري', choices:['الأشعري','الماتريدي','الغزالي','ابن رشد']},
+          {q:'من جمع الصحاح الستة؟', a:'البخاري', choices:['البخاري','مسلم','الترمذي','أبو داود']},
+          {q:'من وضع منهج نقد الحديث؟', a:'البخاري', choices:['البخاري','مسلم','الترمذي','أبو داود']},
+          {q:'من أسس علم التفسير؟', a:'الطبري', choices:['الطبري','ابن خلدون','الغزالي','ابن رشد']}
+        ]
+      },
+      en: {
+        level1: [
+          {q:'Who authored "The Canon of Medicine"?', a:'Ibn Sina', choices:['Ibn Sina','Al-Razi','Ibn al-Haytham','Al-Khwarizmi']},
+          {q:'Who invented the Camera Obscura?', a:'Ibn al-Haytham', choices:['Ibn al-Haytham','Ibn Sina','Al-Razi','Al-Kindi']},
+          {q:'Founder of algebra?', a:'Al-Khwarizmi', choices:['Al-Khwarizmi','Al-Kindi','Ibn Rushd','Al-Battani']},
+          {q:'Who discovered pulmonary circulation?', a:'Ibn al-Nafis', choices:['Ibn al-Nafis','Ibn Sina','Al-Razi','Al-Zahrawi']},
+          {q:'Greatest traveler in Islamic history?', a:'Ibn Battuta', choices:['Ibn Battuta','Al-Idrisi','Al-Masudi','Ibn Jubayr']}
+        ],
+        level2: [
+          {q:'The scientist who founded modern optics?', a:'Ibn al-Haytham', choices:['Jabir ibn Hayyan','Ibn al-Haytham','Al-Zahrawi','Al-Farabi']},
+          {q:'Who founded sociology?', a:'Ibn Khaldun', choices:['Ibn Khaldun','Ibn Rushd','Al-Ghazali','Al-Farabi']},
+          {q:'The scientist who drew the most accurate world map of his era?', a:'Al-Idrisi', choices:['Al-Idrisi','Ibn Battuta','Al-Khwarizmi','Al-Biruni']},
+          {q:'Father of modern chemistry?', a:'Jabir ibn Hayyan', choices:['Jabir ibn Hayyan','Al-Razi','Al-Kindi','Ibn al-Haytham']},
+          {q:'The word "Algorithm" derives from which scientist\'s name?', a:'Al-Khwarizmi', choices:['Al-Khwarizmi','Ibn al-Haytham','Al-Kindi','Al-Biruni']}
+        ],
+        level3: [
+          {q:'Who invented mechanical robots?', a:'Al-Jazari', choices:['Al-Jazari','Banu Musa','Al-Muradi','Ibn Sina']},
+          {q:'Who founded experimental physics?', a:'Al-Khazini', choices:['Al-Khazini','Ibn al-Haytham','Al-Biruni','Al-Kindi']},
+          {q:'Who founded medicinal botany?', a:'Ibn al-Baitar', choices:['Ibn al-Baitar','Al-Razi','Ibn Sina','Jabir ibn Hayyan']},
+          {q:'Who developed mathematical music theory?', a:'Al-Farabi', choices:['Al-Farabi','Al-Kindi','Ibn Sina','Ibn Rushd']},
+          {q:'Who discovered geodesy?', a:'Al-Biruni', choices:['Al-Biruni','Ibn al-Haytham','Al-Khwarizmi','Al-Battani']}
+        ],
+        level4: [
+          {q:'Who founded Islamic theology?', a:'Al-Ashari', choices:['Al-Ashari','Al-Maturidi','Al-Ghazali','Ibn Rushd']},
+          {q:'Who founded the Ashari school?', a:'Al-Ashari', choices:['Al-Ashari','Al-Maturidi','Al-Ghazali','Ibn Rushd']},
+          {q:'Who collected the Six Authentic Books?', a:'Al-Bukhari', choices:['Al-Bukhari','Muslim','Al-Tirmidhi','Abu Dawood']},
+          {q:'Who developed hadith criticism methodology?', a:'Al-Bukhari', choices:['Al-Bukhari','Muslim','Al-Tirmidhi','Abu Dawood']},
+          {q:'Who founded Quranic exegesis?', a:'Al-Tabari', choices:['Al-Tabari','Ibn Khaldun','Al-Ghazali','Ibn Rushd']}
+        ]
+      }
     };
     
-    let currentQuestions = QUESTIONS.ar;
-    let i=0, score=0; 
-    const root=document.getElementById('quiz');
+    let currentLevel = 1;
+    let currentQuestions = [];
+    let currentQuestionIndex = 0;
+    let score = 0;
+    let wrongAnswers = [];
+    let gameState = 'level-select'; // 'level-select', 'playing', 'level-complete', 'game-complete'
+    let gameStartTime = 0;
+    let gameEndTime = 0;
+    let totalAttempts = 0;
+    const root = document.getElementById('quiz');
     
     // Listen for language changes
     function updateLanguage() {
       const lang = window.currentLang || 'ar';
-      currentQuestions = QUESTIONS[lang] || QUESTIONS.ar;
+      console.log('Game 3 Language changed to:', lang);
       
-      // Reset quiz if language changed mid-game
-      if (i > 0) {
-        i = 0;
-        score = 0;
+      // Update the main title
+      const titleElement = document.querySelector('h2[data-i18n="games.quiz"]');
+      if (titleElement) {
+        titleElement.textContent = lang === 'ar' ? 'أسئلة سريعة عن علماء العصر الذهبي' : 'Quick Questions about Golden Age Scientists';
+      }
+      
+      // Re-render the current game state
+      if (gameState === 'level-select') {
+        renderLevelSelect();
+      } else if (gameState === 'playing') {
         render();
+      } else if (gameState === 'level-complete') {
+        renderLevelComplete();
       }
     }
     
     // Listen for language toggle events
     document.addEventListener('languageChanged', updateLanguage);
     
-    function render(){
+    // Also listen for DOM ready to ensure language is set correctly
+    document.addEventListener('DOMContentLoaded', function() {
+      console.log('Game 3 DOM ready, current language:', window.currentLang);
+      updateLanguage();
+    });
+    
+    function renderLevelSelect() {
       const lang = window.currentLang || 'ar';
-      const resultText = lang === 'ar' ? 'النتيجة:' : 'Score:';
+      const title = lang === 'ar' ? 'اختر المستوى' : 'Choose Level';
+      const levelText = lang === 'ar' ? 'المستوى' : 'Level';
+      const startText = lang === 'ar' ? 'ابدأ' : 'Start';
       
-      if(i>=currentQuestions.length){
-        const percentage = Math.round((score/currentQuestions.length) * 100);
-        const message = lang === 'ar' ? 
-          `🎉 مبروك! النتيجة: ${score}/${currentQuestions.length} (${percentage}%)` :
-          `🎉 Congratulations! Score: ${score}/${currentQuestions.length} (${percentage}%)`;
-        root.innerHTML = `<div class=tile><div class=tile-title>${message}</div></div>`;
-        return;
-      }
+      root.innerHTML = `
+        <div class="tile" style="display:grid;gap:15px;justify-items:center;padding:20px;background:rgba(255,255,255,.1)">
+          <div class="tile-title" style="font-size:1.5rem;margin-bottom:10px">${title}</div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px;width:100%">
+            ${[1,2,3,4].map(level => `
+              <button class="btn level-btn" data-level="${level}" style="background:linear-gradient(135deg, #528AC7, #2b6aa1);padding:15px;font-size:1.1rem">
+                ${levelText} ${level}
+              </button>
+            `).join('')}
+          </div>
+        </div>
+      `;
       
-      const {q,choices,a} = currentQuestions[i];
-      root.innerHTML = `<div class=tile style="display:grid;gap:10px;justify-items:center;padding:18px;background:rgba(255,255,255,.1)"><div class=tile-title>${q}</div><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:8px;width:100%">${choices.map(c=>`<button class=btn data-c='${c}' style='background:#528AC7'>${c}</button>`).join('')}</div></div>`;
-      root.querySelectorAll('button').forEach(b=>b.onclick=()=>{ 
-        const correct=b.dataset.c===a; 
-        if(correct) score++; 
-        b.style.background=correct?'#2fb170':'#c23b3b'; 
-        setTimeout(()=>{ i++; render(); }, 400); 
+      root.querySelectorAll('.level-btn').forEach(btn => {
+        btn.onclick = () => {
+          currentLevel = parseInt(btn.dataset.level);
+          const lang = window.currentLang || 'ar';
+          currentQuestions = QUESTIONS[lang][`level${currentLevel}`];
+          currentQuestionIndex = 0;
+          score = 0;
+          wrongAnswers = [];
+          totalAttempts = 0;
+          gameStartTime = Date.now();
+          gameState = 'playing';
+          render();
+        };
       });
     }
     
-    // Initialize
-    updateLanguage();
-    render();
+    function render() {
+      const lang = window.currentLang || 'ar';
+      
+      if (currentQuestionIndex >= currentQuestions.length) {
+        renderLevelComplete();
+        return;
+      }
+      
+      const {q, choices, a} = currentQuestions[currentQuestionIndex];
+      const levelText = lang === 'ar' ? `المستوى ${currentLevel}` : `Level ${currentLevel}`;
+      const questionNum = lang === 'ar' ? `السؤال ${currentQuestionIndex + 1} من ${currentQuestions.length}` : `Question ${currentQuestionIndex + 1} of ${currentQuestions.length}`;
+      
+      root.innerHTML = `
+        <div class="tile" style="display:grid;gap:15px;justify-items:center;padding:20px;background:rgba(255,255,255,.1)">
+          <div style="display:flex;justify-content:space-between;width:100%;font-size:0.9rem;opacity:0.8">
+            <span>${levelText}</span>
+            <span>${questionNum}</span>
+          </div>
+          <div class="tile-title" style="font-size:1.2rem;text-align:center">${q}</div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;width:100%">
+            ${choices.map(c => `
+              <button class="btn answer-btn" data-answer="${c}" style="background:#528AC7;padding:12px;font-size:1rem">
+                ${c}
+              </button>
+            `).join('')}
+          </div>
+        </div>
+      `;
+      
+      root.querySelectorAll('.answer-btn').forEach(btn => {
+        btn.onclick = () => {
+          const userAnswer = btn.dataset.answer;
+          const correct = userAnswer === a;
+          totalAttempts++;
+          
+          if (!correct) {
+            wrongAnswers.push({
+              question: q,
+              userAnswer: userAnswer,
+              correctAnswer: a
+            });
+          } else {
+            score++;
+          }
+          
+          // Show correct/incorrect feedback
+          btn.style.background = correct ? '#2fb170' : '#c23b3b';
+          root.querySelectorAll('.answer-btn').forEach(b => {
+            if (b.dataset.answer === a) b.style.background = '#2fb170';
+            b.disabled = true;
+          });
+          
+          setTimeout(() => {
+            currentQuestionIndex++;
+            render();
+          }, 1500);
+        };
+      });
+    }
+    
+    function renderLevelComplete() {
+      const lang = window.currentLang || 'ar';
+      gameEndTime = Date.now();
+      const totalTime = Math.round((gameEndTime - gameStartTime) / 1000);
+      const percentage = Math.round((score / currentQuestions.length) * 100);
+      const levelText = lang === 'ar' ? `المستوى ${currentLevel}` : `Level ${currentLevel}`;
+      const scoreText = lang === 'ar' ? 'النتيجة' : 'Score';
+      const timeText = lang === 'ar' ? 'الوقت المستغرق' : 'Time Taken';
+      const attemptsText = lang === 'ar' ? 'عدد المحاولات' : 'Total Attempts';
+      const nextLevelText = lang === 'ar' ? 'المستوى التالي' : 'Next Level';
+      const playAgainText = lang === 'ar' ? 'العب مرة أخرى' : 'Play Again';
+      const backToLevelsText = lang === 'ar' ? 'العودة للمستويات' : 'Back to Levels';
+      
+      let wrongAnswersHtml = '';
+      if (wrongAnswers.length > 0) {
+        const wrongTitle = lang === 'ar' ? 'الإجابات الخاطئة:' : 'Wrong Answers:';
+        wrongAnswersHtml = `
+          <div style="margin-top:20px;padding:15px;background:rgba(194,59,59,0.2);border-radius:10px">
+            <div style="font-weight:bold;margin-bottom:10px;color:#c23b3b">${wrongTitle}</div>
+            ${wrongAnswers.map(wrong => `
+              <div style="margin-bottom:10px;font-size:0.9rem">
+                <div style="font-weight:bold">${wrong.question}</div>
+                <div style="color:#c23b3b">${lang === 'ar' ? 'إجابتك:' : 'Your answer:'} ${wrong.userAnswer}</div>
+                <div style="color:#2fb170">${lang === 'ar' ? 'الإجابة الصحيحة:' : 'Correct answer:'} ${wrong.correctAnswer}</div>
+              </div>
+            `).join('')}
+          </div>
+        `;
+      }
+      
+      let nextLevelBtn = '';
+      if (currentLevel < 4) {
+        nextLevelBtn = `
+          <button class="btn" onclick="startNextLevel()" style="background:linear-gradient(135deg, #2fb170, #27a85a);padding:12px 20px;font-size:1rem">
+            ${nextLevelText}
+          </button>
+        `;
+      }
+      
+      root.innerHTML = `
+        <div class="tile" style="display:grid;gap:15px;justify-items:center;padding:20px;background:rgba(255,255,255,.1)">
+          <div class="tile-title" style="font-size:1.5rem">🎉 ${levelText} مكتمل!</div>
+          <div style="font-size:1.2rem;font-weight:bold">
+            ${scoreText}: ${score}/${currentQuestions.length} (${percentage}%)
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;width:100%;max-width:400px;margin:10px 0">
+            <div style="text-align:center;padding:10px;background:rgba(255,255,255,0.1);border-radius:8px">
+              <div style="font-size:1.5rem;font-weight:bold;color:#4CAF50">${totalTime}</div>
+              <div style="font-size:0.9rem;opacity:0.8">${timeText}</div>
+            </div>
+            <div style="text-align:center;padding:10px;background:rgba(255,255,255,0.1);border-radius:8px">
+              <div style="font-size:1.5rem;font-weight:bold;color:#2196F3">${totalAttempts}</div>
+              <div style="font-size:0.9rem;opacity:0.8">${attemptsText}</div>
+            </div>
+          </div>
+          ${wrongAnswersHtml}
+          <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center">
+            ${nextLevelBtn}
+            <button class="btn" onclick="playAgain()" style="background:linear-gradient(135deg, #528AC7, #2b6aa1);padding:12px 20px;font-size:1rem">
+              ${playAgainText}
+            </button>
+            <button class="btn" onclick="backToLevels()" style="background:linear-gradient(135deg, #6c757d, #495057);padding:12px 20px;font-size:1rem">
+              ${backToLevelsText}
+            </button>
+          </div>
+        </div>
+      `;
+    }
+    
+    // Global functions for buttons
+    window.startNextLevel = function() {
+      currentLevel++;
+      const lang = window.currentLang || 'ar';
+      currentQuestions = QUESTIONS[lang][`level${currentLevel}`];
+      currentQuestionIndex = 0;
+      score = 0;
+      wrongAnswers = [];
+      totalAttempts = 0;
+      gameStartTime = Date.now();
+      gameState = 'playing';
+      render();
+    };
+    
+    window.playAgain = function() {
+      const lang = window.currentLang || 'ar';
+      currentQuestions = QUESTIONS[lang][`level${currentLevel}`];
+      currentQuestionIndex = 0;
+      score = 0;
+      wrongAnswers = [];
+      totalAttempts = 0;
+      gameStartTime = Date.now();
+      gameState = 'playing';
+      render();
+    };
+    
+    window.backToLevels = function() {
+      gameState = 'level-select';
+      renderLevelSelect();
+    };
+    
+    // Initialize with error handling
+    try {
+      console.log('Initializing Game 3 Quiz...');
+      console.log('Root element:', root);
+      console.log('Current language:', window.currentLang);
+      
+      if (!root) {
+        throw new Error('Quiz element not found');
+      }
+      
+      renderLevelSelect();
+      console.log('Game 3 Quiz initialized successfully');
+    } catch (error) {
+      console.error('Error initializing Game 3 Quiz:', error);
+      const quizElement = document.getElementById('quiz');
+      if (quizElement) {
+        quizElement.innerHTML = '<div style="color: white; text-align: center; padding: 20px;">خطأ في تحميل اللعبة. يرجى إعادة تحميل الصفحة.<br>Error: ' + error.message + '</div>';
+      }
+    }
   })();
   </script>
 </body>

@@ -16,4 +16,16 @@ document.addEventListener('DOMContentLoaded', function(){
   step();
 });
 
+// Keep outdoor/conference card order fixed on language change
+document.addEventListener('languageChanged', function(){
+  var container = document.querySelector('.image-container[style*="margin-top:14px"]');
+  if(!container) return;
+  var cards = container.querySelectorAll('div[style*="position:relative"]');
+  if(cards.length === 2){
+    cards[0].style.order = '1';
+    cards[1].style.order = '2';
+    container.style.direction = 'ltr';
+  }
+});
+
 

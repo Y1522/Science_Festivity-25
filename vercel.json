@@ -1,0 +1,33 @@
+{
+  "version": 2,
+  "public": true,
+  "cleanUrls": true,
+  "trailingSlash": true,
+  "headers": [
+    {
+      "source": "/assets/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+      ]
+    }
+  ],
+  "builds": [
+    { "src": "index.html", "use": "@vercel/static" },
+    { "src": "pages/**/*.html", "use": "@vercel/static" },
+    { "src": "game2/**/*", "use": "@vercel/static" },
+    { "src": "GAME 1/**/*", "use": "@vercel/static" },
+    { "src": "css/**/*", "use": "@vercel/static" },
+    { "src": "js/**/*", "use": "@vercel/static" },
+    { "src": "assets/**/*", "use": "@vercel/static" }
+  ],
+  "rewrites": [
+    { "source": "/", "destination": "/index.html" },
+    { "source": "/assets/(.*)", "destination": "/assets/$1" },
+    { "source": "/pages/(.*)", "destination": "/pages/$1" },
+    { "source": "/game2", "destination": "/game2/index.html" },
+    { "source": "/GAME%201", "destination": "/GAME 1/index.html" },
+    { "source": "/pages/games/(.*)", "destination": "/pages/games/$1" }
+  ]
+}
+
+

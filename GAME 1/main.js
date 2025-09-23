@@ -1,7 +1,14 @@
 const canvas = document.getElementById("game");
 const context = canvas.getContext("2d");
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+
+// Ensure canvas is properly sized
+function initCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    console.log('Canvas initialized:', canvas.width, 'x', canvas.height);
+}
+
+initCanvas();
 const pauseBtn = document.getElementById("pauseBtn");
 const restartBtn = document.getElementById("restartBtn");
 let isPaused = false;
@@ -279,6 +286,10 @@ function render() {
     // Draw ball
     drawCircle(ball.x, ball.y, ball.radius, ball.color);
 
+    // Debug: Log render calls occasionally
+    if (Math.random() < 0.01) {
+        console.log('Render called, canvas size:', canvas.width, 'x', canvas.height);
+    }
 }
 
 
@@ -298,4 +309,10 @@ function gameLoop() {
 // Set gameLoop to run at 60 frame per second
 const framePerSec = 60;
 resizeGame(false);
+
+// Add debugging
+console.log('Starting game loop...');
+console.log('Canvas element:', canvas);
+console.log('Context:', context);
+
 setInterval(gameLoop, 1000 / framePerSec);

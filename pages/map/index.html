@@ -25,23 +25,23 @@
     <section class="map-hero">
       <h2 data-i18n="map.welcome">مرحبا بكم</h2>
       <img src="../../assets/1.png" alt="Welcome image" style="max-width:360px;width:100%;height:auto">
-      <p data-i18n="map.prompt">اضغط على الكتاب و اكتشف</p>
+      <p data-i18n="map.prompt">اضغط على اللفيفة و اكتشف</p>
     </section>
 
     <div class="image-container">
-      <img src="../../assets/layout 2 .RGB_color.jpg" alt="Map" class="map-image">
+      <img src="../../assets/1.1-removebg-preview.png" alt="Map" class="map-image">
       <!-- Tents positions (same as old) -->
       <button class="icon-button" style="top:20%;left:16%" data-target="../tent4/index.html">
-        <img src="../../assets/book1.png" alt="Tent 4">
+        <img src="../../assets/35.png" alt="Tent 4">
       </button>
       <button class="icon-button" style="top:16%;left:34%" data-target="../tent3/index.html">
-        <img src="../../assets/book1.png" alt="Tent 3">
+        <img src="../../assets/35.png" alt="Tent 3">
       </button>
       <button class="icon-button" style="top:16%;left:50%" data-target="../tent2/index.html">
-        <img src="../../assets/book1.png" alt="Tent 2">
+        <img src="../../assets/35.png" alt="Tent 2">
       </button>
       <button class="icon-button" style="top:70%;left:40%" data-target="../tent1/index.html">
-        <img src="../../assets/book1.png" alt="Tent 1">
+        <img src="../../assets/35.png" alt="Tent 1">
       </button>
     </div>
 
@@ -49,13 +49,13 @@
       <div style="position:relative;flex:1 1 48%">
         <img src="../../assets/Conference hall.svg" alt="Conference Hall" class="map-image">
         <button class="icon-button" style="top:50%;left:50%" data-target="../conference/index.html">
-          <img src="../../assets/book1.png" alt="Conference">
+          <img src="../../assets/35.png" alt="Conference">
         </button>
       </div>
       <div style="position:relative;flex:1 1 48%">
         <img src="../../assets/outStage2.jpg" alt="Outdoor Stage" class="map-image">
         <button class="icon-button" style="top:50%;left:50%" data-target="../outdoor/index.html">
-          <img src="../../assets/book1.png" alt="Outdoor Stage">
+          <img src="../../assets/35.png" alt="Outdoor Stage">
         </button>
       </div>
     </div>
@@ -68,13 +68,14 @@
   <script src="../../js/i18n.js"></script>
   <script src="../../js/header.js"></script>
   <script src="../../js/chatbot.js"></script>
+  <script src="../../js/dynamic-background.js"></script>
   
   <script>
     document.addEventListener('click', function(e){
       var btn = e.target.closest('.icon-button');
       if(!btn) return;
       var img = btn.querySelector('img');
-      if(img){ img.src='../../assets/book2.png'; setTimeout(function(){ window.location.href = btn.dataset.target; }, 120); }
+      if(img){ img.src='../../assets/36.png'; setTimeout(function(){ window.location.href = btn.dataset.target; }, 120); }
     });
   </script>
 

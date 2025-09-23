@@ -5,7 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <title>خيمة ابن سينا</title>
   <link rel="stylesheet" href="../../css/theme.css">
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&display=swap" rel="stylesheet">
   
+  <style>
+    body {
+      background: url('../../assets/WhatsApp Image 2025-09-17 at 01.13.28_46471fab.jpg') center center/cover no-repeat fixed !important;
+    }
+  </style>
 </head>
 <body>
   <!-- Background placeholder (can be styled by CSS) -->
@@ -13,120 +19,433 @@
   
   <header id="site-header"></header>
   
-  <!-- Tent Video Section -->
-  <section class="tent-video-section" style="padding:20px 0;margin-bottom:20px;">
-    <div class="container">
-      <video 
-        autoplay 
-        muted 
-        loop 
-        playsinline 
-        style="width:100%;max-width:800px;height:auto;border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,0.4);display:block;margin:0 auto;"
-        poster="../../assets/tent 2.jpg">
-        <source src="../../assets/tent 2 video.mp4" type="video/mp4">
-        <img src="../../assets/tent 2.jpg" alt="خيمة ابن سينا" style="width:100%;height:auto;border-radius:16px;">
-      </video>
-      <div style="text-align:center;margin-top:15px;color:#eef6ff;">
-        <h2 data-i18n="nav.tent2" style="margin:0;font-size:2rem;text-shadow:0 2px 4px rgba(0,0,0,0.5);">خيمة ابن سينا</h2>
-        <p style="margin:8px 0 0;font-size:1.1rem;opacity:.95">اضغط على الكتاب و اكتشف</p>
-      </div>
-    </div>
-  </section>
-  
   <main class="container">
+    <!-- Tent Title and Prompt Section -->
+    <div style="text-align:center;margin:60px 0;color:#eef6ff;">
+      <h2 data-i18n="nav.tent2" style="margin:0 0 10px 0;font-size:2.5rem;text-shadow:0 2px 4px rgba(0,0,0,0.5);font-family:'Cairo',sans-serif;">خيمة ابن سينا</h2>
+      <p data-i18n="map.prompt" style="margin:0;font-size:1.3rem;opacity:.95;font-family:'Cairo',sans-serif;">اضغط على اللفيفة و اكتشف</p>
+    </div>
+    
     <div style="position:relative">
-      <img src="../../assets/tent 2.jpg" alt="خيمة ابن سينا" style="width:100%;height:auto;border-radius:12px">
+      <img src="../../assets/tent2.1copy.jpg" alt="خيمة ابن سينا" style="width:100%;max-width:800px;height:auto;border-radius:12px;display:block;margin:0 auto">
 
-      <!-- Workshop book markers for Tent 2 (14 - 24) -->
+      <!-- Booth book markers for Tent 2 (14 - 24) -->
       <style>
         .marker-btn{position:absolute;background:transparent;border:none;cursor:pointer;padding:0}
-        .marker-btn img{width:18px;height:auto;filter:drop-shadow(0 6px 14px rgba(0,0,0,.35)) brightness(1.05);transition:transform .18s ease, filter .18s ease}
+        .marker-btn img{width:35px;height:auto;filter:drop-shadow(0 6px 14px rgba(0,0,0,.35)) brightness(1.05);transition:transform .18s ease, filter .18s ease}
         .marker-btn:hover img{transform:scale(1.08);filter:drop-shadow(0 8px 20px rgba(0,0,0,.45)) brightness(1.12)}
-        @media (max-width:768px){.marker-btn img{width:14px}}
+        @media (max-width:768px){.marker-btn img{width:28px}}
       </style>
-      <button class="marker-btn" style="bottom:12%;right:13%" data-workshop="workshop14" title="ورشة 14">
-        <img src="../../assets/book1.png" alt="workshop 14">
+      <button class="marker-btn" style="bottom:26%;right:78%" data-booth="workshop14" title="ورشة 14">
+        <img src="../../assets/35.png" alt="Booth 14">
       </button>
-      <button class="marker-btn" style="bottom:12%;right:28%" data-workshop="workshop15" title="ورشة 15">
-        <img src="../../assets/book1.png" alt="workshop 15">
+      <button class="marker-btn" style="bottom:26%;right:69%" data-booth="workshop15" title="ورشة 15">
+        <img src="../../assets/35.png" alt="Booth 15">
       </button>
-      <button class="marker-btn" style="bottom:12%;right:43%" data-workshop="workshop16" title="ورشة 16">
-        <img src="../../assets/book1.png" alt="workshop 16">
+      <button class="marker-btn" style="bottom:26%;right:41%" data-booth="workshop16" title="ورشة 16">
+        <img src="../../assets/35.png" alt="Booth 16">
       </button>
-      <button class="marker-btn" style="bottom:12%;right:58%" data-workshop="workshop17" title="ورشة 17">
-        <img src="../../assets/book1.png" alt="workshop 17">
+      <button class="marker-btn" style="bottom:26%;right:32%" data-booth="workshop17" title="ورشة 17">
+        <img src="../../assets/35.png" alt="Booth 17">
       </button>
-      <button class="marker-btn" style="bottom:12%;left:29%" data-workshop="workshop18" title="ورشة 18">
-        <img src="../../assets/book1.png" alt="workshop 18">
+      <button class="marker-btn" style="bottom:26%;left:83%" data-booth="workshop18" title="ورشة 18">
+        <img src="../../assets/35.png" alt="Booth 18">
       </button>
-      <button class="marker-btn" style="bottom:12%;left:16%" data-workshop="workshop19" title="ورشة 19">
-        <img src="../../assets/book1.png" alt="workshop 19">
+      <button class="marker-btn" style="top:30%;left:78%" data-booth="workshop19" title="ورشة 19">
+        <img src="../../assets/35.png" alt="Booth 19">
       </button>
-      <button class="marker-btn" style="top:42%;left:17%" data-workshop="workshop20" title="ورشة 20">
-        <img src="../../assets/book1.png" alt="workshop 20">
+      <button class="marker-btn" style="top:30%;left:69%" data-booth="workshop20" title="ورشة 20">
+        <img src="../../assets/35.png" alt="Booth 20">
       </button>
-      <button class="marker-btn" style="top:42%;left:32%" data-workshop="workshop21" title="ورشة 21">
-        <img src="../../assets/book1.png" alt="workshop 21">
+      <button class="marker-btn" style="top:30%;left:52%" data-booth="workshop21" title="ورشة 21">
+        <img src="../../assets/35.png" alt="Booth 21">
       </button>
-      <button class="marker-btn" style="top:42%;left:47%" data-workshop="workshop22" title="ورشة 22">
-        <img src="../../assets/book1.png" alt="workshop 22">
+      <button class="marker-btn" style="top:30%;left:25%" data-booth="workshop22" title="ورشة 22">
+        <img src="../../assets/35.png" alt="Booth 22">
       </button>
-      <button class="marker-btn" style="top:42%;right:36%" data-workshop="workshop23" title="ورشة 23">
-        <img src="../../assets/book1.png" alt="workshop 23">
+      <button class="marker-btn" style="top:30%;right:77%" data-booth="workshop23" title="ورشة 23">
+        <img src="../../assets/35.png" alt="Booth 23">
       </button>
-      <button class="marker-btn" style="top:42%;right:21%" data-workshop="workshop24" title="ورشة 24">
-        <img src="../../assets/book1.png" alt="workshop 24">
+      <button class="marker-btn" style="top:30%;right:86.5%" data-booth="workshop24" title="ورشة 24">
+        <img src="../../assets/35.png" alt="Booth 24">
       </button>
     </div>
   </main>
+  
   <footer class="site-footer">
     <img src="../../assets/psc logo.svg" alt="PSC logo" class="psc-logo">
   </footer>
   <script src="../../js/i18n.js"></script>
   <script src="../../js/header.js"></script>
   <script src="../../js/chatbot.js"></script>
+  <script src="../../js/dynamic-background.js"></script>
   
   
   <!-- Fullscreen Book Viewer Overlay (Tent 2) -->
   <style>
     .book-overlay{position:fixed;inset:0;background:rgba(0,0,0,.85);display:none;align-items:center;justify-content:center;z-index:2000}
     .book-overlay.open{display:flex}
-    .book-overlay img{max-width:98vw;max-height:98vh;border-radius:14px;box-shadow:0 20px 60px rgba(0,0,0,.5);animation:bookZoom .25s ease}
-    .book-close{position:absolute;top:18px;right:22px;width:42px;height:42px;border-radius:50%;background:rgba(255,255,255,.12);border:2px solid rgba(255,255,255,.6);color:#fff;font-size:22px;display:flex;align-items:center;justify-content:center;cursor:pointer;backdrop-filter:blur(2px)}
+    .book-container{position:relative;display:flex;align-items:center;justify-content:center;width:100%;height:100%}
+    .book-overlay img{max-width:50vw;max-height:50vh;width:auto;height:auto;border-radius:14px;box-shadow:0 20px 60px rgba(0,0,0,.5);animation:bookZoom .25s ease;transform:scale(1.4) translateX(-2%);object-fit:contain}
+    .book-close{position:absolute;top:150px;right:20px;width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.12);border:2px solid rgba(255,255,255,.6);color:#fff;font-size:18px;display:flex;align-items:center;justify-content:center;cursor:pointer;backdrop-filter:blur(2px);z-index:2001}
     .book-close:hover{background:rgba(255,255,255,.2)}
     @keyframes bookZoom{from{transform:scale(.92);opacity:.6}to{transform:scale(1);opacity:1}}
+    .booth-text{position:absolute;top:37%;left:50%;transform:translate(-50%,-10%);width:60%;max-width:700px;text-align:center;color:#8B4513;z-index:10;font-family:'Amiri', serif;}
+    .booth-text h5{font-size:0.99rem;margin:0 0 8px 0;color:#8B4513;text-shadow:1px 1px 2px rgba(255,255,255,0.8);font-weight:normal;line-height:1.35;text-align:center}
+    .booth-text p{font-size:1.35rem;margin:0 0 14px 0;color:#654321;line-height:1.5;text-shadow:1px 1px 2px rgba(255,255,255,0.6);font-weight:bold}
+    
+    /* English language font size adjustments for 36.png text overlay */
+    .lang-en .booth-text h5{font-size:0.79rem}
+    .lang-en .booth-text p{font-size:1.08rem}
+    
+    /* Additional English font size adjustments for detail items (Age/Timer icons text) */
+    .lang-en .detail-item span{font-size:0.72rem}
+    
+    /* Enhanced Navigation Button Hover Effects */
+    #boothNav button:hover {
+      transform: translateY(-2px) scale(1.05);
+      box-shadow: 0 8px 25px rgba(139,69,19,0.5);
+      background: linear-gradient(135deg, rgba(160,82,45,1), rgba(139,69,19,1));
+    }
+    
+    #boothNav button:active {
+      transform: translateY(0) scale(0.98);
+    }
+    .booth-details{display:flex;flex-direction:column;gap:8px;flex-wrap:nowrap;justify-content:flex-start;margin-left:-150px}
+    .detail-item{display:flex;align-items:center;gap:12px;color:#8B4513;font-weight:bold}
+    .detail-item .icon{width:16px;height:16px;filter:hue-rotate(25deg) saturate(1.5)}
+    .detail-item span{font-size:0.9rem;font-weight:bold;text-shadow:1px 1px 2px rgba(255,255,255,0.8)}
+    .age-primary{filter:hue-rotate(60deg) saturate(2) brightness(1.2)}
+    .age-secondary{filter:hue-rotate(120deg) saturate(2) brightness(1.2)}
+    .age-high{filter:hue-rotate(240deg) saturate(2) brightness(1.2)}
+    .age-kindergarten{filter:hue-rotate(300deg) saturate(2) brightness(1.2)}
+    .age-special{filter:hue-rotate(270deg) saturate(2) brightness(1.2)}
   </style>
   <div id="bookOverlay" class="book-overlay" role="dialog" aria-modal="true" aria-label="Open book view">
-    <button class="book-close" aria-label="Close" title="إغلاق" onclick="hideBookOverlay()">×</button>
-    <img id="bookOverlayImg" src="../../assets/book2.png" alt="Open book">
+    <div class="book-container">
+      <button class="book-close" aria-label="Close" title="إغلاق" onclick="hideBookOverlay()">×</button>
+      <img id="bookOverlayImg" src="../../assets/36.png" alt="Open book">
+      <div class="booth-text" id="boothContent">
+        <!-- Booth content will be dynamically loaded here -->
+      </div>
+    </div>
   </div>
   
   <script>
+    // Booth data with Arabic and English content for Tent 2
+    const Booths = [
+      {
+        id: 14,
+        ar: {
+          title: " عرض تقديمي: عملية «التقطير» ودورها في تعرُّف المعادن والمواد الكيميائية و وصفها",
+          description: "فريق إنرجي فور مي (E4me) ",
+          duration: "15 دقيقة",
+          age: "المرحلة الإعدادية والثانوية   ",
+          ageClass: "age-high"
+        },
+        en: {
+          title: "Presentation: The process of 'Distillation' and its role in identifying minerals and chemicals and describing them",
+          description: "Energy For Me Team (E4me) ",
+          duration: "minutes 15 ",
+          age: "Middle and High School",
+          ageClass: "age-high"
+        }
+      },
+      {
+        id: 15,
+        ar: {
+          title: "عرض تقديمي: أبناء موسى، ثلاثة إخوة من العصر العباسي أبدعوا في الرياضيات والهندسة",
+          description: "أسرة الصفوة، كلية العلوم، جامعة الإسكندرية ",
+          duration: "15 دقيقة",
+          age: "المرحلة الابتدائية والإعدادية والثانوية",
+          ageClass: "age-high"
+        },
+        en: {
+          title: "Presentation: Sons of Musa, three brothers from the Abbasid era who excelled in mathematics and engineering",
+          description: "El-Safwa Family, Faculty of Science, Alexandria University ",
+          duration: "minutes 15 ",
+          age: "Junior,Middle and High School",
+          ageClass: "age-high"
+        }
+      },
+      {
+        id: 16,
+        ar: {
+          title: "عرض تقديمي: الرازي، رحلته ونشأته وأبرز إنجازاته الطبية",
+          description: "أسرة طبيب من أجلك، كلية الطب، جامعة الإسكندرية ",
+          duration: "15 دقيقة",
+          age: "المرحلة الابتدائية والإعدادية والثانوية ",
+          ageClass: "age-high"
+        },
+        en: {
+          title: "Presentation: Al-Razi, his journey, upbringing and prominent medical achievements",
+          description: "Doctor For You , Faculty of Medicine, Alexandria University ",
+          duration: "minutes 15 ",
+          age: "Junior,Middle and High School",
+          ageClass: "age-high"
+        }
+      },
+      {
+        id: 17,
+        ar: {
+          title: "عرض تقديمي: جابر بن حيان، إنجازاته المذهلة مثل التبلور والأصباغ وصناعة الصابون",
+          description: "كلية العلوم، جامعة الإسكندرية ",
+          duration: "15 دقيقة",
+          age: "المرحلة الابتدائية والإعدادية والثانوية ",
+          ageClass: "age-high"
+        },
+        en: {
+          title: "Presentation: Jabir ibn Hayyan, his amazing achievements like crystallization, dyes and soap making",
+          description: "Faculty of Science, Alexandria University ",
+          duration: "minutes 15 ",
+          age: "Junior,Middle and High School",
+          ageClass: "age-high"
+        }
+      },
+      {
+        id: 18,
+        ar: {
+          title: "عرض تقديمي: رحلة عبر العصر الذهبي للحضارة الإسلامية",
+          description: "مشروع ميكسولوجي",
+          duration: "15 دقيقة",
+          age: "المرحلة الابتدائية والإعدادية والثانوية ",
+          ageClass: "age-high"
+        },
+        en: {
+          title: "Presentation: Journey through the Golden Age of Islamic Civilization",
+          description: "Mixology Project ",
+          duration: "minutes 15 ",
+          age: "Junior,Middle and High School",
+          ageClass: "age-high"
+        }
+      },
+      {
+        id: 19,
+        ar: {
+          title: "ورشة عمل: ابن سينا وأهم إنجازاته في القلب والدورة الدموية الصغرى",
+          description: "أسترانوفا ",
+          duration: "45 دقيقة",
+          age: "المرحلة الابتدائية والإعدادية والثانوية ",
+          ageClass: "age-secondary"
+        },
+        en: {
+          title: "Workshop: Ibn Sina and his most important achievements in the heart and pulmonary circulation",
+          description: "Astranova ",
+          duration: "minutes 45 ",
+          age: "Junior,Middle and High School",
+          ageClass: "age-secondary"
+        }
+      },
+      {
+        id: 20,
+        ar: {
+          title: "عرض تقديمي: الرازي، إنجازاته في إنشاء المستشفيات وتقديم العلاج وتشخيص الأمراض",
+          description: "فريق سيف جونيور ",
+          duration: "15 دقيقة",
+          age: "المرحلة الابتدائية والإعدادية ",
+          ageClass: "age-secondary"
+        },
+        en: {
+          title: "Presentation: Al-Razi, his achievements in establishing hospitals, providing treatment and diagnosing diseases",
+          description: "Save Junior Team ",
+          duration: "minutes 15 ",
+          age: "Junior and Middle School",
+          ageClass: "age-secondary"
+        }
+      },
+      {
+        id: 21,
+        ar: {
+          title: "عرض تقديمي: جابر بن حيان والرازي ودورهما الكبير في علم الخيمياء",
+          description: "الفصل الطلابي للجمعية الأمريكية للكيمياء ،جامعة الإسكندرية",
+          duration: "15 دقيقة",
+          age: "المرحلة الابتدائية والإعدادية والثانوية",
+          ageClass: "age-secondary"
+        },
+        en: {
+          title: "Presentation: Jabir ibn Hayyan and Al-Razi and their great role in alchemy",
+          description: "Student Chapter of the American Chemical Society at Alexandria University",
+          duration: "minutes 15 ",
+          age: "Junior,Middle and High School",
+          ageClass: "age-high"
+        }
+      },
+      {
+        id: 22,
+        ar: {
+          title: "عرض تقديمي: ابن سينا ونشأته وإسهاماته في طب الأسنان",
+          description: " كلية طب الأسنان، جامعة الإسكندرية الأهلية ",
+          duration: "15 دقيقة",
+          age: "المرحلة الابتدائية ",
+          ageClass: "age-primary"
+        },
+        en: {
+          title: "Presentation: Ibn Sina, his upbringing and contributions to dentistry",
+          description: "Faculty of Dentistry, Alexandria National University ",
+          duration: "minutes 15 ",
+          age: "Junior School",
+          ageClass: "age-high"
+        }
+      },
+      {
+        id: 23,
+        ar: {
+          title: "ورشة عمل: حياة الحسن بن الهيثم ، و إنجازاته العلمية المرتبطة بالتلسكوب",
+          description: "أسرة الصفوة ، كلية التربية ",
+          duration: "45 دقيقة",
+          age: "المرحلة الابتدائية والإعدادية والثانوية",
+          ageClass: "age-secondary"
+        },
+        en: {
+          title: "Workshop: The life of Ibn al-Haytham, and his scientific achievements related to the telescope",
+          description: "Al-Safwa Family, Faculty of Education ",
+          duration: "minutes 45 ",
+          age: "Junior,Middle and High School",
+          ageClass: "age-secondary"
+        }
+      },
+      {
+        id: 24,
+        ar: {
+          title: "عرض تقديمي: الإدريسي و إنجازاته فى علم الجغرافيا، و الرحالة ابن بطوطة و اكتشافاته",
+          description: "شباب بيحب الخير ",
+          duration: "15 دقيقة",
+          age: "المرحلة الابتدائية والإعدادية والثانوية",
+          ageClass: "age-secondary"
+        },  
+        en: {
+          title: "Presentation: Al-Idrisi and his contributions to geography, and Ibn Battuta and his discoveries",
+          description: "Shabab byheb alkheer ",
+          duration: "minutes 15 ",
+          age: "Junior,Middle and High School",
+          ageClass: "age-secondary"
+        }
+      },
+    ];
+
+    let currentBooth = 0;
+    let currentLanguage = 'ar';
+
+    function updateBoothContent() {
+      const Booth = Booths[currentBooth];
+      const content = currentLanguage === 'ar' ? Booth.ar : Booth.en;
+      
+      document.getElementById('boothContent').innerHTML = `
+        <h5>كشك رقم ${Booth.id} | Booth ${Booth.id}</h5>
+        <p>${content.description}</p>
+        <h5>${content.title}</h5>
+        <div class="booth-details">
+          <div class="detail-item">
+            <img src="../../assets/Timer icon.svg" alt="Time" class="icon">
+            <span>${content.duration}</span>
+          </div>
+          <div class="detail-item">
+            <img src="../../assets/Age icon.svg" alt="Age" class="icon ${content.ageClass}">
+            <span>${content.age}</span>
+          </div>
+        </div>
+      `;
+    }
+
+    function nextBooth() {
+      currentBooth = (currentBooth + 1) % Booths.length;
+      updateBoothContent();
+    }
+
+    function prevBooth() {
+      currentBooth = currentBooth === 0 ? Booths.length - 1 : currentBooth - 1;
+      updateBoothContent();
+    }
+
+    function switchLanguage() {
+      currentLanguage = currentLanguage === 'ar' ? 'en' : 'ar';
+      
+      // Add/remove language class for font size adjustments
+      if (currentLanguage === 'en') {
+        document.documentElement.classList.add('lang-en');
+      } else {
+        document.documentElement.classList.remove('lang-en');
+      }
+      
+      updateBoothContent();
+      updateNavigationText();
+    }
+    
+    function updateNavigationText() {
+      const prevBtn = document.querySelector('#boothNav button[onclick="prevBooth()"]');
+      const nextBtn = document.querySelector('#boothNav button[onclick="nextBooth()"]');
+      const langBtn = document.querySelector('#boothNav button[onclick="switchLanguage()"]');
+      
+      if (prevBtn && nextBtn && langBtn) {
+        if (currentLanguage === 'ar') {
+          prevBtn.textContent = '← السابق';
+          nextBtn.textContent = 'التالي →';
+          langBtn.textContent = 'ع/EN';
+        } else {
+          prevBtn.textContent = '← Previous';
+          nextBtn.textContent = 'Next →';
+          langBtn.textContent = 'ع/EN';
+        }
+      }
+    }
+
+    // Click feedback for tent2 markers
     document.addEventListener('click', function(e){
       var mk = e.target.closest('.marker-btn');
       if(!mk) return;
       var img = mk.querySelector('img');
       if(img){
         var original = img.getAttribute('src');
-        img.src = '../../assets/book2.png';
+        img.src = '../../assets/36.png';
         setTimeout(function(){ img.src = original; }, 160);
       }
+      // Map marker to specific booth id like tent1
+      var key = mk.getAttribute('data-booth') || mk.dataset.booth || '';
+      var id = parseInt((key+'').replace(/[^0-9]/g,'') || '0', 10);
+      var idx = Booths.findIndex(function(w){ return w.id === id; });
+      if(idx >= 0){ currentBooth = idx; }
       showBookOverlay();
     });
+    
     function showBookOverlay(){
+      updateBoothContent();
       var ov = document.getElementById('bookOverlay');
       if(ov){ ov.classList.add('open'); }
     }
+    
     function hideBookOverlay(){
       var ov = document.getElementById('bookOverlay');
       if(ov){ ov.classList.remove('open'); }
     }
+    
     document.getElementById('bookOverlay').addEventListener('click', function(e){
       if(e.target === this){ hideBookOverlay(); }
     });
     document.addEventListener('keydown', function(e){
       if(e.key === 'Escape') hideBookOverlay();
     });
+
+    // Add navigation controls (like tent1) and anchor to book
+    document.addEventListener('DOMContentLoaded', function() {
+      setTimeout(function(){
+        var container = document.querySelector('.book-container');
+        if(container && !document.getElementById('boothNav')){
+          var navigationHTML = '\n            <div id="boothNav" style="position:absolute; display: flex; gap: 12px; z-index: 2010;">\n              <button onclick="prevBooth()" style="background: linear-gradient(135deg, rgba(139,69,19,0.9), rgba(160,82,45,0.9)); color: #fff; border: none; padding: 8px 12px; border-radius: 20px; cursor: pointer; font-weight: bold; backdrop-filter: blur(10px); box-shadow: 0 4px 15px rgba(139,69,19,0.3); transition: all 0.3s ease; font-family: \'Amiri\', serif;">← السابق</button>\n              <button onclick="nextBooth()" style="background: linear-gradient(135deg, rgba(139,69,19,0.9), rgba(160,82,45,0.9)); color: #fff; border: none; padding: 8px 12px; border-radius: 20px; cursor: pointer; font-weight: bold; backdrop-filter: blur(10px); box-shadow: 0 4px 15px rgba(139,69,19,0.3); transition: all 0.3s ease; font-family: \'Amiri\', serif;">التالي →</button>\n              <button onclick="switchLanguage()" style="background: linear-gradient(135deg, rgba(139,69,19,0.9), rgba(160,82,45,0.9)); color: #fff; border: none; padding: 8px 12px; border-radius: 20px; cursor: pointer; font-weight: bold; backdrop-filter: blur(10px); box-shadow: 0 4px 15px rgba(139,69,19,0.3); transition: all 0.3s ease; font-family: \'Amiri\', serif;">ع/EN</button>\n            </div>\n          ';
+          container.insertAdjacentHTML('beforeend', navigationHTML);
+          updateNavigationText();
+          positionNavNearBook();
+          window.addEventListener('resize', positionNavNearBook);
+        }
+      }, 100);
+    });
+    function positionNavNearBook(){
+      var nav = document.getElementById('boothNav');
+      var img = document.getElementById('bookOverlayImg');
+      if(!nav || !img) return;
+      var rect = img.getBoundingClientRect();
+      nav.style.top = (rect.top + 140) + 'px';
+      nav.style.left = (rect.left + 20) + 'px';
+    }
   </script>
   <script>
     // Immediate background test

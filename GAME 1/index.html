@@ -12,31 +12,88 @@
 <body>
     <header id="site-header"></header>
     <canvas id="game"></canvas>
-    <button id="pauseBtn" aria-pressed="false" title="Pause/Resume">Pause</button>
-    <button id="restartBtn" title="Restart (R)">Restart</button>
+    
+    <style>
+        /* Force black background on all elements */
+        * {
+            background: black !important;
+            background-color: black !important;
+        }
+        
+        body, html, canvas, #game {
+            background: black !important;
+            background-color: black !important;
+            background-image: none !important;
+        }
+        
+        /* Override any theme background */
+        #magic-background {
+            display: none !important;
+        }
+        
+        /* Ensure header doesn't interfere */
+        #site-header {
+            background: rgba(0,0,0,0.8) !important;
+            backdrop-filter: blur(10px);
+        }
+        
+        /* Ensure canvas is visible and properly positioned */
+        #game {
+            display: block !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+            position: fixed !important;
+            top: 0 !important;
+            left: 0 !important;
+            width: 100vw !important;
+            height: 100vh !important;
+            z-index: 10 !important;
+        }
+        
+        /* Ensure modal is hidden by default */
+        #resultModal {
+            display: none !important;
+        }
+    </style>
 
     <div id="resultModal" class="modal" aria-hidden="true">
       <div class="modal-card">
-        <img src="../assets/book2.png" alt="Result">
+        <img src="../assets/36.png" alt="Result">
         <div class="modal-content" id="resultText">Congrats!</div>
       </div>
     </div>
 
     <script src="../js/i18n.js"></script>
-    <script src="../js/header.js"></script>
-    <script>
-      // Move pause/restart into the glass header on this page only
-      document.addEventListener('DOMContentLoaded', function(){
-        var actions = document.querySelector('#site-header .header-actions');
-        var pauseBtn = document.getElementById('pauseBtn');
-        var restartBtn = document.getElementById('restartBtn');
-        if(actions && pauseBtn && restartBtn){
-          actions.appendChild(pauseBtn);
-          actions.appendChild(restartBtn);
-        }
-      });
-    </script>
+    <script src="game-header.js"></script>
     <script src="main.js"></script>
+    
+    <script>
+        // Debug script to identify background issues
+        console.log('Game 1 loaded');
+        console.log('Body background:', window.getComputedStyle(document.body).background);
+        console.log('Canvas background:', window.getComputedStyle(document.getElementById('game')).background);
+        
+        // Check modal state
+        const modal = document.getElementById('resultModal');
+        console.log('Modal element:', modal);
+        console.log('Modal display:', window.getComputedStyle(modal).display);
+        console.log('Modal classes:', modal.className);
+        
+        // Force black background after page load
+        setTimeout(() => {
+            document.body.style.background = 'black';
+            document.documentElement.style.background = 'black';
+            document.getElementById('game').style.background = 'black';
+            console.log('Forced black background applied');
+            
+            // Ensure modal is hidden
+            if (modal) {
+                modal.style.display = 'none';
+                modal.classList.remove('open');
+                console.log('Modal forced to hidden');
+            }
+        }, 100);
+    </script>
 </body>
 
 </html>

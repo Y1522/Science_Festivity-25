@@ -3,319 +3,681 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <title>Science Festivity 2025 – Arab Scientists of the Golden Age of Islam</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-SnC8tq8mXQq7kQH7m8G5qkG0RrM3y8o1zLw0Z8oHqQm1GJp8q2fS1y2Gx1nQhQmQ3mTz6w7vFQv1o8G0LrX1EA==" crossorigin="anonymous" referrerpolicy="no-referrer" onerror="this.onerror=null;this.href='https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.2/css/all.min.css'" />
-    <link rel="stylesheet" href="css/theme.css">
-    
+  <title>Science Festivity – Intro</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/theme.css">
     <style>
-        .image-container{position:relative;display:inline-block;width:100%}
-        .map-image{width:100%;height:auto}
-        .icon-button{position:absolute;background:transparent;border:none;cursor:pointer;padding:0;transform:translate(-50%,-50%)}
-        .icon-button img{width:36px;height:auto;filter:drop-shadow(0 4px 8px rgba(0,0,0,.35));animation:bob 2.4s ease-in-out infinite}
-        
-        @media (max-width: 768px) {
-            .icon-button img{width:28px;}
-        }
-        .icon-button:active img{transform:scale(.95)}
-        @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
-        
-        /* Games Button Styles */
-        .games-button-container {
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    html, body {
+      height: 100%;
+      font-family: 'Cairo', sans-serif;
+      overflow: hidden;
+    }
+    
+     body {
+       background-color: #182746 !important;
+       background-image: none !important;
+       transition: all 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+     }
+     
+     .header-bg {
+       position: fixed;
+       top: 0;
+       left: 0;
+       width: 100%;
+       height: 80px;
+       background-image: url('assets/newbk.jpg');
+       background-size: cover;
+       background-position: center;
+       background-repeat: no-repeat;
+       z-index: 1;
+     }
+     
+     body {
+       background-color: #182746 !important;
+       background-image: none !important;
+     }
+    
+    body.zoom-out {
+      transform: scale(1.5);
+      filter: brightness(1.3) contrast(1.2) saturate(1.1);
+    }
+    
+    body.zoom-out .enter-button {
+      transform: translate(-50%, -50%) scale(1.2);
+      opacity: 0.8;
+    }
+    
+     .container {
             position: fixed;
-            bottom: 20px;
-            left: 20px;
-            z-index: 1000;
-        }
-        .social-icons{display:flex;gap:10px}
-        .social-icons a{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);color:#fff;text-decoration:none}
-        .social-icons a i{font-size:14px}
-        
-        .games-button {
+       top: 80px;
+       left: 0;
+       width: 100%;
+       height: calc(100% - 80px);
+       display: flex;
+       align-items: center;
+       justify-content: center;
+       z-index: 2;
+     }
+    
+    .intro-content {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      max-width: 90%;
+    }
+    
+     .intro-image {
+       max-width: 120%;
+       max-height: 85vh;
+       width: auto;
+       height: auto;
+       border-radius: 0;
+       box-shadow: none;
+       transition: all 0.3s ease;
+       transform: scale(1.2);
+     }
+     
+     .intro-image:hover {
+       transform: scale(1.02);
+     }
+     
+     .intro-image-secondary {
+       width: 80px;
+       height: auto;
+       border-radius: 0;
+       box-shadow: none;
+       transition: all 0.3s ease;
+       position: fixed;
+       top: 80px;
+       right: 10px;
+       z-index: 1000;
+       pointer-events: none;
+       filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.4));
+       animation: lanternGlow 2s ease-in-out infinite alternate;
+     }
+     
+     .intro-image-secondary:hover {
+       filter: drop-shadow(0 8px 16px rgba(255, 215, 0, 0.6)) brightness(1.1);
+     }
+     
+     .intro-image-secondary-left {
+       width: 80px;
+       height: auto;
+       border-radius: 0;
+       box-shadow: none;
+       transition: all 0.3s ease;
+       position: fixed;
+       top: 80px;
+       left: 10px;
+       z-index: 1000;
+       pointer-events: none;
+       filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.4));
+       animation: lanternGlow 2s ease-in-out infinite alternate;
+     }
+     
+     .intro-image-secondary-left:hover {
+       filter: drop-shadow(0 8px 16px rgba(255, 215, 0, 0.6)) brightness(1.1);
+     }
+     
+     @keyframes lanternGlow {
+       0% { filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.4)) brightness(1); }
+       100% { filter: drop-shadow(0 8px 16px rgba(255, 215, 0, 0.6)) brightness(1.1); }
+     }
+     
+     /* Welcome text animation */
+     @keyframes welcomePulse {
+       0%, 100% { 
+         transform: scale(1);
+         text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+       }
+       50% { 
+         transform: scale(1.05);
+         text-shadow: 0 4px 8px rgba(255,215,0,0.8), 0 2px 4px rgba(0,0,0,0.5);
+       }
+     }
+     
+     .welcome-animated {
+       animation: welcomePulse 2s ease-in-out infinite;
+     }
+    
+     .enter-button {
+       position: absolute;
+       top: 50%;
+       left: 50%;
+       transform: translate(-50%, -50%);
             background: linear-gradient(135deg, #4CAF50, #45a049);
             color: white;
             border: none;
-            border-radius: 50px;
-            padding: 12px 20px;
-            font-size: 16px;
-            font-weight: 600;
+       padding: 6px 12px;
+            font-size: 12px;
+       font-weight: bold;
+       border-radius: 20px;
             cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
-            transition: all 0.3s ease;
+       box-shadow: 0 3px 10px rgba(0, 0, 0, 0.4);
+       transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             font-family: 'Cairo', sans-serif;
-        }
-        
-        .games-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(76, 175, 80, 0.4);
+       text-decoration: none;
+       display: inline-block;
+       z-index: 10;
+     }
+    
+    .enter-button:hover {
+      transform: translate(-50%, -50%) translateY(-3px) scale(1.05);
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.5);
             background: linear-gradient(135deg, #45a049, #4CAF50);
         }
         
-        .games-button:active {
-            transform: translateY(0);
+    .enter-button:active {
+      transform: translate(-50%, -50%) translateY(-1px) scale(0.98);
         }
-        
-        .games-button i {
+
+    /* Text Overlay System (similar to tent1 structure) */
+    .text-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.85);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 2000;
+    }
+    .text-overlay.open {
+      display: flex;
+    }
+    .text-container {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+    }
+    .text-overlay img {
+      max-width: 70vw;
+      max-height: 70vh;
+      width: auto;
+      height: auto;
+      border-radius: 14px;
+      box-shadow: 0 20px 60px rgba(0,0,0,.5);
+      animation: bookZoom .25s ease;
+      transform: scale(1.4) translateX(-2%);
+      object-fit: contain;
+    }
+    .text-close {
+      position: absolute;
+      top: 150px;
+      right: 20px;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.12);
+      border: 2px solid rgba(255,255,255,.6);
+      color: #fff;
             font-size: 18px;
-        }
-        
-        @media (max-width: 768px) {
-            .games-button-container {
-                bottom: 15px;
-                left: 15px;
-            }
-            .games-button {
-                padding: 10px 16px;
-                font-size: 14px;
-            }
-        }
-        
-        /* Animated Background Styles */
-        @keyframes rotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-        
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-        }
-        
-        /* Simple Animation Styles */
-        @keyframes moveUp {
-            0% {
-                transform: translateY(0px);
-                opacity: 0;
-            }
-            20% {
-                opacity: 1;
-            }
-            80% {
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(-100vh);
-                opacity: 0;
-            }
-        }
-        
-        @keyframes spin {
-            0% {
-                transform: rotate(0deg);
-            }
-            100% {
-                transform: rotate(360deg);
-            }
-        }
-        
-        /* Ensure animations are visible */
-        #simple-bg * {
-            will-change: transform;
-        }
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      backdrop-filter: blur(2px);
+      z-index: 2001;
+    }
+    .text-close:hover {
+      background: rgba(255,255,255,.2);
+    }
+    @keyframes bookZoom {
+      from {
+        transform: scale(.92);
+        opacity: .6;
+      }
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+    .intro-text {
+      position: absolute;
+      top: 37%;
+      left: 52%;
+      transform: translate(-50%, -10%);
+      width: 60%;
+      max-width: 700px;
+      text-align: left;
+      color: #8B4513;
+      z-index: 10;
+      font-family: 'Cairo', sans-serif;
+    }
+    .intro-text h5 {
+      font-size: 1.1rem;
+      margin: 0 0 8px -10px;
+      color: #8B4513;
+      text-shadow: 1px 1px 2px rgba(255,255,255,0.8);
+      font-weight: normal;
+      line-height: 1.35;
+    }
+    .intro-text p {
+      font-size: 1.35rem;
+      margin: 0 0 14px 0;
+      color: #654321;
+      line-height: 1.5;
+      text-shadow: 1px 1px 2px rgba(255,255,255,0.6);
+      font-weight: bold;
+    }
+    
+    /* English language font size adjustments for 36.png text overlay */
+    .lang-en .intro-text h5 {
+      font-size: 0.88rem; /* 1.1rem * 0.8 = 0.88rem (20% smaller) */
+    }
+    .lang-en .intro-text p {
+      font-size: 1.08rem; /* 1.35rem * 0.8 = 1.08rem (20% smaller) */
+    }
+    
+    /* Additional English font size adjustments for detail items (Age/Timer icons text) */
+    .lang-en .detail-item span {
+      font-size: 0.72rem; /* 0.9rem * 0.8 = 0.72rem (25% smaller) */
+    }
+    .intro-details {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      flex-wrap: nowrap;
+      justify-content: flex-start;
+      margin-left: -150px;
+    }
+    .detail-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: #8B4513;
+      font-weight: bold;
+    }
+    .detail-item .icon {
+      width: 16px;
+      height: 16px;
+      filter: hue-rotate(25deg) saturate(1.5);
+    }
+    .detail-item span {
+      font-size: 0.9rem;
+      font-weight: bold;
+      text-shadow: 1px 1px 2px rgba(255,255,255,0.8);
+    }
+    .age-primary {
+      filter: hue-rotate(60deg) saturate(2) brightness(1.2);
+    }
+    .age-secondary {
+      filter: hue-rotate(120deg) saturate(2) brightness(1.2);
+    }
+    .age-high {
+      filter: hue-rotate(240deg) saturate(2) brightness(1.2);
+    }
+    .age-kindergarten {
+      filter: hue-rotate(300deg) saturate(2) brightness(1.2);
+    }
+    .age-special {
+      filter: hue-rotate(270deg) saturate(2) brightness(1.2);
+    }
+    
+    /* Level Selection Styles */
+    .level-selection {
+      margin-top: 20px;
+      text-align: center;
+      position: relative;
+      z-index: 10;
+    }
+    
+    .level-grid {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      margin-top: 15px;
+      max-width: 300px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    .level-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 20px;
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 25px;
+      border: 2px solid rgba(255, 215, 0, 0.4);
+      transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      cursor: pointer;
+      min-width: 220px;
+      justify-content: center;
+      backdrop-filter: blur(5px);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .level-item::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: left 0.5s ease;
+    }
+    
+    .level-item:hover::before {
+      left: 100%;
+    }
+    
+    .level-item:hover {
+      background: rgba(255, 255, 255, 0.25);
+      border-color: rgba(255, 215, 0, 0.7);
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 6px 20px rgba(255, 215, 0, 0.3);
+    }
+    
+    .level-item:active {
+      transform: translateY(-1px) scale(0.98);
+    }
+    
+    .level-icon {
+      width: 28px;
+      height: 28px;
+      filter: drop-shadow(0 2px 6px rgba(0,0,0,0.4));
+      transition: all 0.3s ease;
+    }
+    
+    .level-item:hover .level-icon {
+      transform: scale(1.1) rotate(5deg);
+      filter: drop-shadow(0 3px 8px rgba(0,0,0,0.5));
+    }
+    
+    .level-text {
+      font-weight: bold;
+      color: #8B4513;
+      text-shadow: 1px 1px 3px rgba(255,255,255,0.9);
+      font-size: 1.1rem;
+      transition: all 0.3s ease;
+    }
+    
+    .level-item:hover .level-text {
+      color: #654321;
+      text-shadow: 2px 2px 4px rgba(255,255,255,1);
+    }
+    
+    /* Schedule Table Styling */
+    .schedule-table {
+      margin: 15px 0;
+      width: 100%;
+    }
+    
+    .schedule-table table {
+      width: 100%;
+      border-collapse: collapse;
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+    
+    .schedule-table th {
+      background: linear-gradient(135deg, #8B4513, #A0522D);
+      color: white;
+      padding: 8px 6px;
+      text-align: center;
+      font-weight: bold;
+      font-size: 0.7rem;
+      border: 1px solid #654321;
+    }
+    
+    .schedule-table td {
+      padding: 6px 4px;
+      text-align: center;
+      font-size: 0.6rem;
+      border: 1px solid #ddd;
+      color: #654321;
+      font-weight: 500;
+    }
+    
+    .schedule-table tr:nth-child(even) {
+      background-color: rgba(139, 69, 19, 0.1);
+    }
+    
+    .schedule-table tr:hover {
+      background-color: rgba(139, 69, 19, 0.2);
+    }
+    
     </style>
 </head>
 <body>
-    <!-- Background will be created by animated-background.js -->
-    
-    <!-- Stunning Animated Background -->
-    <div id="magic-background"></div>
-    
-    <style>
-        /* Override any background from theme.css */
-        body {
-            background: transparent !important;
-            background-color: transparent !important;
-        }
-        
-        @keyframes moveRight {
-            0% { 
-                left: 10px;
-                transform: translateX(0px);
-            }
-            100% { 
-                left: calc(100% - 30px);
-                transform: translateX(0px);
-            }
-        }
-        
-        @keyframes spin {
-            0% { 
-                transform: rotate(0deg);
-            }
-            100% { 
-                transform: rotate(360deg);
-            }
-        }
-    </style>
-
-    <header id="site-header"></header>
-
-    <main class="container">
-        <section class="map-hero">
-            <h2 data-i18n="map.welcome">مرحبا بكم</h2>
-            <img src="assets/1.png" alt="Welcome image" style="max-width:360px;width:100%;height:auto">
-            <p data-i18n="map.prompt">اضغط على الكتاب و اكتشف</p>
-        </section>
-
-        <div class="image-container">
-            <img src="assets/layout 2 .RGB_color.jpg" alt="Map" class="map-image">
-            <!-- Tents positions -->
-            <button class="icon-button" style="top:20%;left:16%" data-target="pages/tent4/index.html" title="خيمة ورش القبة">
-                <img src="assets/book1.png" alt="خيمة ورش القبة">
-            </button>
-            <button class="icon-button" style="top:16%;left:34%" data-target="pages/tent3/index.html" title="خيمة الإدريسي">
-                <img src="assets/book1.png" alt="خيمة الإدريسي">
-            </button>
-            <button class="icon-button" style="top:16%;left:50%" data-target="pages/tent2/index.html" title="خيمة ابن سينا">
-                <img src="assets/book1.png" alt="خيمة ابن سينا">
-            </button>
-            <button class="icon-button" style="top:70%;left:40%" data-target="pages/tent1/index.html" title="خيمة ابن الهيثم">
-                <img src="assets/book1.png" alt="خيمة ابن الهيثم">
-            </button>
+   
+   <div class="header-bg"></div>
+   
+   <!-- Welcome Section -->
+   <section class="welcome-hero" style="position: fixed; top: 100px; left: 50%; transform: translateX(-50%); z-index: 1000; text-align: center; color: #eef6ff;">
+     <h2 data-i18n="map.welcome" class="welcome-animated" style="margin: 0 0 10px 0; font-size: 2rem; text-shadow: 0 2px 4px rgba(0,0,0,0.5); font-family: 'Cairo', sans-serif;">مرحبا بكم</h2>
+     <img src="assets/1.png" alt="Welcome image" style="max-width: 400px; width: 100%; height: auto; margin-bottom: 10px; transform: scale(1.2);">
+   </section>
+   
+   <div class="container">
+     <div class="intro-content">
+       <img src="assets/37.png" alt="Science Festivity" class="intro-image">
+       <img src="assets/WhatsApp_Image_2025-09-18_at_12.48.42_97bf26d4-removebg-preview.png" alt="Science Festivity Additional" class="intro-image-secondary">
+       <img src="assets/WhatsApp_Image_2025-09-18_at_12.48.42_97bf26d4-removebg-preview.png" alt="Science Festivity Additional Left" class="intro-image-secondary-left">
+       <a href="/pages/main.html" class="enter-button" id="enter-btn" data-i18n="enter.btn">دخول</a>
+     </div>
         </div>
 
-        <div class="image-container" style="display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between;margin-top:14px">
-            <div style="position:relative;flex:1 1 48%">
-                <img src="assets/Conference hall.svg" alt="Conference Hall" class="map-image">
-                <button class="icon-button" style="top:50%;left:50%" data-target="pages/conference/index.html">
-                    <img src="assets/book1.png" alt="Conference">
-                </button>
+  <!-- Text Overlay System (similar to tent1 structure) -->
+  <div id="textOverlay" class="text-overlay" style="display: none;">
+    <div class="text-container">
+      <button class="text-close" aria-label="Close" onclick="hideTextOverlay()" data-i18n="close.btn" data-i18n-title="close.title">×</button>
+      <img id="textOverlayImg" src="assets/36.png" alt="Text overlay">
+      <div class="intro-text" id="introTextContent">
+        <!-- Intro text content will be dynamically loaded here -->
             </div>
-            <div style="position:relative;flex:1 1 48%">
-                <img src="assets/outStage2.jpg" alt="Outdoor Stage" class="map-image">
-                <button class="icon-button" style="top:50%;left:50%" data-target="pages/outdoor/index.html">
-                    <img src="assets/book1.png" alt="Outdoor Stage">
-                </button>
             </div>
         </div>
 
-        <!-- Games Button - Bottom Left -->
-        <div class="games-button-container">
-            <button class="games-button" onclick="window.location.href='pages/games/index.html'" title="الألعاب التعليمية">
-                <i class="fas fa-gamepad"></i>
-                <span data-i18n="nav.games">الألعاب</span>
-            </button>
-        </div>
-    </main>
+  <script>
+    // Intro text data (similar to tent1 booth structure)
+    const introContent = {
+      ar: {
+        title: "مرحباً بكم في مهرجان العلوم",
+        description: "رحلة تفاعلية عبر العصر الذهبي للحضارة الإسلامية",
+        subtitle: "اكتشفوا عجائب العلم والاختراعات",
+        age: "لجميع المراحل العمرية",
+        ageClass: "age-high",
+        schedule: {
+          time: "الوقت",
+          activity: "النشاط",
+          location: "المكان",
+          opening: "افتتاح المهرجان",
+          workshops: "ورش العمل",
+          presentation: "عرض تقديمي",
+          outdoor: "نشاط خارجي",
+          mainHall: "القاعة الرئيسية",
+          tents: "الخيام",
+          grandHall: "القاعة الكبرى",
+          outdoorArea: "الساحة الخارجية"
+        }
+      },
+      en: {
+        title: "Welcome to Science Festivity",
+        description: "Interactive journey through the Golden Age of Islamic Civilization",
+        subtitle: "Discover the wonders of science and inventions",
+        age: "For all age groups",
+        ageClass: "age-high",
+        schedule: {
+          time: "Time",
+          activity: "Activity",
+          location: "Location",
+          opening: "Festival Opening",
+          workshops: "Workshops",
+          presentation: "Presentation",
+          outdoor: "Outdoor Activity",
+          mainHall: "Main Hall",
+          tents: "Tents",
+          grandHall: "Grand Hall",
+          outdoorArea: "Outdoor Area"
+        }
+      }
+    };
 
-    <footer class="site-footer">
-        <div style="display:flex;flex-direction:column;align-items:center;gap:12px">
-          <img src="assets/psc logo.svg" alt="PSC logo" class="psc-logo">
-          <div class="social-icons">
-            <a href="https://www.facebook.com/share/15G7h1f7J38/" target="_blank" rel="noopener" aria-label="Facebook">
-              <i class="fab fa-facebook-f"></i>
-            </a>
-            <a href="https://www.instagram.com/planetarium.science.center" target="_blank" rel="noopener" aria-label="Instagram">
-              <i class="fab fa-instagram"></i>
-            </a>
-            <a href="https://www.tiktok.com/@bapsc.2002" target="_blank" rel="noopener" aria-label="TikTok">
-              <i class="fab fa-tiktok"></i>
-            </a>
-            <a href="https://www.bibalex.org/psc" target="_blank" rel="noopener" aria-label="Website">
-              <i class="fas fa-globe"></i>
-            </a>
+    // Translation strings for buttons and other elements
+    const translations = {
+      ar: {
+        'enter.btn': 'دخول',
+        'close.btn': 'إغلاق',
+        'close.title': 'إغلاق',
+        'intro.title': 'مرحباً بكم في مهرجان العلوم',
+        'intro.description': 'رحلة تفاعلية عبر العصر الذهبي للحضارة الإسلامية',
+        'intro.subtitle': 'اكتشفوا عجائب العلم والاختراعات',
+        'levels.title': 'المستويات المتاحة:',
+        'levels.primary': 'الابتدائية',
+        'levels.secondary': 'المتوسطة',
+        'levels.high': 'الثانوية',
+        'levels.kindergarten': 'رياض الأطفال',
+        'map.welcome': 'مرحبا بكم',
+        'map.prompt': 'اضغط على اللفيفة و اكتشف'
+      },
+      en: {
+        'enter.btn': 'Enter',
+        'close.btn': 'Close',
+        'close.title': 'Close',
+        'intro.title': 'Welcome to Science Festivity',
+        'intro.description': 'Interactive journey through the Golden Age of Islamic Civilization',
+        'intro.subtitle': 'Discover the wonders of science and inventions',
+        'levels.title': 'Available Levels:',
+        'levels.primary': 'Primary',
+        'levels.secondary': 'Secondary',
+        'levels.high': 'High School',
+        'levels.kindergarten': 'Kindergarten',
+        'map.welcome': 'Welcome to',
+        'map.prompt': 'Click on the scroll and discover'
+      }
+    };
+
+    let currentLanguage = 'ar';
+
+    function updateIntroContent() {
+      const content = currentLanguage === 'ar' ? introContent.ar : introContent.en;
+      
+      document.getElementById('introTextContent').innerHTML = `
+    <h5 data-i18n="intro.title">${content.title}</h5>
+    <p data-i18n="intro.description">${content.description}</p>
+    <h5 data-i18n="intro.subtitle">${content.subtitle}</h5>
+        <div class="schedule-table">
+          <table>
+            <thead>
+              <tr>
+                <th>${content.schedule.time}</th>
+                <th>${content.schedule.activity}</th>
+                <th>${content.schedule.location}</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>9:00 - 10:00</td>
+                <td>${content.schedule.opening}</td>
+                <td>${content.schedule.mainHall}</td>
+              </tr>
+              <tr>
+                <td>10:00 - 12:00</td>
+                <td>${content.schedule.workshops}</td>
+                <td>${content.schedule.tents}</td>
+              </tr>
+              <tr>
+                <td>12:00 - 13:00</td>
+                <td>${content.schedule.presentation}</td>
+                <td>${content.schedule.grandHall}</td>
+              </tr>
+              <tr>
+                <td>13:00 - 14:00</td>
+                <td>${content.schedule.outdoor}</td>
+                <td>${content.schedule.outdoorArea}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="intro-details">
+          <div class="detail-item">
+            <img src="assets/Age icon.svg" alt="Age" class="icon ${content.ageClass}">
+            <span>${content.age}</span>
           </div>
         </div>
-    </footer>
+        <div class="level-selection">
+          <h4 data-i18n="levels.title" style="color: #8B4513; text-align: center; margin: 20px 0 15px 0; font-weight: bold;">${currentLanguage === 'ar' ? 'المستويات المتاحة:' : 'Available Levels:'}</h4>
+          <div class="level-grid">
+            <div class="level-item" data-level="primary">
+              <img src="assets/Age icon.svg" alt="Primary" class="level-icon age-primary">
+              <span class="level-text" data-i18n="levels.primary">${currentLanguage === 'ar' ? 'الابتدائية' : 'Primary'}</span>
+            </div>
+            <div class="level-item" data-level="secondary">
+              <img src="assets/Age icon.svg" alt="Secondary" class="level-icon age-secondary">
+              <span class="level-text" data-i18n="levels.secondary">${currentLanguage === 'ar' ? 'المتوسطة' : 'Secondary'}</span>
+            </div>
+            <div class="level-item" data-level="high">
+              <img src="assets/Age icon.svg" alt="High School" class="level-icon age-high">
+              <span class="level-text" data-i18n="levels.high">${currentLanguage === 'ar' ? 'الثانوية' : 'High School'}</span>
+            </div>
+            <div class="level-item" data-level="kindergarten">
+              <img src="assets/Age icon.svg" alt="Kindergarten" class="level-icon age-kindergarten">
+              <span class="level-text" data-i18n="levels.kindergarten">${currentLanguage === 'ar' ? 'رياض الأطفال' : 'Kindergarten'}</span>
+            </div>
+          </div>
+        </div>
+      `;
+    }
 
-    <script src="js/i18n.js"></script>
-    <script src="js/header.js"></script>
-    <script src="js/chatbot.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="js/3d-arabesque-background.js"></script>
-    <script src="js/app.js"></script>
+
+
+    function showTextOverlay() {
+      updateIntroContent();
+      var ov = document.getElementById('textOverlay');
+      if(ov){ ov.style.display = 'flex'; }
+    }
     
-    
-    <script>
-        // Ensure Font Awesome CSS is loaded; fallback to jsDelivr if blocked
-        (function(){
-            function isFontAwesomeActive(){
-                var probe = document.createElement('i');
-                probe.className = 'fa-solid fa-check';
-                probe.style.position='absolute';
-                probe.style.opacity='0';
-                document.body.appendChild(probe);
-                var fam = window.getComputedStyle(probe).fontFamily || '';
-                document.body.removeChild(probe);
-                return /Font Awesome/i.test(fam);
-            }
-            function loadFallback(){
-                var link = document.createElement('link');
-                link.rel = 'stylesheet';
-                link.href = 'https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.2/css/all.min.css';
-                document.head.appendChild(link);
-            }
-            window.addEventListener('load', function(){
-                setTimeout(function(){
-                    if (!isFontAwesomeActive()) loadFallback();
-                }, 150);
-            });
-        })();
-    </script>
-    <script>
-        document.addEventListener('click', function(e){
-            var btn = e.target.closest('.icon-button');
-            if(!btn) return;
-            var img = btn.querySelector('img');
-            if(img){ 
-                img.src='assets/book2.png'; 
-                setTimeout(function(){ 
-                    window.location.href = btn.dataset.target; 
-                }, 120); 
-            }
+    function hideTextOverlay() {
+      var ov = document.getElementById('textOverlay');
+      if(ov){ ov.style.display = 'none'; }
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      const enterBtn = document.getElementById('enter-btn');
+      
+      // Initialize page content
+      updateIntroContent();
+      
+      if (enterBtn) {
+        enterBtn.addEventListener('click', function(e) {
+          e.preventDefault();
+          
+          // Add zoom effect
+          document.body.classList.add('zoom-out');
+          
+          // Navigate after transition
+          setTimeout(function() {
+            window.location.href = '/pages/main.html';
+          }, 1500);
         });
-    </script>
-    
-    
-    <!-- Typewriter animation for welcome text -->
-    <script>
-        (function(){
-            function typeWriter(el, fullText, speed){
-                if(!el) return;
-                el.setAttribute('aria-label', fullText);
-                el.textContent = '';
-                var i = 0;
-                var interval = setInterval(function(){
-                    // Append next character
-                    el.textContent += fullText.charAt(i);
-                    i++;
-                    if(i >= fullText.length){
-                        clearInterval(interval);
-                    }
-                }, speed);
-            }
+      }
 
-            function startTyping(){
-                var el = document.querySelector('.map-hero h2[data-i18n="map.welcome"]');
-                if(!el) return;
-                var fullText = el.textContent || el.innerText || '';
-                typeWriter(el, fullText, 90);
-            }
+    });
 
-            // Run after i18n applies on initial load
-            document.addEventListener('DOMContentLoaded', function(){
-                // Slight delay to ensure applyI18n finished
-                setTimeout(startTyping, 50);
-            });
-
-            // Re-run on language change
-            document.addEventListener('languageChanged', function(){
-                var el = document.querySelector('.map-hero h2[data-i18n="map.welcome"]');
-                if(!el) return;
-                var fullText = el.textContent || el.innerText || '';
-                // Immediately clear then type to avoid showing full text first
-                el.textContent = '';
-                typeWriter(el, fullText, 90);
-            });
-        })();
+    // Close on backdrop click
+    document.getElementById('textOverlay').addEventListener('click', function(e){
+      if(e.target === this){ hideTextOverlay(); }
+    });
+    // Close on ESC
+    document.addEventListener('keydown', function(e){
+      if(e.key === 'Escape') hideTextOverlay();
+      });
     </script>
 </body>
 </html>
-
-
