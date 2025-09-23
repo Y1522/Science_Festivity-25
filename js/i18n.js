@@ -76,7 +76,13 @@ function applyI18n(){
       if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA'){
         el.setAttribute('placeholder', val);
       } else {
-        el.innerText = val;
+        var text = val;
+        if (window.currentLang === 'ar') {
+          text = text.replace(/اللفيفة/g, '<strong>اللفيفة</strong>');
+          el.innerHTML = text;
+        } else {
+          el.innerText = text;
+        }
       }
     }
   });
