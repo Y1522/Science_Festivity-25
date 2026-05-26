@@ -53,4 +53,4 @@ php -S localhost:8000
 
 ## Contributing
 
-This is an educational project for the Science Festivity 2025 event. For any issues or suggestions, please contact the development team.
+This is an educational project for the Science Festivity 2025 event(Organized by BAPSC). For any issues or suggestions, please contact Me.
