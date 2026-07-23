@@ -24,6 +24,38 @@
         .icon-button:active img{transform:scale(.95)}
         @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
         
+        /* Desktop optimizations */
+        @media (min-width: 1024px) {
+            .container.home {
+                max-width: 1200px;
+                margin: 0 auto;
+            }
+            .map-image {
+                max-width: 800px;
+                margin: 0 auto;
+                display: block;
+            }
+            .image-container {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            .icon-button {
+                /* Adjust position based on centered map-image */
+                transform: translate(-50%, -50%) scale(1.1);
+            }
+            .icon-button img {
+                width: 72px;
+            }
+            .image-container[style*="display:flex"] {
+                justify-content: center !important;
+                gap: 40px !important;
+            }
+            .image-container[style*="display:flex"] > div {
+                flex: 0 1 400px !important;
+            }
+        }
+        
         /* Games Button Styles */
         .games-button-container {
             position: fixed;
