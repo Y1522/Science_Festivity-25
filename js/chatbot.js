@@ -124,7 +124,7 @@
   let messageHistory = [
     {
       role: "system",
-      content: \`You are Eisho, a smart and friendly AI assistant for the Science Festivity 2025 event focusing on Arab Scientists of the Golden Age of Islam.
+      content: `You are Eisho, a smart and friendly AI assistant for the Science Festivity 2025 event focusing on Arab Scientists of the Golden Age of Islam.
 The event is at Bibliotheca Alexandrina (Planetarium Science Center). Dates: Wed-Thu (Sep 24-25) 9am-2pm, Fri (Sep 26) 2pm-7pm.
 Tents available:
 - Tent 1: Ibn al-Haytham (Optics)
@@ -143,7 +143,7 @@ Map/Home: /pages/main.html
 Games: /pages/games/index.html
 
 If answering a regular question, just output normal markdown text.
-Answer in the language the user speaks (Arabic or English). Be friendly, helpful, and concise.\`
+Answer in the language the user speaks (Arabic or English). Be friendly, helpful, and concise.`
     }
   ];
 
@@ -173,7 +173,7 @@ Answer in the language the user speaks (Arabic or English). Be friendly, helpful
     div.style.margin = '12px 0';
 
     const avatar = document.createElement('div');
-    avatar.style.cssText = \`
+    avatar.style.cssText = `
       width: 28px;
       height: 28px;
       border-radius: 50%;
@@ -183,10 +183,10 @@ Answer in the language the user speaks (Arabic or English). Be friendly, helpful
       font-size: 14px;
       flex-shrink: 0;
       margin-top: 2px;
-    \`;
+    `;
     
     const bubble = document.createElement('div');
-    bubble.className = \`message-bubble \${role === 'You' ? 'user-message' : 'nesho-message'}\`;
+    bubble.className = `message-bubble ${role === 'You' ? 'user-message' : 'nesho-message'}`;
     
     if (role === 'You') {
       avatar.style.background = 'linear-gradient(135deg, #667eea, #764ba2)';
@@ -197,7 +197,7 @@ Answer in the language the user speaks (Arabic or English). Be friendly, helpful
       avatar.style.background = 'linear-gradient(45deg, #fff, #e3f2fd)';
       avatar.style.border = '2px solid #667eea';
       avatar.textContent = '🧠';
-      bubble.innerHTML = \`<strong style="color:#667eea;font-size:12px;display:block;margin-bottom:4px;">إيشو</strong>\${parseMarkdown(text)}\`;
+      bubble.innerHTML = `<strong style="color:#667eea;font-size:12px;display:block;margin-bottom:4px;">إيشو</strong>${parseMarkdown(text)}`;
     }
     
     div.appendChild(avatar);
@@ -216,7 +216,7 @@ Answer in the language the user speaks (Arabic or English). Be friendly, helpful
       const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
         method: 'POST',
         headers: {
-          'Authorization': \`Bearer \${apiKey}\`,
+          'Authorization': `Bearer ${apiKey}`,
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
