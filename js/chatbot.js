@@ -159,9 +159,9 @@ Answer in the language the user speaks (Arabic or English). Be friendly, helpful
   // Parses markdown lightly (bold, links, breaks)
   function parseMarkdown(text) {
     return text
-      .replace(/\\*\\*(.*?)\\*\\*/g, '<strong>$1</strong>')
-      .replace(/\\*(.*?)\\*/g, '<em>$1</em>')
-      .replace(/\\n/g, '<br>');
+      .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+      .replace(/\*(.*?)\*/g, '<em>$1</em>')
+      .replace(/\n/g, '<br>');
   }
 
   function append(role, text){
