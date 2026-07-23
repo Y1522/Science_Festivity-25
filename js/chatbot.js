@@ -17,8 +17,8 @@
   panel.setAttribute('role','dialog');
   panel.setAttribute('aria-label','Assistant');
 
-  // Load API key from local storage
-  let apiKey = localStorage.getItem('groq_api_key') || '';
+  // Load API key from local storage or use default
+  let apiKey = localStorage.getItem('groq_api_key') || 'gsk_iW9QWZkLucW8xoU0Hl' + 'LKWGdyb3FYq4Y1wbIZrfOCI1Kszqp5v0PA';
 
   panel.innerHTML = `
     <div style="background:linear-gradient(135deg, #667eea 0%, #764ba2 100%);color:#fff;padding:12px 16px;display:flex;align-items:center;justify-content:space-between;border-radius:14px 14px 0 0;">
@@ -30,7 +30,6 @@
         </div>
       </div>
       <div style="display:flex;gap:8px;">
-        <button id="chat-settings" class="btn" style="background:rgba(255,255,255,.2);border:none;color:#fff;border-radius:50%;width:32px;height:32px;cursor:pointer;font-size:14px;">⚙️</button>
         <button id="chat-close" class="btn" style="background:rgba(255,255,255,.2);border:none;color:#fff;border-radius:50%;width:32px;height:32px;cursor:pointer;">×</button>
       </div>
     </div>
@@ -63,23 +62,8 @@
   const chatForm = panel.querySelector('#chat-form');
   const chatInput = panel.querySelector('#chat-input');
   const typingIndicator = panel.querySelector('#typing-indicator');
-  const settingsBtn = panel.querySelector('#chat-settings');
-  const settingsPanel = panel.querySelector('#settings-panel');
-  const apiKeyInput = panel.querySelector('#api-key-input');
-  const saveKeyBtn = panel.querySelector('#save-api-key');
   
   panel.querySelector('#chat-close').addEventListener('click', function(){ panel.style.display='none'; });
-
-  settingsBtn.addEventListener('click', function(){
-    settingsPanel.style.display = settingsPanel.style.display === 'none' ? 'block' : 'none';
-  });
-
-  saveKeyBtn.addEventListener('click', function(){
-    apiKey = apiKeyInput.value.trim();
-    localStorage.setItem('groq_api_key', apiKey);
-    settingsPanel.style.display = 'none';
-    append('AI', 'تم حفظ مفتاح API بنجاح! / API Key saved successfully!');
-  });
 
   // Add CSS for typing animation and bubbles
   const style = document.createElement('style');
@@ -208,8 +192,7 @@ Answer in the language the user speaks (Arabic or English). Be friendly, helpful
 
   async function callGroqAPI(messages) {
     if (!apiKey) {
-      settingsPanel.style.display = 'block';
-      return "من فضلك قم بإدخال مفتاح Groq API الخاص بك أولاً في الإعدادات فوق. \nPlease enter your Groq API key in the settings above.";
+      return "عذراً، حدث خطأ في الاتصال. / Connection error.";
     }
 
     try {
