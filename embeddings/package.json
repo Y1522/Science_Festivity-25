@@ -1,0 +1,14 @@
+{
+  "name": "booth-map-embeddings",
+  "version": "1.0.0",
+  "description": "Generates Gemini embeddings for booth sessions and schedule events, writes them to Supabase",
+  "type": "module",
+  "main": "generate-embeddings.js",
+  "scripts": {
+    "start": "node generate-embeddings.js"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.45.4",
+    "dotenv": "^16.4.5"
+  }
+}

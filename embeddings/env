@@ -1,0 +1,8 @@
+# Supabase project settings (Project Settings -> API)
+SUPABASE_URL=https://YOUR_PROJECT_REF.supabase.co
+# Use the SERVICE ROLE key here, not the anon key — RLS only allows
+# public SELECT, so writing embeddings requires the service role.
+SUPABASE_SERVICE_ROLE_KEY=your-service-role-key
+
+# Google AI Studio key (Gemini free tier) — https://aistudio.google.com/apikey
+GEMINI_API_KEY=your-gemini-api-key

@@ -1,40 +1,32 @@
-# Science Festivity 2025 - Arab Scientists of the Golden Age of Islam
+# React + TypeScript + Vite
 
-A comprehensive educational website showcasing the contributions of Arab scientists during the Golden Age of Islam. Designed with an engaging interface for both desktop and mobile users.
+This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
 
-🔗 **Live Deployment:** [Science Festivity 2025](https://science-festivity-25.vercel.app/)
+Currently, two official plugins are available:
 
-## ✨ Features
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
 
-- **Interactive Map**: Explore different tents and areas of the science festivity.
-- **Educational Games**: 
-  - Quiz game with multiple levels for different age groups.
-  - Matching game for scientists and their discoveries.
-  - Ping Pong educational game.
-- **Chatbot Assistant**: Meet "Eisho", an AI assistant with vast knowledge about Arab scientists.
-- **3D Background**: Beautiful, interactive arabesque patterns using modern WebGL and Three.js.
-- **Responsive Design**: Flawless experience across all devices (Mobiles, Tablets, and Laptops).
-- **Multilingual Support**: Fully accessible Arabic and English interfaces.
+## React Compiler
 
-## 📂 Project Structure
+The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
-- `index.html` - Main introductory landing page.
-- `pages/` - Core application views including map, tents, and activities.
-- `GAME 1/` - Interactive Ping Pong educational game.
-- `game2/` - Scientists and Discoveries matching game.
-- `js/` - JavaScript logic for interactive components.
-- `css/` - Responsive styling and animations.
-- `assets/` - Images, videos, fonts, and visual resources.
+## Expanding the Oxlint configuration
 
-## 🛠️ Technologies Used
+If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
 
-- HTML5 Semantic Elements
-- CSS3 (Variables, Flexbox, Grid, Animations, Responsive Media Queries)
-- JavaScript (ES6+ features)
-- Three.js for 3D visual effects
-- Font Awesome Icons
-- Google Fonts (Cairo)
+```json
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "plugins": ["react", "typescript", "oxc"],
+  "options": {
+    "typeAware": true
+  },
+  "rules": {
+    "react/rules-of-hooks": "error",
+    "react/only-export-components": ["warn", { "allowConstantExport": true }]
+  }
+}
+```
 
-## 🤝 Contributing
-
-This is an educational project for the Science Festivity 2025 event (Organized by BAPSC). For any issues or suggestions, please contact Me or open a pull request on GitHub.
+See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
